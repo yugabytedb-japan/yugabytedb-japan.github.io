@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-01-17T18:40:48+09:00",
+  "id": "getting-started-with-yugabytedb",
+  "duration": 50,
+  "title": "YugabyteDB ワークショップについて",
+  "authors": "tichimura",
+  "summary": "Getting Started with YugabyteDB",
+  "source": "getting-started.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "sample"
+  ],
+  "tags": [
+    "medium"
+  ],
+  "feedback": "https://github.com/yugabytedb-japan",
+  "url": "getting-started-with-yugabytedb"
+}
