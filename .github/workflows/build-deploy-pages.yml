@@ -39,25 +39,27 @@ jobs:
           npm install
       - name: Export CodeLabs
         run: |
-          claat export -o news \
-          src/getting-started-with-yugabytedb/getting-started.md \
-          src/codelabs/codelab.md
-          # Build adding landing pages
-          cd site
-          gulp dist --codelabs-dir=../news/
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: site/dist/
+          gulp -v 
+          node -v
+  #         claat export -o news \
+  #         src/getting-started-with-yugabytedb/getting-started.md \
+  #         src/codelabs/codelab.md
+  #         # Build adding landing pages
+  #         cd site
+  #         gulp dist --codelabs-dir=../news/
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v1
+  #       with:
+  #         path: site/dist/
 
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+  # # Deployment job
+  # deploy:
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v1
