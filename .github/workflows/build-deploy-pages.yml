@@ -37,29 +37,30 @@ jobs:
           sudo mv claat-linux-amd64 claat && sudo chmod +x claat && sudo mv claat /usr/local/bin 
           cd site
           npm install
+          npm install gulp@4.0.2
       - name: Export CodeLabs
         run: |
           gulp -v 
-          node -v
-  #         claat export -o news \
-  #         src/getting-started-with-yugabytedb/getting-started.md \
-  #         src/codelabs/codelab.md
-  #         # Build adding landing pages
-  #         cd site
-  #         gulp dist --codelabs-dir=../news/
-  #     - name: Upload artifact
-  #       uses: actions/upload-pages-artifact@v1
-  #       with:
-  #         path: site/dist/
+          claat export -o news \
+          src/getting-started-with-yugabytedb/getting-started.md \
+          src/codelabs/codelab.md
+          # Build adding landing pages
+          cd site
+          gulp -v 
+          gulp dist --codelabs-dir=../news/
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: site/dist/
 
-  # # Deployment job
-  # deploy:
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v1
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
