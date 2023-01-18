@@ -1,6 +1,6 @@
 summary: Getting Started with YugabyteDB
 id: getting-started-with-yugabytedb
-categories: Sample
+categories: workshop
 tags: medium
 status: Published 
 authors: tichimura
