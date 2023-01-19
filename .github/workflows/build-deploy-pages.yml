@@ -40,13 +40,11 @@ jobs:
           npm install gulp@4.0.2
       - name: Export CodeLabs
         run: |
-          gulp -v 
-          claat export -o news \
-          src/getting-started-with-yugabytedb/getting-started.md \
-          src/codelabs/codelab.md
-          # Build adding landing pages
           cd site
-          gulp -v 
+          for i in $(find ../src -type file -iname '*.md'); do
+            gulp codelabs:export --source=$i 
+          done 
+          # Build adding landing pages
           gulp dist --codelabs-dir=../news/ \
             --base-url="https://yugabytedb-japan.github.io/"
       - name: Upload artifact
