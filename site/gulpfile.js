@@ -294,7 +294,7 @@ gulp.task('minify', gulp.parallel(
 gulp.task('dist', gulp.series(
   'build',
   'copy',
-  'minify',
+  // 'minify',
 ));
 
 // watch:css watches css files for changes and re-builds them
