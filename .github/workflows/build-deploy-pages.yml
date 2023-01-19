@@ -47,7 +47,8 @@ jobs:
           # Build adding landing pages
           cd site
           gulp -v 
-          gulp dist --codelabs-dir=../news/
+          gulp dist --codelabs-dir=../news/ \
+            --base-url="https://yugabytedb-japan.github.io/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
