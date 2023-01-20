@@ -3,27 +3,26 @@ id: ybm-cluster-resiliency
 summary: このハンズオンでは、ワークロード・シミュレーション・ツールを使用してYugabyteDB Managedのクラスターでノード停止をシミュレートし、クラスターが処理を継続できることを確認します。
 status: [draft]
 authors: Arisa Izuno
-categories: resiliency,scalability
+categories: workshop,japanese
 tags: ybm
+feedback_link: https://yugabytedb-japan.github.io/
 source: 10PpyYJ3OUVuqqPBFpUOBWvrfn_GD1ueQLNJvTbYK8c4
-duration: 16
+duration: 70
 
 ---
 
 # YugabyteDB Managed の耐障害性と拡張性
 
-
+[Codelab Feedback](https://yugabytedb-japan.github.io/)
 
 
 ## はじめに
+Duration: 01:00
 
 
-
-**Last Updated:** 2022-01-18
+**Last Updated:** 2022-01-20
 
 ### **分散SQLデータベースの高可用性と耐障害性**
-
-従来のリレーショナル・データベースは単一のディスクに、強い一貫性を持ったトランザクションを書き込み/読み取りすることを前提に設計されています。モノリシックなアーキテクチャが前提となっているため、拡張する場合はスケールアップ（垂直スケール、CPUやメモリの増強）が必要なためサービス停止が発生します。また高可用性を実現するためにクラスタ構成を組む場合は、追加のソフトウェアや複雑な設定が必要です。
 
 分散SQLデータベースであるYugabyteDBは、拡張性（水平スケール）や高可用性を前提とした設計となっており、デフォルトで高い耐障害性を備えています。スケール時にもサービス停止は発生せず、ローリング・アップグレードといったゼロダウンタイムでのオペレーションが可能です。
 
@@ -40,8 +39,6 @@ duration: 16
 
 <img src="img/4850341bbd444342.png" alt="4850341bbd444342.png"  width="624.00" />
 
-Image of workload simulator
-
 ### **ハンズオンで学習すること**
 
 * YugabyteDB Managedのコンソール操作
@@ -56,17 +53,13 @@ Image of workload simulator
 ワークロードシミュレータを実行するために必要です。Homebrewを使用している場合は、ターミナルから `brew install openjdk` を入力して最新のJava環境をインストールしてください。
 
 
-## 環境準備
+## YugabyteDB Managedへのサインアップ
 Duration: 03:00
 
 
-### **YugabyteDB Managedへのサインアップ**
-
 YugabyteDB ManagedはフルマネージドのDBaaS (データベース・アズ・サービス）です。サインアップしてアカウントを作成することで、すぐにデータベースを使い始めることができます。初めてYugabyteDB Managedを使用する方は、以下の手順に従ってアカウントを作成してください。
 
-1. ブラウザを開きます。以下のURLにアクセスし、アカウントを作成してください。
-
-[https://cloud.yugabyte.com/signup](https://cloud.yugabyte.com/signup)
+1. ブラウザで [こちら](https://cloud.yugabyte.com/signup)にアクセスし、アカウントを作成してください。
 
 <img src="img/5768cf0371033212.png" alt="5768cf0371033212.png"  width="624.00" />
 
@@ -78,12 +71,12 @@ YugabyteDB ManagedはフルマネージドのDBaaS (データベース・アズ�
 
 <img src="img/310bfd3620274448.png" alt="310bfd3620274448.png"  width="624.00" />
 
-
-## クラスタの作成
-Duration: 10:00
+以上で、YugabyteDB Managedへのサインアップは完了です。
 
 
-### **トポロジーの選択**
+## トポロジーの選択
+Duration: 01:00
+
 
 YugabyteDB Managedでは、UIの項目選択によってクラスタ構成やノード仕様を設定することができます。
 
@@ -102,9 +95,14 @@ YugabyteDB Managedでは、UIの項目選択によってクラスタ構成やノ
 
 <img src="img/528e21d80ef87331.png" alt="528e21d80ef87331.png"  width="624.00" />
 
-### **3ノードクラスタの作成**
-
 このハンズオンでは、シングル・リージョンにAZレベルの耐障害性をもつクラスタ（上の図の真ん中）を作成します。
+
+
+## 3ノードクラスタの作成
+Duration: 15:00
+
+
+ここではGCP東京リージョンの各アベイラビリティ・ゾーンにノードを配置して、ゾーンレベルの耐障害性をもつ3ノードクラスタを構成します。
 
 1. YugabyteDB Managedのアカウントにログインします。
 2. 左側のメニューから[Clusters]を選択し、[Add Cluster]ボタンをクリックしてください。
@@ -112,7 +110,7 @@ YugabyteDB Managedでは、UIの項目選択によってクラスタ構成やノ
 
 <img src="img/944159f66e92fd45.png" alt="944159f66e92fd45.png"  width="624.00" />
 
-4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。お好きなクラウドベンダーを選択し、安定版 [Stable Release] が選択されていることを確認して [Next] をクリックしてください。
+4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。[GCP]を選択し、安定版 [Stable Release] が選択されていることを確認して [Next] をクリックしてください。
 
 <img src="img/5c332ecd267633c7.png" alt="5c332ecd267633c7.png"  width="624.00" />
 
@@ -145,9 +143,14 @@ YugabyteDB Managedでは、UIの項目選択によってクラスタ構成やノ
 
 <img src="img/19b1e4407f407ae2.png" alt="19b1e4407f407ae2.png"  width="624.00" />
 
-### **クラスタのアクセス情報の確認**
+以上で、クラスタの作成は完了です。
 
-作成クラスタにアクセスするには、いくつかの情報やファイルが必要です。このセクションでは、以下の情報を確認します。
+
+## クラスタのアクセス情報の確認
+Duration: 05:00
+
+
+クラスタにアクセスするには、いくつかの情報やファイルが必要です。このセクションでは、以下の情報を確認します。
 
 * データベースのユーザー名とパスワード（前のステップで作成したもの）
 * 作成したクラスタのID
@@ -189,8 +192,8 @@ YugabyteDB Managedでは、UIの項目選択によってクラスタ構成やノ
 これで、クラスタへのアクセスに必要な情報が確認できました。
 
 
-## ワークロードのシミュレート
-Duration: 03:00
+## シミュレータのセットアップ
+Duration: 05:00
 
 
 YB Workload Simulatorは、アプリケーションから見たレイテンシやスループットをシミュレートするJavaアプリケーションで、YugabyteDBのコードサンプルとして [GitHub](https://github.com/YugabyteDB-Samples/yb-workload-simulator)で公開されています。
@@ -203,42 +206,27 @@ YB Workload Simulatorは、アプリケーションから見たレイテンシ�
 * クラスタのトポロジーを可視化
 * YugabyteDB Managedのオペレーション（ノード停止/再開、クラスタのスケール）
 
-このセクションでは、ワークロード・シミュレータを使用して、YugabyteDB Managedのクラスタに読み取り/書き込みのワークロードを実行します。
-
 > aside negative
 > 
 > **Note:** シミュレータの実行にはJava 19が必要です。コマンドツール(Terminal等) でjava -versionと入力し、Javaのインストール・バージョンを確認してください。
 
-### **シミュレータのセットアップ**
-
 1.  [リリース](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases)ページにアクセスして、最新のシミュレータのjarファイルをダウンロードしてください。
 2. 前のステップでダウンロードしたクラスタのアクセス情報、証明書、アカウントIDやプロジェクトID、API Keyを確認して、以下のコマンドを入力します。
 
-java -Dnode=&lt;host name&gt; \
-
-     -Ddbname=&lt;dbname&gt; \
-
-     -Ddbuser=&lt;dbuser&gt; \
-
-     -Ddbpassword=&lt;dbpassword&gt; \
-
+```
+java -Dnode=<host name> \
+     -Ddbname=<dbname> \
+     -Ddbuser=<dbuser> \
+     -Ddbpassword=<dbpassword> \
      -Dssl=true \
-
      -Dsslmode=verify-full \
-
-     -Dsslrootcert=&lt;path-to-cluster-certificate&gt; \
-
-     -Dybm-api-key=&lt;ybm-api-key&gt;
-
-     -Dybm-account-id=&lt;ybm-account-id&gt; \
-
-     -Dybm-project-id=&lt;ybm-project-id&gt; \
-
-     -Dybm-cluster-id=&lt;ybm-cluster-id&gt; \
-
+     -Dsslrootcert=<path-to-cluster-certificate> \
+     -Dybm-api-key=<ybm-api-key>
+     -Dybm-account-id=<ybm-account-id> \
+     -Dybm-project-id=<ybm-project-id> \
+     -Dybm-cluster-id=<ybm-cluster-id> \
      -jar ./yb-workload-sim-0.0.2.jar
-
-ヒント：
+```
 
 | &lt;host name&gt; | クラスタの接続情報で確認したホストのアドレス(例)asia-northeast1.4e095914-fb49-4b71-8e3a-3dee1073f221.gcp.ybdb.io |
 | --- | --- |
@@ -276,7 +264,12 @@ java -Dnode=&lt;host name&gt; \
 
 <img src="img/8ccd49293c102497.png" alt="8ccd49293c102497.png"  width="624.00" />
 
-### **ワークロードの実行**
+
+## テーブル作成とデータのロード
+Duration: 05:00
+
+
+ワークロード・シミュレータでは、シミュレーションを実行するためのテーブルやデータを生成する機能を提供しています。
 
 1. シミュレータの左上にある、ハンバーガーアイコンをクリックしてください。
 
@@ -310,16 +303,28 @@ java -Dnode=&lt;host name&gt; \
 <img src="img/44c1c6b61012da6a.png" alt="44c1c6b61012da6a.png"  width="624.00" />
 
 11. 続いて、データの一部を参照するため、`SELECT * from generic1 limit 10;`と入力してください。ロードされたデータの内容を確認したら、`exit;`と入力してシェルを終了し、タブを閉じます。 <img src="img/cff453010c653faf.png" alt="cff453010c653faf.png"  width="624.00" />
-12. シミュレータに戻ります。[Simulation]セクションで、スループットとスレッドの設定を確認します。読み取りだけでなく、書き込みのワークロードも生成するため、[Include new Inserts]のボタンをオンにして、[Run Simulation Workload]ボタンをクリックしてください。
+
+
+## ワークロードの実行
+Duration: 05:00
+
+
+シミュレータで作成したテーブルとデータを使用して、YugabyteDB Managedのクラスタに読み取り/書き込みのワークロードを実行します。
+
+1. ワークロード・シミュレータのブラウザ・タブを開き、左上のハンバーガーアイコンから[Workload Management for Generic]ウィンドウを表示してください。
+2. [Simulation]セクションで、スループットとスレッドの設定を確認します。読み取りだけでなく、書き込みのワークロードも生成するため、[Include new Inserts]のボタンをオンにして、[Run Simulation Workload]ボタンをクリックしてください。
 
 <img src="img/601fa97c8854aae0.png" alt="601fa97c8854aae0.png"  width="624.00" />
 
-13. "Workload RUN_SIMULATION successfully submitted."のメッセージがウィンドウ下部に表示されたことを確認したら、[Close]ボタンをクリックしてウィンドウを閉じてください。
-14. レイテンシーとスループットのグラフを確認してください。ワークロードが継続的に生成され、データベースがサービスを継続していることがわかります。
+3. "Workload RUN_SIMULATION successfully submitted."のメッセージがウィンドウ下部に表示されることを確認し、[Close]ボタンをクリックしてウィンドウを閉じてください。
+4. レイテンシーとスループットのグラフを確認してください。ワークロードが継続的に生成され、データベースがサービスを継続していることがわかります。
 
 <img src="img/45636d4b386c295.png" alt="45636d4b386c295.png"  width="624.00" />
 
-### **AZ障害のシミュレート**
+
+## AZ障害のシミュレート
+Duration: 10:00
+
 
 このハンズオンの前のステップで、複数のアベイラビリティゾーン(AZ)にノードを配置したクラスタを構成しました。そのため、AZレベルの障害であれば、クラスタは影響を受けずにサービスを継続することができる耐障害性を備えています。
 
@@ -352,7 +357,10 @@ java -Dnode=&lt;host name&gt; \
 
 以上で、ノード停止によるAZ障害のシミュレートは完了です。クラスタ構成が変更される時に数秒のパフォーマンス低下が発生しますが、1つのノードが失われてもクラスタとしてはサービスが継続できることが確認できました。
 
-### クラスターのスケール
+
+## クラスターのスケール
+Duration: 15:00
+
 
 前のステップでは、ノード停止をシミュレートしました。ここでは、ワークロードが増加した時にクラスタをスケールアウトしたり、スケールインするオペレーションを行います。
 
@@ -402,7 +410,10 @@ java -Dnode=&lt;host name&gt; \
 
 以上で、ワークロード実行中のスケールアウトおよびスケールインのテストは完了です。構成変更時に数秒のパフォーマンス低下が発生しますが、クラスタ全体としてはサービスが継続できることを確認しました。
 
-### **ワークロードの停止と環境のクリーンアップ**
+
+## ワークロードの停止と環境のクリーンアップ
+Duration: 05:00
+
 
 ここまで実行したワークロードの停止と、クラスタの停止または削除を行います。
 
@@ -429,7 +440,7 @@ java -Dnode=&lt;host name&gt; \
 以上で、環境のクリーンアップは完了です。
 
 
-## お疲れ様でした
+## まとめ
 
 
 
