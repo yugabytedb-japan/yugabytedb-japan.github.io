@@ -3,23 +3,24 @@
   "format": "md",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2023-01-19T07:26:07Z",
+  "updated": "2023-01-20T03:16:25Z",
   "id": "ybm-cluster-resiliency",
-  "duration": 16,
+  "duration": 70,
   "title": "YugabyteDB Managed の耐障害性と拡張性",
   "authors": "Arisa Izuno",
   "summary": "このハンズオンでは、ワークロード・シミュレーション・ツールを使用してYugabyteDB Managedのクラスターでノード停止をシミュレートし、クラスターが処理を継続できることを確認します。",
   "source": "10PpyYJ3OUVuqqPBFpUOBWvrfn_GD1ueQLNJvTbYK8c4",
-  "theme": "resiliency",
+  "theme": "workshop",
   "status": [
     "draft"
   ],
   "category": [
-    "resiliency",
-    "scalability"
+    "workshop",
+    "japanese"
   ],
   "tags": [
     "ybm"
   ],
+  "feedback": "https://yugabytedb-japan.github.io/",
   "url": "ybm-cluster-resiliency"
 }
