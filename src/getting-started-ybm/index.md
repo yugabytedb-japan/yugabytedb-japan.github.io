@@ -80,6 +80,8 @@ YugabyteDB Managedでは、アカウントにつき1つ、期間の限りなく�
 
 以下は、SandboxとDedicated (有償環境) の機能比較です。
 
+<img src="img/68f71fc97b33486f.png" alt="68f71fc97b33486f.png"  width="609.00" />
+
 このハンズオンでは、この無料枠で1ノードのクラスタを作成します。
 
 
