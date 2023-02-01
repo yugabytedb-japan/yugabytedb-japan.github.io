@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-02-01T08:05:15Z",
+  "id": "getting-started-ybm",
+  "duration": 35,
+  "title": "YugabyteDB Managed 入門",
+  "authors": "Arisa Izuno",
+  "summary": "このハンズオンでは、YugabyteDB Managed でデータベースを作成し、テーブルの作成やデータの挿入・読取・更新などの簡単な操作を行います。",
+  "source": "14ZQPs77BXVbGtRZ3AzbroHwOvVrAKyu8B3mZCmmuPns",
+  "theme": "workshop",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "workshop",
+    "japanese",
+    "beginner"
+  ],
+  "tags": [
+    "ybm"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "getting-started-ybm"
+}
