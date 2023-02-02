@@ -268,7 +268,7 @@ pgAdminは [こちら](https://www.pgadmin.org/download/)からダウンロー�
 
 <img src="img/d64003b2d60da118.png" alt="d64003b2d60da118.png"  width="338.50" />
 
-15. 前のステップで挿入したデータを確認してみましょう。select * from emp where deptno='20'; と入力してください。部門コードが20の従業員がリストされます。
+15. 前のステップで挿入したデータを確認してみましょう。`select * from emp where deptno='20';` と入力してください。部門コードが20の従業員がリストされます。
 
 <img src="img/5d66975f1795ff15.png" alt="5d66975f1795ff15.png"  width="624.00" />
 
