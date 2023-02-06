@@ -80,6 +80,8 @@ YugabyteDB Managedでは、アカウントにつき1つ、期間の限りなく�
 
 以下は、SandboxとDedicated (有償環境) の機能比較です。
 
+<img src="img/68f71fc97b33486f.png" alt="68f71fc97b33486f.png"  width="609.00" />
+
 このハンズオンでは、この無料枠で1ノードのクラスタを作成します。
 
 
@@ -266,7 +268,7 @@ pgAdminは [こちら](https://www.pgadmin.org/download/)からダウンロー�
 
 <img src="img/d64003b2d60da118.png" alt="d64003b2d60da118.png"  width="338.50" />
 
-15. 前のステップで挿入したデータを確認してみましょう。select * from emp where deptno='20'; と入力してください。部門コードが20の従業員がリストされます。
+15. 前のステップで挿入したデータを確認してみましょう。`select * from emp where deptno='20';` と入力してください。部門コードが20の従業員がリストされます。
 
 <img src="img/5d66975f1795ff15.png" alt="5d66975f1795ff15.png"  width="624.00" />
 
