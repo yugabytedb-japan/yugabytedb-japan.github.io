@@ -7,7 +7,7 @@ categories: workshop,japanese,beginner
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 14ZQPs77BXVbGtRZ3AzbroHwOvVrAKyu8B3mZCmmuPns
-duration: 35
+duration: 40
 
 ---
 
@@ -80,7 +80,7 @@ YugabyteDB Managedでは、アカウントにつき1つ、期間の限りなく�
 
 以下は、SandboxとDedicated (有償環境) の機能比較です。
 
-<img src="img/68f71fc97b33486f.png" alt="68f71fc97b33486f.png"  width="609.00" />
+<img src="img/f45effd0c19d1b56.png" alt="f45effd0c19d1b56.png"  width="564.00" />
 
 このハンズオンでは、この無料枠で1ノードのクラスタを作成します。
 
@@ -196,6 +196,64 @@ YugabyteDB Managedでは、初めて使用する開発者向けのチュート�
 <img src="img/996e2b93101ac291.png" alt="996e2b93101ac291.png"  width="190.71" /> <img src="img/b4a7c9b265d07362.png" alt="b4a7c9b265d07362.png"  width="176.50" /> <img src="img/5dc20d13d1f4d979.png" alt="5dc20d13d1f4d979.png"  width="181.42" />
 
 これでテーブル作成とデータ挿入のステップは完了です。
+
+
+## (オプション) YCQL の使用
+Duration: 05:00
+
+
+YugabyteDBは、PostgreSQL互換のYSQLと、Cassandra互換のYCQLをAPIとして提供しています。ここでは、Cassandra互換のYCQLを使用して、NoSQLデータベースの操作ができることを確認します。
+
+1. YugabyteDB Managedのクラスタのダッシュボードを開き、右上にある [Connect] ボタンをクリックします。
+2. クラスタに接続するための方法が複数表示されます。一番上にある[Launch Cloud Shell]ボタンをクリックしてください。
+
+<img src="img/731b0fefd345f245.png" alt="731b0fefd345f245.png"  width="624.00" />
+
+3. API TYPEに **[YCQL]** を選択して、[Confirm]ボタンをクリックしてください。
+
+<img src="img/ea230cf9157e25cf.png" alt="ea230cf9157e25cf.png"  width="601.00" />
+
+4. クラスタ作成時に設定したパスワードを入力し、クラスタに接続します。 `describe keyspaces` と入力して、既存のキースペースを確認してください。
+
+<img src="img/646558b7319468ad.png" alt="646558b7319468ad.png"  width="624.00" />
+
+5. 新しいキースペースを作成します。キースペースは、クラスタの複数ノードにまたがってテーブルやインデックスなどYCQLの様々なオブジェクトを保持し管理します。
+
+`create keyspace ks_catalog;` 
+
+`use ks_catalog;`
+
+と入力して、Cloud Shellの入力先が [admin@ycql:ks_catalog&gt;] に変わったことを確認してください。
+
+<img src="img/66327b6d726e371c.png" alt="66327b6d726e371c.png"  width="394.00" />
+
+6. キースペース ks_catalog 内に、テーブルを作成します。
+
+```
+create table tbl_music (
+    artist text primary key,
+    song text,
+    year int
+);
+```
+
+7. 続いて、作成したテーブルにデータを挿入してみましょう。
+
+```
+insert into tbl_music (
+    artist, 
+    song, 
+    year) 
+values
+    ‘Beatles',
+    ‘Let it be',
+    1970);
+```
+
+8. `select * from tbl_music;` と入力し、データの読み取りを確認してください。
+9. `exit;` と入力し、データベースとの接続を終了します。Cloud Shellのブラウザ・タブを閉じてください。
+
+以上で、YCQLのAPIによるデータベースのアクセスは完了です。
 
 
 ## pgAdminを使用したクラスタへのアクセス
