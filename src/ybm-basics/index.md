@@ -7,7 +7,7 @@ categories: workshop,japanese,beginner
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 1_Upjzt_PZseFHVOXIAkGYJp7dMEGQ9_7CA_rvDBYHuc
-duration: 28
+duration: 27
 
 ---
 
@@ -42,14 +42,11 @@ YugabyteDBはクラウドネイティブなアプリケーションに最適な�
 
 ### **ハンズオン実施に必要なもの**
 
-* インターネット接続可能な端末、およびそのIPアドレス
-* セキュリティ・ツールによってIPアドレスが書き換えられる場合は、セキュリティ・ツールによって設定されるIPアドレスの範囲、もしくは、ハンズオン中にセキュリティ・ツールの一時無効化ができるかをご確認ください。
-* ブラウザ (Chrome, Safari, Microsoft Edge, Firefoxなど)
-* YugabyteDB Managedアカウント、および無料枠のシングルノード・クラスター
-* 未作成の場合は [YugabyteDB Managed入門](https://yugabytedb-japan.github.io/codelabs/getting-started-ybm/index.html)を参考にサインアップしてください。
-* シングルノード・クラスターへのアクセス情報 (ユーザIDとパスワードを含むテキストファイル) をご確認ください。
-* pgAdmin 
-* ハンズオン内でインストールを行います。ログインユーザにインストール権限があるかどうかをご確認ください。
+* **インターネット接続可能な端末**、およびその**IPアドレス**：セキュリティ・ツールによってIPアドレスが書き換えられる場合は、セキュリティ・ツールによって設定されるIPアドレスの範囲、もしくは、ハンズオン中にセキュリティ・ツールの一時無効化ができるかをご確認ください。
+* **ブラウザ** (Chrome, Safari, Microsoft Edge, Firefoxなど)
+* **YugabyteDB Managedアカウント**：未登録の場合は [YugabyteDB Managed入門](https://yugabytedb-japan.github.io/codelabs/getting-started-ybm/index.html)を参考にサインアップしてください。
+* **YugabyteDB Managedのシングルノード・クラスター**：アクセス情報 (ユーザIDとパスワードを含むテキストファイル) をご確認ください。
+* **pgAdmin 4**：ハンズオン内でインストールを行います。ログインユーザにインストール権限があるかどうかをご確認ください。
 
 
 ## pgAdmin 4のインストール (Mac)
@@ -142,10 +139,10 @@ pgAdminはPostgreSQLを管理するGUIのツールです。PostgreSQL互換のYu
 
 
 ## YugabyteDB Managed クラスタへのアクセス
-Duration: 06:00
+Duration: 05:00
 
 
-このセクションでは、pgAdminを使用してYugabyteDB Managedのクラスタにアクセスします。YugabyteDB ManagedのSandboxクラスタを未作成または削除した場合は、 [こちら](https://yugabytedb-japan.github.io/codelabs/getting-started-ybm/index.html?index=..%2F..index#3)の手順を参照して再作成してください。
+このセクションでは、pgAdminを使用してYugabyteDB Managedのクラスタにアクセスします。YugabyteDB ManagedのSandboxクラスタを未作成または削除した場合は、 [こちら](https://yugabytedb-japan.github.io/codelabs/getting-started-ybm/index.html?index=..%2F..index#2)の手順を参照して再作成してください。
 
 ### **証明書のダウンロード**
 
@@ -239,7 +236,7 @@ Northwind データベースは、もともと Microsoft 社が作成し、数�
 
 > aside positive
 > 
-> **Note:** Northwindデータベースには、様々なSQLのサンプルや練習問題が提供されています。以下のような練習問題のサイトや [YSQLハンズオン](https://yugabytedb-japan.github.io/codelabs/ysql-basics)で、Northwindデータベースを使ったSQL操作を体験してみてください。
+> **Note:** Northwindデータベースには、様々なSQLのサンプルや練習問題が提供されています。以下のような練習問題のサイトや [YSQLハンズオン](https://yugabytedb-japan.github.io/codelabs/ysql-basics/index.html)で、Northwindデータベースを使ったSQL操作を体験してみてください。
 > 
 > (例)  [https://www.w3resource.com/mysql-exercises/northwind/products-table-exercises/](https://www.w3resource.com/mysql-exercises/northwind/products-table-exercises/)
 
@@ -374,7 +371,7 @@ YugabyteDB Managedでは、CLIやGUIのツールを使って、使い慣れたSQ
 
 以下のハンズオンも実施してみてください。
 
-*  [YSQLハンズオン](https://yugabytedb-japan.github.io/codelabs/ysql_basics)
+*  [YSQLハンズオン](https://yugabytedb-japan.github.io/codelabs/ysql_basics/index.html)
 *  [YugabyteDB Managedの耐障害性と拡張性](https://yugabytedb-japan.github.io/codelabs/ybm-cluster-resiliency/index.html)
 
 ### 参考資料
