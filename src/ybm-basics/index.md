@@ -219,7 +219,7 @@ Northwind データベースは、もともと Microsoft 社が作成し、数�
 
 > aside negative
 > 
-> **Note:** WindowsにインストールしたpgAdminでは、*FATAL:  conversion between SJIS and UTF8 is not supported* というエラーが表示されnorthwindデータベースに接続できない場合があります。 [こちら](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html?index=#5)のステップを参照して、エンコーディングを変更してください。
+> **Note:** WindowsにインストールしたpgAdminでは、*FATAL:  conversion between SJIS and UTF8 is not supported* というエラーが表示されnorthwindデータベースに接続できない場合があります。 [こちら](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html?index=5#5)のステップを参照して、エンコーディングを変更してください。
 
 5. 最初のステップでダウンロードしたDDLファイルをインポートして、テーブルを一括作成します。`\i ‘&lt;ダウンロードしたDDLファイルのパス&gt;'` と入力してください。(\iの後に半角スペース、ファイルパスはシングルクオート(')で囲みます。)
 
