@@ -7,7 +7,7 @@ categories: workshop,japanese,beginner
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 1_Upjzt_PZseFHVOXIAkGYJp7dMEGQ9_7CA_rvDBYHuc
-duration: 27
+duration: 30
 
 ---
 
@@ -105,35 +105,35 @@ pgAdminはPostgreSQLを管理するGUIのツールです。PostgreSQL互換のYu
 
 3. ダウンロードしたファイルを選択し、[管理者として実行]してインストーラを起動します。[Next]をクリックしてください。
 
-<img src="img/e70f5ce65ffdf246.png" alt="e70f5ce65ffdf246.png"  width="624.00" />
+<img src="img/e70f5ce65ffdf246.png" alt="e70f5ce65ffdf246.png"  width="435.27" />
 
 4. 使用許諾の内容を確認し、[I accept...]を選択してから[Next]ボタンをクリックしてください。
 
-<img src="img/816239429e880584.png" alt="816239429e880584.png"  width="624.00" />
+<img src="img/816239429e880584.png" alt="816239429e880584.png"  width="438.33" />
 
 5. インストールフォルダを選択し、[Next]をクリックします。
 
-<img src="img/4c707cb57b85fd8d.png" alt="4c707cb57b85fd8d.png"  width="624.00" />
+<img src="img/4c707cb57b85fd8d.png" alt="4c707cb57b85fd8d.png"  width="438.33" />
 
 6. スタート・メニューのフォルダ名（または追加しない）を設定し、[Next]をクリックします。
 
-<img src="img/958e32ac0d6389d9.png" alt="958e32ac0d6389d9.png"  width="624.00" />
+<img src="img/958e32ac0d6389d9.png" alt="958e32ac0d6389d9.png"  width="437.82" />
 
 7. インストール内容を確認し、[Install]をクリックしてください。
 
-<img src="img/7266f3d5fa0b7c94.png" alt="7266f3d5fa0b7c94.png"  width="624.00" />
+<img src="img/7266f3d5fa0b7c94.png" alt="7266f3d5fa0b7c94.png"  width="437.82" />
 
 8. インストールが開始され、進捗状況が表示されます。しばらくすると、以下の完了画面が表示されるので、[Finish]をクリックしてインストーラを閉じてください。
 
-<img src="img/9ca0a1012c792630.png" alt="9ca0a1012c792630.png"  width="624.00" />
+<img src="img/9ca0a1012c792630.png" alt="9ca0a1012c792630.png"  width="437.82" />
 
 9. スタートメニューから[pgAdmin 4]を選択して起動すると、マスターパスワードの入力画面が表示されます。初回インストールの場合は、マスターパスワードを新しく設定してください。古いバージョンで設定したパスワードを忘れてしまった場合は、リセットして再設定が可能です。
 
-<img src="img/a3b64fd3962eff63.png" alt="a3b64fd3962eff63.png"  width="624.00" />
+<img src="img/a3b64fd3962eff63.png" alt="a3b64fd3962eff63.png"  width="527.50" />
 
 10. pgAdminの画面が開きます。必要に応じて、メニューの[Preference(設定)]から[User language(ユーザ言語)]を[Japanese]に設定し、pgAdminの画面を日本語表示にしてください。（表示言語の切り替えには、再読み込みが必要です。）
 
-<img src="img/ddee54ef89911730.png" alt="ddee54ef89911730.png"  width="624.00" />
+<img src="img/ddee54ef89911730.png" alt="ddee54ef89911730.png"  width="531.50" />
 
 以上で、pgAdmin 4のインストールは完了です。
 
@@ -217,6 +217,10 @@ Northwind データベースは、もともと Microsoft 社が作成し、数�
 
 <img src="img/d89bf1bec21e2d98.png" alt="d89bf1bec21e2d98.png"  width="321.16" />
 
+> aside negative
+> 
+> **Note:** WindowsにインストールしたpgAdminでは、*FATAL:  conversion between SJIS and UTF8 is not supported* というエラーが表示されnorthwindデータベースに接続できない場合があります。 [こちら](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html?index=#5)のステップを参照して、エンコーディングを変更してください。
+
 5. 最初のステップでダウンロードしたDDLファイルをインポートして、テーブルを一括作成します。`\i ‘&lt;ダウンロードしたDDLファイルのパス&gt;'` と入力してください。(\iの後に半角スペース、ファイルパスはシングルクオート(')で囲みます。)
 
 <img src="img/3da850d7235620ad.png" alt="3da850d7235620ad.png"  width="517.17" />
@@ -241,6 +245,29 @@ Northwind データベースは、もともと Microsoft 社が作成し、数�
 > (例)  [https://www.w3resource.com/mysql-exercises/northwind/products-table-exercises/](https://www.w3resource.com/mysql-exercises/northwind/products-table-exercises/)
 
 以上で、northwindデータベースの作成は完了です。
+
+
+## (オプション) Windowsでのエンコーディング設定
+Duration: 03:00
+
+
+pgAdminをWindowsで使用する場合、エンコーディングのエラー (*FATAL:  conversion between SJIS and UTF8 is not supported*) によりYugabyteDB Managedのクラスタに接続できない場合があります。ここでは、上記エラーが表示された時の設定変更の方法をご紹介します。
+
+1. PSQLツールを起動して、エンコーディングによる接続エラーが表示されることを確認します。
+
+<img src="img/1207b544eb9ed811.png" alt="1207b544eb9ed811.png"  width="624.00" />
+
+2. `SET PGCLIENTENCODING=utf-8` と入力し、pgAdminのエンコーディングをUTF-8に設定します。
+3. `chcp 65001` と入力し、PSQLツールで使用する文字コードをUTF-8に設定します。
+4. 以下のコマンドを入力し、YugabyteDB Managedのクラスタに接続してください。
+
+```
+psql -h <ホスト名> -p 5433 -d yugabyte -U admin
+```
+
+<img src="img/3492bd24640bd3ab.png" alt="3492bd24640bd3ab.png"  width="624.00" />
+
+接続できると、`yugabyte=&gt;` のプロンプトが表示され、YSQLの入力ができるはずです。
 
 
 ## YSQLの体験
