@@ -7,7 +7,7 @@ categories: workshop,japanese,beginner
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 14ZQPs77BXVbGtRZ3AzbroHwOvVrAKyu8B3mZCmmuPns
-duration: 40
+duration: 28
 
 ---
 
@@ -48,7 +48,6 @@ YugabyteDBはクラウドネイティブなアプリケーションに最適な�
 * インターネット接続可能な端末
 * ブラウザ (Chrome, Safari, Microsoft Edge, Firefoxなど)
 * YugabyteDB Managedアカウント (ハンズオン内で登録します)
-* pgAdmin (Step7実施の場合)
 
 
 ## YugabyteDB Managedへのサインアップ
@@ -72,22 +71,11 @@ YugabyteDB ManagedはフルマネージドのDBaaS (データベース・アズ�
 以上で、YugabyteDB Managedへのサインアップは完了です。
 
 
-## 無料枠のクラスター作成
-Duration: 01:00
-
-
-YugabyteDB Managedでは、アカウントにつき1つ、期間の限りなく使用可能な1ノードのクラスタを作成可能です。高可用性やスケールアウトといった本番運用に必要な機能は試すことができませんが、Postgres互換のYSQLやCassanrda互換のYCQLを試すなど、チュートリアルに最適なSandbox環境として使用することができます。
-
-以下は、SandboxとDedicated (有償環境) の機能比較です。
-
-<img src="img/f45effd0c19d1b56.png" alt="f45effd0c19d1b56.png"  width="564.00" />
-
-このハンズオンでは、この無料枠で1ノードのクラスタを作成します。
-
-
 ## シングルノードクラスタの作成
 Duration: 10:00
 
+
+YugabyteDB Managedでは、アカウントにつき1つ、期間の限りなく使用可能な1ノードのクラスタを作成可能です。高可用性やスケールアウトといった本番運用に必要な機能は試すことができませんが、Postgres互換のYSQLやCassanrda互換のYCQLを試すなど、チュートリアルに最適なSandbox環境として使用することができます。
 
 ここではYugabyteDB Managedの無料枠を使用して、1ノードのクラスタを作成します。
 
@@ -256,122 +244,6 @@ values
 以上で、YCQLのAPIによるデータベースのアクセスは完了です。
 
 
-## pgAdminを使用したクラスタへのアクセス
-Duration: 06:00
-
-
-pgAdminはPostgreSQLを管理するGUIのツールです。PostgreSQL互換のYugabyteDBでも使用することができます。
-
-このセクションでは、pgAdminを使用してYugabyteDB Managedのクラスタにアクセスします。
-
-pgAdminは [こちら](https://www.pgadmin.org/download/)からダウンロードできます。
-
-インストールの詳細な手順については、 [SRA OSS社のブログ](https://www.sraoss.co.jp/tech-blog/pgsql/pgadmin4/)で紹介されていますので、参考にしてみてください。
-
-1. アプリケーションからYugabyteDB Managedのクラスタにアクセスするには、SSL通信のための証明書が必要です。クラスターのダッシュボードを開いて、右上にある[Connect]ボタンをクリックしてください。
-
-<img src="img/85c3a3a7747c77e7.png" alt="85c3a3a7747c77e7.png"  width="624.00" />
-
-2. 表示されたウィンドウで、[Connect to your Application]の右にある矢印ボタンを押します。
-
-<img src="img/fb9e5b3cbf91f1dc.png" alt="fb9e5b3cbf91f1dc.png"  width="624.00" />
-
-3. [Download CA Cert]のリンクをクリックして、クラスタに接続するためのCA証明書をダウンロードしてください。
-
-<img src="img/d8fd687cd3cd1d45.png" alt="d8fd687cd3cd1d45.png"  width="624.00" />
-
-> aside negative
-> 
-> **Note:** この証明書はClient ShellやpgAdminのようなリモートのクライアントからクラスタにアクセスするために必要です。クラスターのダッシュボードから何度でもダウンロードは可能ですが、ファイルを保存した場所を忘れないようにしてください。
-
-4. クラスタの接続パラメータをコピーし、ホスト名部分 (2行目の＠マーク以下、ybdb.ioまで）メモしておいてください。
-5. pgAdminを開きます。Master passwordの入力を求められるので、初めて開く場合はパスワードを設定してください。
-
-<img src="img/8346b078b9c549c3.png" alt="8346b078b9c549c3.png"  width="520.50" />
-
-6. (オプション) pgAdminの画面を日本語表示にする場合は、メニューの[Preference(設定)]から設定画面を開き、[User language(ユーザ言語)]をJapaneseに設定します。
-
-<img src="img/5681ced5812b5db1.png" alt="5681ced5812b5db1.png"  width="624.00" />
-
-7. pgAdminの左上で[Servers]を右クリックし、[登録] &gt; [サーバ...]を選択してください。
-
-<img src="img/89b4ee40521457f5.png" alt="89b4ee40521457f5.png"  width="396.45" />
-
-8. [General]タブで、任意の名前を入力します。(接続にはホスト名を使用するので、実際のクラスター名を入力する必要はありません。）
-
-<img src="img/a407a41d2eb8eec4.png" alt="a407a41d2eb8eec4.png"  width="395.56" />
-
-9. [接続]タブで、[ホスト名/アドレス]に先ほどコピーしたホスト名を入力します。[ポート番号]は5433、[管理用データベース]はyugabyte、[ユーザ名]と[パスワード]には、クラスターのcredentialファイルに設定した情報を入力します。また、[パスワードを保存]をオンにしてください。
-
-<img src="img/6ec610d7b8e91ee.png" alt="6ec610d7b8e91ee.png"  width="393.72" />
-
-10. [SSL]タブで、[SSLモード]をVerify-Fullに設定します。また、先ほどダッシュボードからダウンロードしたCA証明書ファイルを[ロール認証]に設定してください。
-
-<img src="img/d5a28f1a327c0ba2.png" alt="d5a28f1a327c0ba2.png"  width="396.50" />
-
-11. [保存]ボタンをクリックして、ウィンドウを閉じます。
-12. pgAdminの左側のリストに、登録したサーバが表示されます。データベースを選択し、[PSQLツール]をクリックしてください。
-
-<img src="img/a693962ee840fbbb.png" alt="a693962ee840fbbb.png"  width="258.57" />
-
-> aside negative
-> 
-> **Note:** pgAdminのバージョンによって、接続直後にyugabyteデータベースが表示される場合と、表示されない (postgres等、別のデータベースのみ表示される) 場合があります。
-
-13. Yugabyteデータベースに接続できていない場合は、`\c yugabyte`と入力して、接続先を切り替えてください。
-
-<img src="img/474f85a07b0d1d14.png" alt="474f85a07b0d1d14.png"  width="624.00" />
-
-14. `\d` と入力すると、作成済みのテーブルが表示されます。
-
-<img src="img/d64003b2d60da118.png" alt="d64003b2d60da118.png"  width="338.50" />
-
-15. 前のステップで挿入したデータを確認してみましょう。`select * from emp where deptno='20';` と入力してください。部門コードが20の従業員がリストされます。
-
-<img src="img/5d66975f1795ff15.png" alt="5d66975f1795ff15.png"  width="624.00" />
-
-以上で、pgAdminを使用したクラスタへのアクセスは完了です。
-
-
-## (オプション) pgAdminでのデータベース作成
-Duration: 05:00
-
-
-pgAdminでは、前のステップで使用したPSQLツールだけでなく、GUIを使用してテーブルやデータを確認することができます。このセクションでは、pgAdminで新しいデータベース(northwind) を作成し、GUIの操作を確認します。
-
-1. データベースにテーブルを作成するDDLファイル( [northwind_ddl.sql.txt](https://files.cdn.thinkific.com/file_uploads/540012/attachments/a36/29a/bd2/northwind_ddl.sql.txt))と、データを挿入するDMLファイル( [northwind_data.sql.txt](https://files.cdn.thinkific.com/file_uploads/540012/attachments/886/c8a/550/northwind_data.sql.txt))をダウンロードします。以下のリンクをクリックして新しいブラウザ・タブで開き、ブラウザの[ファイル] &gt; [別名で保管] (Chromeの場合、ブラウザによって異なります) から、テキストファイルを任意のローカルフォルダに保管してください。
-
-<img src="img/e37a3a3cdd8e7dba.png" alt="e37a3a3cdd8e7dba.png"  width="264.50" />
-
-2. pgAdminを開きます。左側のナビゲータで[データベース]を右クリックし、[作成] &gt; [データベース...]を選択してください。
-
-<img src="img/79119e9e5538f6f1.png" alt="79119e9e5538f6f1.png"  width="365.50" />
-
-3. [データベース]に northwind と入力し、[保存]ボタンをクリックしてください。
-
-<img src="img/b354fd9ba605dfe7.png" alt="b354fd9ba605dfe7.png"  width="460.69" />
-
-4. ナビゲータにnorthwindデータベースが表示されます。PSQLツールを再度開くか、すでに開いている場合は `\c northwind` と入力して、接続先データベースを切り替えてください。
-5. 最初のステップでダウンロードしたDDLファイルをインポートして、テーブルを一括作成します。`\i ‘&lt;ダウンロードしたDDLファイルのパス&gt;'` と入力してください。(\iの後に半角スペース、ファイルパスはシングルクオート(')で囲みます。)
-
-<img src="img/3da850d7235620ad.png" alt="3da850d7235620ad.png"  width="517.17" />
-
-6. 同様に、ダウンロードしたDMLファイルをインポートして、データを一括挿入します。`\i ‘&lt;ダウンロードしたDMLファイルのパス&gt;'` と入力してください。
-7. 左側のナビゲータで、[northwind] &gt; [スキーマ] &gt; [テーブル] と展開してください。上の手順で作成された14個のテーブルが確認できます。
-
-<img src="img/8e341c26e6613b90.png" alt="8e341c26e6613b90.png"  width="336.00" />
-
-8. employeeテーブルを右クリックして、[データを閲覧/編集] &gt; [すべての行]を選択してください。
-
-<img src="img/ea439c7b2f4bc109.png" alt="ea439c7b2f4bc109.png"  width="476.21" />
-
-9. 右側に、実行されたクエリとデータ出力が表示されます。
-
-<img src="img/57c5dd5976e22711.png" alt="57c5dd5976e22711.png"  width="624.00" />
-
-以上で、pgAdminでのデータベースやテーブルの作成は完了です。
-
-
 ## まとめ
 Duration: 01:00
 
@@ -387,6 +259,7 @@ YugabyteDB Managedでは、CLIやGUIのツールを使って、使い慣れたSQ
 以下のハンズオンも実施してみてください。
 
 * YugabyteDB Managedチュートリアル (Cloud Shellから表示)
+*  [YugabyteDBの基礎](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html)
 *  [YugabyteDB Managedの耐障害性と拡張性](https://yugabytedb-japan.github.io/codelabs/ybm-cluster-resiliency/index.html)
 
 ### 参考資料

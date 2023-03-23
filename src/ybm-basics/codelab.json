@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-03-23T02:08:31Z",
+  "id": "ybm-basics",
+  "duration": 28,
+  "title": "YugabyteDB Managed の基礎",
+  "authors": "Arisa Izuno",
+  "summary": "このハンズオンでは、YugabyteDB Managed でデータベースを作成し、クライアントツール(pgAdmin)を使用して、テーブルの作成やユーザー定義関数やトリガーの作成を行います。Yugabyte UniversityのYugabyteDB Managed Basicsコースのハンズオン内容と同様です。",
+  "source": "1_Upjzt_PZseFHVOXIAkGYJp7dMEGQ9_7CA_rvDBYHuc",
+  "theme": "workshop",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "workshop",
+    "japanese",
+    "beginner"
+  ],
+  "tags": [
+    "ybm"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "ybm-basics"
+}
