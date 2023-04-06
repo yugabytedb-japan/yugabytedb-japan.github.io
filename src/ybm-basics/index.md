@@ -178,7 +178,7 @@ Duration: 05:00
 
 <img src="img/9475ba3f59bd4620.png" alt="9475ba3f59bd4620.png"  width="456.81" />
 
-4. [SSL]タブで、[SSLモード]をVerify-Fullに設定します。また、先ほどダッシュボードからダウンロードしたCA証明書ファイルを[ロール認証]に設定してください。
+4. [SSL]タブで、[SSLモード]をVerify-Fullに設定します。また、接続パラメータのリストの右上にある+ボタンをクリックして、[ロール認証]という名前のパラメータを追加してください。値には、先ほどダッシュボードからダウンロードしたCA証明書ファイルを設定します。
 
 <img src="img/9a976e387f3bb4fd.png" alt="9a976e387f3bb4fd.png"  width="454.50" />
 
@@ -219,7 +219,7 @@ Northwind データベースは、もともと Microsoft 社が作成し、数�
 
 > aside negative
 > 
-> **Note:** WindowsにインストールしたpgAdminでは、*FATAL:  conversion between SJIS and UTF8 is not supported* というエラーが表示されnorthwindデータベースに接続できない場合があります。 [こちら](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html?index=#5)のステップを参照して、エンコーディングを変更してください。
+> **Note:** WindowsにインストールしたpgAdminでは、*FATAL:  conversion between SJIS and UTF8 is not supported* というエラーが表示されnorthwindデータベースに接続できない場合があります。 [こちら](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html?index=5#5)のステップを参照して、エンコーディングを変更してください。
 
 5. 最初のステップでダウンロードしたDDLファイルをインポートして、テーブルを一括作成します。`\i ‘&lt;ダウンロードしたDDLファイルのパス&gt;'` と入力してください。(\iの後に半角スペース、ファイルパスはシングルクオート(')で囲みます。)
 
