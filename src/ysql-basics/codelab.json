@@ -1,0 +1,27 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-04-06T06:17:32Z",
+  "id": "ysql-basics",
+  "duration": 47,
+  "title": "YSQLハンズオン",
+  "authors": "Arisa Izuno",
+  "summary": "このハンズオンでは、YugabyteDB Managed のデータベースを使用して、YSQLによるデータの更新や結合、トリガーやストアードプロシージャの使用などの操作を行います。",
+  "source": "1yUOr-Qnq4NiBYgB0nsCAEf5A_vq0aXXTuXkGnVcB1t8",
+  "theme": "workshop",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "workshop",
+    "japanese",
+    "intermediate"
+  ],
+  "tags": [
+    "ybm"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "ysql-basics"
+}
