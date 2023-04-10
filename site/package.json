@@ -27,7 +27,6 @@
     "gulp-vulcanize": "^7.0.0",
     "gulp-watch": "^5.0.1",
     "gulp-webserver": "^0.9.1",
-    "jscs": "^3.0.7",
     "jshint": "^2.9.6",
     "jshint-stylish": "^2.2.1",
     "merge-stream": "^1.0.1",
