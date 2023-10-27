@@ -20,7 +20,7 @@ duration: 47
 Duration: 01:00
 
 
-**Last Updated:** 2022-02-03
+**Last Updated:** 2022-04-06
 
 ### **YSQLとは？**
 
@@ -70,9 +70,9 @@ Northwind データベースは、もともと Microsoft 社が作成し、数�
 既に、 [YugabyteDB Managedの基礎](https://yugabytedb-japan.github.io/codelabs/ybm-basics/index.html)を実施してNorthwindデータベースを作成済みの場合は、次のステップに進んでください。
 
 1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボードを開きます。
-2. クラスタのダッシュボードの右上にある、**[Coneect]**ボタンをクリックしてください。
-3. クラスタに接続するための方法が複数表示されます。一番上にある**[Launch Cloud Shell]**ボタンをクリックしてください。
-4. 既にNorthwindデータベースを作成している場合は、データベース名に**northwind**、未作成の場合は**yugabyte**と入力します。APIに**YSQL**が選択されていることを確認し、**[Confirm]**ボタンをクリックします。
+2. クラスタのダッシュボードの右上にある、[Coneect]ボタンをクリックしてください。
+3. クラスタに接続するための方法が複数表示されます。一番上にある[Launch Cloud Shell]ボタンをクリックしてください。
+4. 既にNorthwindデータベースを作成している場合は、データベース名に**northwind**、未作成の場合は**yugabyte**と入力します。APIに**YSQL**が選択されていることを確認し、[Confirm]ボタンをクリックします。
 
 <img src="img/c51e511aac00fb57.png" alt="c51e511aac00fb57.png"  width="439.29" />
 
@@ -117,7 +117,7 @@ YSQLは、PostgreSQL互換のAPIを提供します。SQLの中でも、最も標
 
 #### **従業員の担当テリトリーを表示**
 
-1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボード右上にある**[Coneect]**ボタンをクリックします。Cloud Shellからnorthwindデータベースに接続してください。
+1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボード右上にある[Coneect]ボタンをクリックします。Cloud Shellからnorthwindデータベースに接続してください。
 2. Northwindデータベースの従業員 (employees) 、担当テリトリー(employee_territories)、テリトリー(territories)、リージョン(region) テーブルを結合して、各従業員が担当しているテリトリーをリストします。以下のSQLをコピーして、Cloud Shellに入力してください。
 
 ```
@@ -214,7 +214,7 @@ PostgreSQLは様々な組み込み関数を提供しています。このセク�
 
 #### **従業員Eメールの追加**
 
-1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボード右上にある**[Coneect]**ボタンをクリックします。Cloud Shellからnorthwindデータベースに接続してください。
+1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボード右上にある[Coneect]ボタンをクリックします。Cloud Shellからnorthwindデータベースに接続してください。
 2. 従業員 (employee) テーブルに新しい列、テキスト型のtest_emailを追加します。 `ALTER TABLE employees add column test_email text;` と入力してください。
 3. 追加したtest_email列には、デフォルト値を指定しなかったため、NULLになっています。全ての行で、last_nameとfirst_nameを使用してEメールアドレスを設定します。以下のSQLをコピーして、Cloud Shellから入力してください。
 
@@ -352,7 +352,7 @@ YSQLは、標準的な(方言の少ない)SQLをサポートしているだけ�
 
 #### **拡張機能 (pgcrypt) の有効化**
 
-1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボード右上にある**[Coneect]**ボタンをクリックします。Cloud Shellから任意のデータベースに接続してください。（前のステップまで使用していたnorthwindでも、デフォルトで作成されるyugabyteでも、お好きなデータベースを使用してください。）
+1.  [YugabyteDB Managed](https://cloud.yugabyte.com/)にログインし、クラスタのダッシュボード右上にある[Coneect]ボタンをクリックします。Cloud Shellから任意のデータベースに接続してください。（前のステップまで使用していたnorthwindでも、デフォルトで作成されるyugabyteでも、お好きなデータベースを使用してください。）
 2. YugabyteDBにバンドルされている拡張機能は、CREATE EXTENTIONステートメントで有効化することができます。暗号化関数を提供するpgcryptoモジュールを使用するため、`CREATE EXTENSION pgcrypto;` と入力してください。
 3. crypt()を使用して、パスワードのハッシュ化を行います。
 
