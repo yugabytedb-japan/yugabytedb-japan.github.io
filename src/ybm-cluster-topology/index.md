@@ -341,7 +341,7 @@ set yb_bnl_batch_size=1024;
 
 <img src="img/56d56e9d2b81fe66.png" alt="56d56e9d2b81fe66.png"  width="624.00" />
 
-14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
+14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある **[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 
@@ -662,7 +662,7 @@ explain (analyze, costs off) select order_id, product_name, c.geo_partition, c.n
 
 <img src="img/80ecdf7050ff79f.png" alt="80ecdf7050ff79f.png"  width="624.00" />
 
-16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]**ボタンをクリックして、**[Pause Cluster]** を選択します。
+16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 
