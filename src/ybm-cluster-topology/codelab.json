@@ -1,0 +1,26 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2023-11-16T07:58:52Z",
+  "id": "ybm-cluster-topology",
+  "duration": 70,
+  "title": "YugabyteDB Managed の分散トポロジー",
+  "authors": "Arisa Izuno",
+  "summary": "このハンズオンでは、単一リージョン、複数リージョン、ジオ・パーティションのYugabyteDB Managedクラスターを作成し、それぞれのクラスターの特徴を確認します。",
+  "source": "1mQ4tnshR8qubpYDXyoIJJ24azIx6R6eJpdv62IDDce4",
+  "theme": "workshop",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "workshop",
+    "japanese"
+  ],
+  "tags": [
+    "ybm"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "ybm-cluster-topology"
+}
