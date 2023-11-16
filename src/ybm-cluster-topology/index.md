@@ -111,7 +111,7 @@ Duration: 10:00
 
 <img src="img/841514db217b3cde.png" alt="841514db217b3cde.png"  width="555.50" />
 
-5. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである**[Innovation Track]** を選択して、**[Next]** をクリックしてください。
+5. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
 <img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
 
@@ -119,7 +119,7 @@ Duration: 10:00
 
 <img src="img/ae79d5d157a7777a.png" alt="ae79d5d157a7777a.png"  width="578.58" />
 
-7. Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、**[Select a VPC]** をオフにしたまま、**[Next]**をクリックしてください。
+7. Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、**[Select a VPC]** をオフにしたまま、**[Next]** をクリックしてください。
 
 <img src="img/238d65987f333bb3.png" alt="238d65987f333bb3.png"  width="624.00" />
 
@@ -341,7 +341,7 @@ set yb_bnl_batch_size=1024;
 
 <img src="img/56d56e9d2b81fe66.png" alt="56d56e9d2b81fe66.png"  width="624.00" />
 
-14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]**ボタンをクリックして、**[Pause Cluster]** を選択します。
+14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 
@@ -377,7 +377,7 @@ Duration: 20:00
 
 <img src="img/4cd91d8a278bdfdc.png" alt="4cd91d8a278bdfdc.png"  width="624.00" />
 
-7. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである**[Innovation Track]** を選択して、**[Next]** をクリックしてください。
+7. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
 <img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
 
@@ -449,7 +449,7 @@ Duration: 10:00
 
 <img src="img/4cd91d8a278bdfdc.png" alt="4cd91d8a278bdfdc.png"  width="624.00" />
 
-4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには**[AWS]** 、データベース・バージョンはより新しいバージョンである**[Innovation Track]** を選択して、**[Next]** をクリックしてください。
+4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
 <img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
 
@@ -662,7 +662,7 @@ explain (analyze, costs off) select order_id, product_name, c.geo_partition, c.n
 
 <img src="img/80ecdf7050ff79f.png" alt="80ecdf7050ff79f.png"  width="624.00" />
 
-16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]**ボタンをクリックして、**[Pause Cluster]**を選択します。
+16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]**ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 
