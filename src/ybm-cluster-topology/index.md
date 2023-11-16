@@ -662,7 +662,7 @@ explain (analyze, costs off) select order_id, product_name, c.geo_partition, c.n
 
 <img src="img/80ecdf7050ff79f.png" alt="80ecdf7050ff79f.png"  width="624.00" />
 
-16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
+16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある **[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 
