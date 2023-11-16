@@ -102,8 +102,8 @@ Duration: 10:00
 ここではAWS東京リージョンの各アベイラビリティ・ゾーンにノードを配置して、ゾーンレベルの耐障害性をもつ3ノードクラスタを構成します。
 
 1. YugabyteDB Managedのアカウントにログインします。
-2. 左側のメニューから**[Clusters]**を選択し、**[Create a Free cluster]** (既にクラスタ作成済みの場合は**[Add Cluster]**) ボタンをクリックしてください。
-3. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Request a Free Trial]**ボタンをクリックしてください。
+2. 左側のメニューから **[Clusters]** を選択し、 **[Create a Free cluster]**  (既にクラスタ作成済みの場合は **[Add Cluster]** ) ボタンをクリックしてください。
+3. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Request a Free Trial]** ボタンをクリックしてください。
 
 <img src="img/4cd91d8a278bdfdc.png" alt="4cd91d8a278bdfdc.png"  width="624.00" />
 
@@ -111,11 +111,11 @@ Duration: 10:00
 
 <img src="img/841514db217b3cde.png" alt="841514db217b3cde.png"  width="555.50" />
 
-5. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには**[AWS]**、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
+5. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである**[Innovation Track]** を選択して、**[Next]** をクリックしてください。
 
 <img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
 
-6. Cluster setupページが表示されます。ページ上部にある **[Single-Region Deployment]** を選択します。1の耐障害性レベルには **[Availability Zone Level]**、2のリージョンには **[Tokyo]** を選択してください。 クラスタの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。
+6. Cluster setupページが表示されます。ページ上部にある **[Single-Region Deployment]** を選択します。1の耐障害性レベルには **[Availability Zone Level]** 、2のリージョンには **[Tokyo]** を選択してください。 クラスタの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。
 
 <img src="img/ae79d5d157a7777a.png" alt="ae79d5d157a7777a.png"  width="578.58" />
 
@@ -123,7 +123,7 @@ Duration: 10:00
 
 <img src="img/238d65987f333bb3.png" alt="238d65987f333bb3.png"  width="624.00" />
 
-8. Network Accessの設定ページが表示されます。**[Add Current IP Address]**をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
+8. Network Accessの設定ページが表示されます。**[Add Current IP Address]** をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
 
 <img src="img/86d28a92e28714c.png" alt="86d28a92e28714c.png"  width="612.27" />
 
@@ -131,11 +131,11 @@ Duration: 10:00
 > 
 > **Note:** [Could not detect a valid IPv4 address] というエラーメッセージが表示される場合は、コマンドラインや外部サイトを使用して、ハンズオンで使用しているマシンのグローバルIPを確認し、**[Create New IP Allow List]** からIP許可リストに追加してください。
 
-9. **[Next]**をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
+9. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
 
 <img src="img/947a01a68bbd5ce1.png" alt="947a01a68bbd5ce1.png"  width="624.00" />
 
-10. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]**をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]**ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
+10. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、 **[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
 <img src="img/3901a3bf141d05df.png" alt="3901a3bf141d05df.png"  width="624.00" />
 
@@ -143,7 +143,7 @@ Duration: 10:00
 > 
 > **Note:** このアクセス情報は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。
 
-11. **[Create Cluster]**ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
+11. **[Create Cluster]** ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
 
 <img src="img/1767834b779ff2bd.png" alt="1767834b779ff2bd.png"  width="624.00" />
 
@@ -166,31 +166,31 @@ Duration: 05:00
 * クラスタとの接続
 
 1. 前のステップで作成したクラスタのダッシュボードを開きます。
-2. クラスタのダッシュボードの右上にある、**[Coneect]**ボタンをクリックしてください。
-3. クラスタに接続するための方法が複数表示されます。2番目にある[YugabyteDB Client Shell]の**[View Guide]** ボタンをクリックします。
+2. クラスタのダッシュボードの右上にある、**[Coneect]** ボタンをクリックしてください。
+3. クラスタに接続するための方法が複数表示されます。2番目にある[YugabyteDB Client Shell] の **[View Guide]** ボタンをクリックします。
 
 <img src="img/78ae466db7bbb3ce.png" alt="78ae466db7bbb3ce.png"  width="547.33" />
 
 4. YSQLクライアント・シェルをダウンロードします。
 
-1. MacまたはLinuxの場合:
+* MacまたはLinuxの場合:
 
 ```
 curl -sSL https://downloads.yugabyte.com/get_clients.sh | bash
 ```
 
-2. Windowsの場合:
+* Windowsの場合:
 
 ```
 docker pull yugabytedb/yugabyte-client:latest
 docker run -d --name yugabyte-client yugabytedb/yugabyte-client
 ```
 
-5. SSL通信のための証明書をダウンロードします。[Download CA  Cert]のリンクをクリックして、証明書ファイル (root.crt) をダウンロードしてください。
+5. SSL通信のための証明書をダウンロードします。**[Download CA  Cert]** のリンクをクリックして、証明書ファイル (root.crt) をダウンロードしてください。
 
 <img src="img/85b9bfb32bda74f3.png" alt="85b9bfb32bda74f3.png"  width="554.22" />
 
-3. Windowsの場合: 証明書ファイルをコンテナ内にコピーしてください。
+* Windowsの場合: 証明書ファイルをコンテナ内にコピーしてください。
 
 ```
 docker cp <CERT_FILE> yugabyte-client:/home/yugabyte/<CERT_FILE>
@@ -198,7 +198,7 @@ docker cp <CERT_FILE> yugabyte-client:/home/yugabyte/<CERT_FILE>
 
 6. [3)Use the following parameters to connect to your cluster]セクションのコマンドを参考に、クラスタへの接続を行います。
 
-1. MacまたはLinuxの場合:
+* MacまたはLinuxの場合:
 
 ```
 cd yugabyte-client-2.16.0.1/bin/ysqlsh
@@ -209,7 +209,7 @@ sslmode=verify-full \
 sslrootcert=<ROOT_CERT_PATH>"
 ```
 
-2. Windowsの場合:
+* Windowsの場合:
 
 ```
 docker exec -it yugabyte-client bash
@@ -276,7 +276,7 @@ create index on tbl3 (v);
 
 これで、コロケーション有無とセカンダリ・インデックス有無が異なる4つのテーブルが作成されました。
 
-6. クエリを実行する前に、YugabyteDB ManagedのダッシュボードでPerformance Advisorを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Performance Advisor]**を選択します。**[Scan]**ボタンをクリックすると、以下のようにパフォーマンス改善の提案が表示されるはずです。
+6. クエリを実行する前に、YugabyteDB ManagedのダッシュボードでPerformance Advisorを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Performance Advisor]** を選択します。**[Scan]** ボタンをクリックすると、以下のようにパフォーマンス改善の提案が表示されるはずです。
 
 <img src="img/f866cd17685b72df.png" alt="f866cd17685b72df.png"  width="624.00" />
 
@@ -337,11 +337,11 @@ set yb_bnl_batch_size=1024;
 > 
 > 結合 (Join) を使用したクエリ実行が、Nested LoopからBatched Nested Loopに変わりました。コロケーション・テーブル、非コロケーション・テーブル共に、実行時間が短くなっていることを確認してください。
 
-13. いくつかのクエリを実行したので、再度YugabyteDB Managedのダッシュボードからパフォーマンスを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Slow Queries]**を選択します。クエリの履歴を検索し、実行時間の長かったクエリが表示されます。
+13. いくつかのクエリを実行したので、再度YugabyteDB Managedのダッシュボードからパフォーマンスを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Slow Queries]** を選択します。クエリの履歴を検索し、実行時間の長かったクエリが表示されます。
 
 <img src="img/56d56e9d2b81fe66.png" alt="56d56e9d2b81fe66.png"  width="624.00" />
 
-14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]**ボタンをクリックして、**[Pause Cluster]**を選択します。
+14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]**ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 
@@ -372,42 +372,42 @@ Duration: 20:00
 <img src="img/b8bc5a1604dc2772.png" alt="b8bc5a1604dc2772.png"  width="402.50" />
 
 4. 同様の手順で、大阪リージョン (ap-northeast-3)、シンガポール・リージョン (ap-southeast-1) にもVPCを作成してください。
-5. 左側のメニューから**[Clusters]**を選択し、**[Create a Free cluster]** (既にクラスタ作成済みの場合は**[Add Cluster]**) ボタンをクリックしてください。
-6. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Choose]**ボタンをクリックしてください。
+5. 左側のメニューから **[Clusters]** を選択し、 **[Create a Free cluster]** (既にクラスタ作成済みの場合は **[Add Cluster]** ) ボタンをクリックしてください。
+6. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Choose]** ボタンをクリックしてください。
 
 <img src="img/4cd91d8a278bdfdc.png" alt="4cd91d8a278bdfdc.png"  width="624.00" />
 
-7. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには**[AWS]**、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
+7. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである**[Innovation Track]** を選択して、**[Next]** をクリックしてください。
 
 <img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
 
-8. Cluster setupページが表示されます。ページ上部にある **[Multi-Region Deployment]** を選択し、1の分散モードには **[Replicated across regions]**を設定します。
+8. Cluster setupページが表示されます。ページ上部にある **[Multi-Region Deployment]** を選択し、1の分散モードには **[Replicated across regions]** を設定します。
 
 <img src="img/a1b566145f71e479.png" alt="a1b566145f71e479.png"  width="624.00" />
 
 9. 2のリージョンには **[Tokyo], [Osaka], [Singapore]** を選択してください。リージョンを指定すると、事前に作成したVPCが自動的に選択されるはずです。
 10. **[Tokyo]** を優先リージョン (リーダー・タブレットを優先的に配置するリージョン) に指定します。**[Set as pregerred region for reads and writes]** のラジオボタンをONにしてください。
-11.  ノードの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。**[Next]**をクリックしてください。
+11.  ノードの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。**[Next]** をクリックしてください。
 
 <img src="img/3afb61488c413964.png" alt="3afb61488c413964.png"  width="624.00" />
 
-12. Network Accessの設定ページが表示されます。**[Add Current IP Address]**をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
+12. Network Accessの設定ページが表示されます。**[Add Current IP Address]** をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
 
 <img src="img/86d28a92e28714c.png" alt="86d28a92e28714c.png"  width="612.27" />
 
 > aside positive
 > 
-> **Note:**前のステップで自分のIPアドレスを登録済みの場合は、**[Add Existing IP allow list]** から登録済みのIPを選択して追加することもできます。
+> **Note:** 前のステップで自分のIPアドレスを登録済みの場合は、**[Add Existing IP allow list]** から登録済みのIPを選択して追加することもできます。
 
 13. パブリックなIPアドレスを許可リストに追加しているという警告ウィンドウが表示されます。実環境ではアプリケーションのVPCとのみ接続して、プライベートなネットワークに閉じて使用することが推奨されますが、このハンズオンではアプリケーションVPCを別途用意しないため、そのまま **[Enable Public Access and Add IP Allow List]** をクリックしてください。
 
 <img src="img/a7d8f77a158ead72.png" alt="a7d8f77a158ead72.png"  width="568.50" />
 
-14. **[Next]**をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
+14. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
 
 <img src="img/947a01a68bbd5ce1.png" alt="947a01a68bbd5ce1.png"  width="624.00" />
 
-15. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]**をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]**ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
+15. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
 <img src="img/3901a3bf141d05df.png" alt="3901a3bf141d05df.png"  width="624.00" />
 
@@ -415,11 +415,11 @@ Duration: 20:00
 > 
 > **Note:** このアクセス情報は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。
 
-16. **[Create Cluster]**ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
+16. **[Create Cluster]** ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
 
 <img src="img/1767834b779ff2bd.png" alt="1767834b779ff2bd.png"  width="624.00" />
 
-17. 起動が完了するとクラスターのダッシュボードが表示されます。**[Settings]** タブを表示してください。**[Connection Parameters]**のセクションには、各リージョンごとに接続アドレスが表示されます。(＋アイコンをクリックすると確認できます。)東京リージョンが、優先リージョン (PREFERRED) に設定されていることを確認してください。
+17. 起動が完了するとクラスターのダッシュボードが表示されます。**[Settings]** タブを表示してください。**[Connection Parameters]** のセクションには、各リージョンごとに接続アドレスが表示されます。(＋アイコンをクリックすると確認できます。)東京リージョンが、優先リージョン (PREFERRED) に設定されていることを確認してください。
 
 <img src="img/5b721693213a8836.png" alt="5b721693213a8836.png"  width="624.00" />
 
@@ -445,11 +445,11 @@ Duration: 10:00
 <img src="img/6ffffc4db23174ba.png" alt="6ffffc4db23174ba.png"  width="624.00" />
 
 2. **[Clusters]** メニューに移動し、**[Add Cluster]** ボタンをクリックします。
-3. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Choose]**ボタンをクリックしてください。
+3. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Choose]** ボタンをクリックしてください。
 
 <img src="img/4cd91d8a278bdfdc.png" alt="4cd91d8a278bdfdc.png"  width="624.00" />
 
-4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには**[AWS]**、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
+4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには**[AWS]** 、データベース・バージョンはより新しいバージョンである**[Innovation Track]** を選択して、**[Next]** をクリックしてください。
 
 <img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
 
@@ -462,24 +462,24 @@ Duration: 10:00
 > **Note:** 耐障害性モードをアベイラビリティ・ゾーンレベル、あるいはノードレベルと設定した場合は、各リージョンに最低 3ノード (クラスタ全体で 9ノード) がプロビジョンされることになります。このハンズオンは、ジオ・パーティションの仕組みや設定を確認することが目的なので、最小限の構成で実施します。
 
 6. 2のリージョンには **[Tokyo], [Frankfurt], [N.California]** を選択してください。リージョンを指定すると、事前に作成したVPCが自動的に選択されるはずです。
-7. ノードの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。**[Next]**をクリックしてください。
-8. Network Accessの設定ページが表示されます。**[Add Current IP Address]**をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
+7. ノードの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。**[Next]** をクリックしてください。
+8. Network Accessの設定ページが表示されます。**[Add Current IP Address]** をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
 
 <img src="img/86d28a92e28714c.png" alt="86d28a92e28714c.png"  width="612.27" />
 
 > aside positive
 > 
-> **Note:**前のステップで自分のIPアドレスを登録済みの場合は、**[Add Existing IP allow list]** から登録済みのIPを選択して追加することもできます。
+> **Note:** 前のステップで自分のIPアドレスを登録済みの場合は、**[Add Existing IP allow list]** から登録済みのIPを選択して追加することもできます。
 
 9. パブリックなIPアドレスを許可リストに追加しているという警告ウィンドウが表示されます。実環境ではアプリケーションのVPCとのみ接続して、プライベートなネットワークに閉じて使用することが推奨されますが、このハンズオンではアプリケーションVPCを別途用意しないため、そのまま **[Enable Public Access and Add IP Allow List]** をクリックしてください。
 
 <img src="img/a7d8f77a158ead72.png" alt="a7d8f77a158ead72.png"  width="568.50" />
 
-10. **[Next]**をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
+10. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
 
 <img src="img/947a01a68bbd5ce1.png" alt="947a01a68bbd5ce1.png"  width="624.00" />
 
-11. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]**をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]**ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
+11. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
 <img src="img/3901a3bf141d05df.png" alt="3901a3bf141d05df.png"  width="624.00" />
 
@@ -487,7 +487,7 @@ Duration: 10:00
 > 
 > **Note:** このアクセス情報は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。
 
-12. **[Create Cluster]**ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
+12. **[Create Cluster]** ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
 
 <img src="img/c9e2e9538a07ef10.png" alt="c9e2e9538a07ef10.png"  width="624.00" />
 
