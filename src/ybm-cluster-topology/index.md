@@ -290,7 +290,7 @@ explain (analyze, costs off) select * from tbl1 where v=6;
 explain (analyze, costs off) select * from tbl2 where v=6;
 ```
 
-<img width="601" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/d6b8a598-5f46-4574-9e61-b6d20961a82d">
+![image](./img/291446195-d6b8a598-5f46-4574-9e61-b6d20961a82d.png)
 
 
 > aside positive
@@ -304,7 +304,7 @@ explain (analyze, costs off) insert into tbl1 values(100001,77);
 explain (analyze, costs off) insert into tbl2 values(100001,77);
 ```
 
-<img width="537" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/fd867d8b-cec3-4e47-9d5c-e9765313a217">
+![image](./img/291446820-fd867d8b-cec3-4e47-9d5c-e9765313a217.png)
 
 
 - `dist` オプションを利用して、YugabyteDBに特化した処理を確認します。
@@ -314,9 +314,8 @@ explain (analyze, costs off) insert into tbl2 values(100001,77);
     explain (analyze, dist) insert into tbl2 values(100002,77);
     ```
 
-    <img width="656" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/f5956eb6-2135-454d-84fe-d04178923dd0">
-
-
+    ![image](./img/291446890-f5956eb6-2135-454d-84fe-d04178923dd0.png)
+ 
 10. 続いて、テーブル結合(Join)した時のパフォーマンスを比較します。以下のように入力して、実行計画を確認してください。
 
 ```
@@ -324,8 +323,7 @@ explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tb
 explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tbl2.v=6;
 ```
 
-<img width="711" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/1270e417-79e5-400b-a412-cc38f073223b">
-
+![image](./img/291447081-1270e417-79e5-400b-a412-cc38f073223b.png)
 
 11. YugabyteDBでは、分散ストレージへの読み取りリクエストを減らしてクエリ実行を効率化する、Batched Nested LoopというPushdown機能を提供しています。現在のバージョン (2.18) ではデフォルトで有効化されていないので、以下のように入力してBatched Nested Loopを有効化してください。
 
@@ -335,7 +333,7 @@ set yb_bnl_batch_size=1024;
 
 12. 手順 8. と同様にexplainコマンドを入力して、再度実行計画を確認してください。
 
-<img width="691" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/4bc48b6d-32eb-4f21-9fa5-0c9fa90f07a3">
+![image](./img/291447440-4bc48b6d-32eb-4f21-9fa5-0c9fa90f07a3.png)
 
 > aside positive
 > 
