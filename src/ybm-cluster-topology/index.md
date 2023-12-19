@@ -230,6 +230,135 @@ YSQLコマンドの入力モードになったら、クライアント・シェ�
 
 以上で、このセクションは完了です。
 
+## サンプルデータベースの作成
+Duration: 10:00
+
+さきほど作成したクラスタにデータを投入しましょう。
+
+1. YSQLクライアント・シェルから、以下のコマンドを入力してデータベースを作成してください。
+
+```
+CREATE DATABASE yb_demo;
+```
+
+2. 作成したyb_demoに接続します。
+
+```
+\c yb_demo
+```
+
+3. 2つのテーブルを作成してください。
+
+```
+CREATE TABLE tbl1 (k int primary key, v int);
+CREATE TABLE tbl2 (k int primary key, v int);
+```
+
+4. 作成したテーブルにそれぞれデータを挿入します。
+
+```
+insert into tbl1 select i, i%100 from generate_series(1,100000) as i;
+insert into tbl2 select i, i%100 from generate_series(1,100000) as i;
+```
+
+5. tbl1にセカンダリ・インデックスを作成します。
+
+```
+create index on tbl1 (v);
+```
+
+6. クエリを実行する前に、YugabyteDB ManagedのダッシュボードでPerformance Advisorを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Performance Advisor]** を選択します。**[Scan]** ボタンをクリックすると、以下のようにパフォーマンス改善の提案が表示されるはずです。
+
+<img src="img/f866cd17685b72df.png" alt="f866cd17685b72df.png"  width="624.00" />
+
+> aside positive
+> 
+> 今回は、インデックスを作成した直後に意図的にスキャンしたため、「使用されていないインデックスがある」というアドバイスが表示されます。
+> 
+> テーブルが更新されると、そのテーブルに作成されたインデックスは同期的に全て更新されます。多数のインデックスがある場合、書き込みパフォーマンスの劣化が発生するため、あまり使われていないインデックスは削除または部分インデックス等に変更することが推奨されます。
+
+7. YSQLクライアント・シェルに戻ります。実行時間を計測するため、psqlコマンドで機能を有効化します。
+
+```
+\timing
+```
+
+8. 2つのテーブルそれぞれで、同じクエリがどのように実行されるのかを実行計画で確認します。
+
+```
+explain (analyze, costs off) select * from tbl1 where v=6;
+explain (analyze, costs off) select * from tbl2 where v=6;
+```
+
+<img width="601" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/d6b8a598-5f46-4574-9e61-b6d20961a82d">
+
+
+> aside positive
+> 
+> tbl1にはセカンダリ・インデックスを作成してあるため、Index Scanで効率的に実行されています。
+
+9. 同様に、更新 (INSERT) の場合の実行時間を確認します。
+
+```
+explain (analyze, costs off) insert into tbl1 values(100001,77);
+explain (analyze, costs off) insert into tbl2 values(100001,77);
+```
+
+<img width="537" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/fd867d8b-cec3-4e47-9d5c-e9765313a217">
+
+
+- `dist` オプションを利用して、YugabyteDBに特化した処理を確認します。
+    
+    ```
+    explain (analyze, dist) insert into tbl1 values(100002,77);
+    explain (analyze, dist) insert into tbl2 values(100002,77);
+    ```
+
+    <img width="656" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/f5956eb6-2135-454d-84fe-d04178923dd0">
+
+
+10. 続いて、テーブル結合(Join)した時のパフォーマンスを比較します。以下のように入力して、実行計画を確認してください。
+
+```
+explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tbl1.v=6;
+explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tbl2.v=6;
+```
+
+<img width="711" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/1270e417-79e5-400b-a412-cc38f073223b">
+
+
+11. YugabyteDBでは、分散ストレージへの読み取りリクエストを減らしてクエリ実行を効率化する、Batched Nested LoopというPushdown機能を提供しています。現在のバージョン (2.18) ではデフォルトで有効化されていないので、以下のように入力してBatched Nested Loopを有効化してください。
+
+```
+set yb_bnl_batch_size=1024; 
+```
+
+12. 手順 8. と同様にexplainコマンドを入力して、再度実行計画を確認してください。
+
+<img width="691" alt="image" src="https://github.com/tichimura/yugabytedb-japan.github.io/assets/1793451/4bc48b6d-32eb-4f21-9fa5-0c9fa90f07a3">
+
+> aside positive
+> 
+> 結合 (Join) を使用したクエリ実行が、Nested LoopからBatched Nested Loopに変わりました。実行時間が短くなっていることを確認してください。
+
+13. いくつかのクエリを実行したので、再度YugabyteDB Managedのダッシュボードからパフォーマンスを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Slow Queries]** を選択します。クエリの履歴を検索し、実行時間の長かったクエリが表示されます。
+
+<img src="img/56d56e9d2b81fe66.png" alt="56d56e9d2b81fe66.png"  width="624.00" />
+
+14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある **[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
+
+<img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
+
+> aside positive
+> 
+> このクラスタをもう使用しない場合は、[Terminate Cluster] を選択して、クラスタを削除しても構いません。
+
+15. 確認画面で、**[Confirm & Pause]** をクリックして、クラスタを一時停止してください。
+
+<img src="img/8b6f2d19835c4fdd.png" alt="8b6f2d19835c4fdd.png"  width="593.50" />
+
+以上で、このセクションは完了です。
+
 
 ## コロケーション・データベースの作成
 Duration: 10:00
@@ -359,7 +488,6 @@ set yb_bnl_batch_size=1024;
 ## マルチ・リージョンのストレッチ・クラスタ作成
 Duration: 20:00
 
-
 ここではAWS東京リージョン、大阪リージョン、シンガポールリージョンにノードを配置して、リージョン・レベルの耐障害性をもつ3ノードクラスタを構成します。
 
 1. YugabyteDB Managedのアカウントにログインします。
@@ -429,7 +557,7 @@ Duration: 20:00
 > 
 > マルチ・リージョンのクラスタでは、複数リージョン間でロードバランシングするグローバル・ロードバランサは含まれていません。
 
-18. このクラスターに対して、「コロケーション・データベースの作成」セクションと同様の手順を実施し、パフォーマンスの違いを確認してください。接続先のアドレスは、東京リージョンのPublicのHostアドレスを使用します。
+18. このクラスターに対して、「サンプルデータベースの作成」あるいは「コロケーション・データベースの作成」セクションと同様の手順を実施し、パフォーマンスの違いを確認してください。接続先のアドレスは、東京リージョンのPublicのHostアドレスを使用します。
 
 以上で、このセクションは完了です。
 
