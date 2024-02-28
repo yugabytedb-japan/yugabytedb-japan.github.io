@@ -72,13 +72,14 @@ YBAにてUniverseを指定 &gt; `Action` &gt; `Edit GFlag`
 
 * レンジシャーディングとハッシュシャーディングでの違いを見てみましょう
 
-#### レンジシャーディング
+#### ハッシュシャーディング
 
 ```
 create table t1 ( id int, name text, primary key(id));
 ```
 
-#### ハッシュシャーディング
+
+#### レンジシャーディング
 
 ```
 create table t2 ( id int, name text, primary key(id ASC));
