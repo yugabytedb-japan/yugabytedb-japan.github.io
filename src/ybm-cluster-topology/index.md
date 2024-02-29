@@ -292,11 +292,12 @@ explain (analyze, costs off) select * from tbl2 where v=6;
 
 ![image](./img/291446195-d6b8a598-5f46-4574-9e61-b6d20961a82d.png)
 
+
 > aside positive
 > 
 > tbl1にはセカンダリ・インデックスを作成してあるため、Index Scanで効率的に実行されています。
 
-1. 同様に、更新 (INSERT) の場合の実行時間を確認します。
+9. 同様に、更新 (INSERT) の場合の実行時間を確認します。
 
 ```
 explain (analyze, costs off) insert into tbl1 values(100001,77);
@@ -315,8 +316,7 @@ explain (analyze, costs off) insert into tbl2 values(100001,77);
 
     ![image](./img/291446890-f5956eb6-2135-454d-84fe-d04178923dd0.png)
  
-
-1.  続いて、テーブル結合(Join)した時のパフォーマンスを比較します。以下のように入力して、実行計画を確認してください。
+10. 続いて、テーブル結合(Join)した時のパフォーマンスを比較します。以下のように入力して、実行計画を確認してください。
 
 ```
 explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tbl1.v=6;
@@ -325,8 +325,7 @@ explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tb
 
 ![image](./img/291447081-1270e417-79e5-400b-a412-cc38f073223b.png)
 
-
-1.  YugabyteDBでは、分散ストレージへの読み取りリクエストを減らしてクエリ実行を効率化する、Batched Nested LoopというPushdown機能を提供しています。現在のバージョン (2.18) ではデフォルトで有効化されていないので、以下のように入力してBatched Nested Loopを有効化してください。
+11. YugabyteDBでは、分散ストレージへの読み取りリクエストを減らしてクエリ実行を効率化する、Batched Nested LoopというPushdown機能を提供しています。現在のバージョン (2.18) ではデフォルトで有効化されていないので、以下のように入力してBatched Nested Loopを有効化してください。
 
 ```
 set yb_bnl_batch_size=1024; 
@@ -340,7 +339,7 @@ set yb_bnl_batch_size=1024;
 > 
 > 結合 (Join) を使用したクエリ実行が、Nested LoopからBatched Nested Loopに変わりました。実行時間が短くなっていることを確認してください。
 
-1.  いくつかのクエリを実行したので、再度YugabyteDB Managedのダッシュボードからパフォーマンスを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Slow Queries]** を選択します。クエリの履歴を検索し、実行時間の長かったクエリが表示されます。
+13. いくつかのクエリを実行したので、再度YugabyteDB Managedのダッシュボードからパフォーマンスを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Slow Queries]** を選択します。クエリの履歴を検索し、実行時間の長かったクエリが表示されます。
 
 <img src="img/56d56e9d2b81fe66.png" alt="56d56e9d2b81fe66.png"  width="624.00" />
 
