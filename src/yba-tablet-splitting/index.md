@@ -107,8 +107,9 @@ insert into t2 (id, name) select i, left(md5(random()::text),4) from generate_se
 * Tablet数の確認 (Table IDで検索)
 `http://&lt;tablet_server_ip&gt;:9000/tablets`
 
-> [!NOTE]
-> Auto Splittingが有効になっていることで、[low, high, final phase](https://docs.yugabyte.com/preview/architecture/docdb-sharding/tablet-splitting/#low-phase)に基づいてデータが増えているかを確認しましょう。
+> aside negative
+> 
+> **Note:** Auto Splittingが有効になっていることで、[low, high, final phase](https://docs.yugabyte.com/preview/architecture/docdb-sharding/tablet-splitting/#low-phase)に基づいてデータが増えているかを確認しましょう。
 
 
 ### さらに追加

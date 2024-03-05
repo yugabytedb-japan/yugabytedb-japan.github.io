@@ -1,0 +1,29 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-03-06T07:41:41+09:00",
+  "id": "yb-sample-app-k8s",
+  "duration": 0,
+  "title": "Smart Driver on k8s",
+  "authors": "Tomohiro Ichimura",
+  "summary": "このハンズオンでは、YugabyteDB Smart Driverを使って、ロードバランス機能を確認していきます",
+  "source": "yb-sample-app-k8s.md",
+  "theme": "",
+  "status": [
+    "[[draft]]"
+  ],
+  "category": [
+    "workshop",
+    "japanese"
+  ],
+  "tags": [
+    "java",
+    "k8s",
+    "smartdriver",
+    "yba"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "yb-sample-app-k8s"
+}
