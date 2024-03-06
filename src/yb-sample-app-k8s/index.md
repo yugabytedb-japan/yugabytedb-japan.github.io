@@ -82,7 +82,7 @@ NOTES:
 kubectl run yb-sample-apps -it --rm  --image yugabytedb/yb-sample-apps -n yb-demo --command -- sh
 ```
 
-* 最新のイメージがdocker hubにないのため、Yugabyte SEによるのプライベートレポジトリを利用します。
+* 今回については、最新のイメージとして [Yugabyte SE](https://hub.docker.com/r/yogendra/yb-sample-apps/tags)のものを利用します。
 
 ```language-bash
 kubectl run yb-sample-apps -it --rm  --image yogendra/yb-sample-apps -n hol2yb-demo --command -- sh
@@ -175,10 +175,10 @@ java -jar yb-sample-apps.jar --workload SqlInserts --nodes 10.100.139.243:5433 -
 
 ### 対象となるplacementを選択
 
-* `"aws.us-east.us-east-1a,aws.us-west.us-east-1c"`
+* `"kubernetes.ap-northeast-1.ap-northeast-1a,kubernetes.ap-northeast-1.ap-northeast-1c,kubernetes.ap-northeast-1.ap-northeast-1d"`
 
 ```
-java -jar yb-sample-apps.jar --workload SqlInserts --nodes 10.100.139.243:5433 --topology_keys "aws.us-east.us-east-1a:1,aws.us-west.us-west-1a:2" --num_threads_write 4 --num_threads_read 6 --num_unique_keys 200000 --num_reads 150000  --num_writes 200000
+java -jar yb-sample-apps.jar --workload SqlInserts --nodes 10.100.139.243:5433 --topology_keys "kubernetes.ap-northeast-1.ap-northeast-1a,kubernetes.ap-northeast-1.ap-northeast-1c,kubernetes.ap-northeast-1.ap-northeast-1d" --num_threads_write 4 --num_threads_read 6 --num_unique_keys 200000 --num_reads 150000  --num_writes 200000
 ```
 
 
@@ -189,12 +189,12 @@ java -jar yb-sample-apps.jar --workload SqlInserts --nodes 10.100.139.243:5433 -
 ### 対象となるplacementを選択、fallbackの順序も指定
 
 * 1~10のレンジで設定が可能。1が起動時に選択されるplacementで、以降2, 3,...と続く
-* 例: `"aws.us-east.us-east-1a:1,aws.us-west.us-west-1a:2"`
+* 例: `"kubernetes.ap-northeast-1.ap-northeast-1a:1,kubernetes.ap-northeast-1.ap-northeast-1c:2,kubernetes.ap-northeast-1.ap-northeast-1d:3"`
 
 ### 1. load_balance と topology_keys にfallbackオプション(`:1`)を指定してワークロードを実行
 
 ```
-java -jar yb-sample-apps.jar --workload SqlInserts --nodes <YOUR NODE>:5433 --topology_keys "aws.us-east.us-east-1a:1,aws.us-west.us-west-1a:2" --num_threads_write 4 --num_threads_read 6 --num_unique_keys 200000 --num_reads 150000  --num_writes 200000
+java -jar yb-sample-apps.jar --workload SqlInserts --nodes <YOUR NODE>:5433 --topology_keys "kubernetes.ap-northeast-1.ap-northeast-1a:1,kubernetes.ap-northeast-1.ap-northeast-1c:2,kubernetes.ap-northeast-1.ap-northeast-1d:3" --num_threads_write 4 --num_threads_read 6 --num_unique_keys 200000 --num_reads 150000  --num_writes 200000
 ```
 
 ### 2. 状況の確認
