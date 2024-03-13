@@ -1,0 +1,28 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-03-13T08:19:50+09:00",
+  "id": "yb-geo-partition-k8s",
+  "duration": 0,
+  "title": "YugabyteDB Geo Partitionを使った地域性を持たせたデータの地理分散",
+  "authors": "Tomohiro Ichimura",
+  "summary": "このハンズオンでは、YugabyteDB Geo Partitionを使って、データに地域性を持たせた地理分散機能を確認していきます",
+  "source": "yb-geo-partition-k8s.md",
+  "theme": "",
+  "status": [
+    "[[draft]]"
+  ],
+  "category": [
+    "workshop",
+    "japanese"
+  ],
+  "tags": [
+    "geopartition",
+    "k8s",
+    "yba"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "yb-geo-partition-k8s"
+}
