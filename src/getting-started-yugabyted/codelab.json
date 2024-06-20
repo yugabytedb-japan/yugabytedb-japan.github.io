@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-06-20T12:59:10Z",
+  "id": "getting-started-yugabyted",
+  "duration": 22,
+  "title": "はじめてのYugabyteDB",
+  "authors": "Arisa Izuno",
+  "summary": "このハンズオンでは、YugabyteDB のDockerイメージを使用して、データベースのテーブルやデータがどのように保管されるのかを確認します。",
+  "source": "1kmCG4-lzg8eXTHTegDo5rD4E92ha1gLtyvsIJYZasx4",
+  "theme": "ybd",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "ybd"
+  ],
+  "tags": [
+    "ybd"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "getting-started-yugabyted"
+}

@@ -20,7 +20,7 @@ duration: 28
 Duration: 01:00
 
 
-**Last Updated:** 2022-02-03
+**Last Updated:** 2023-03-23
 
 ### **分散SQLデータベースとは？**
 
