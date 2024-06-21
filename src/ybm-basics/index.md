@@ -3,7 +3,7 @@ id: ybm-basics
 summary: このハンズオンでは、YugabyteDB Managed でデータベースを作成し、クライアントツール(pgAdmin)を使用して、テーブルの作成やユーザー定義関数やトリガーの作成を行います。Yugabyte UniversityのYugabyteDB Managed Basicsコースのハンズオン内容と同様です。
 status: [draft]
 authors: Arisa Izuno
-categories: workshop,japanese,beginner
+categories: ybm
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 1_Upjzt_PZseFHVOXIAkGYJp7dMEGQ9_7CA_rvDBYHuc
@@ -61,7 +61,7 @@ pgAdminはPostgreSQLを管理するGUIのツールです。PostgreSQL互換のYu
 
 1.  [Mac用のインストーラ](https://www.pgadmin.org/download/pgadmin-4-macos/)から、最新のバージョン (2023年3月時点では、V6.21) のリンクをクリックします。
 
-<img src="img/a04837d1374038f5.png" alt="a04837d1374038f5.png"  width="624.00" />
+<img src="img/854c19ddb4a54a37.png" alt="854c19ddb4a54a37.png"  width="624.00" />
 
 2. ファイル・ブラウザから、インストール・ファイル (dmg) をクリックしてダウンロードしてください。
 
@@ -129,7 +129,7 @@ pgAdminはPostgreSQLを管理するGUIのツールです。PostgreSQL互換のYu
 
 9. スタートメニューから[pgAdmin 4]を選択して起動すると、マスターパスワードの入力画面が表示されます。初回インストールの場合は、マスターパスワードを新しく設定してください。古いバージョンで設定したパスワードを忘れてしまった場合は、リセットして再設定が可能です。
 
-<img src="img/a3b64fd3962eff63.png" alt="a3b64fd3962eff63.png"  width="527.50" />
+<img src="img/8556b9ed9bad7fa8.png" alt="8556b9ed9bad7fa8.png"  width="527.50" />
 
 10. pgAdminの画面が開きます。必要に応じて、メニューの[Preference(設定)]から[User language(ユーザ言語)]を[Japanese]に設定し、pgAdminの画面を日本語表示にしてください。（表示言語の切り替えには、再読み込みが必要です。）
 
@@ -152,11 +152,11 @@ Duration: 05:00
 
 2. 表示されたウィンドウで、[Connect to your Application]の右にある矢印ボタンを押します。
 
-<img src="img/fb9e5b3cbf91f1dc.png" alt="fb9e5b3cbf91f1dc.png"  width="624.00" />
+<img src="img/c8111769c9a61897.png" alt="c8111769c9a61897.png"  width="624.00" />
 
 3. [Download CA Cert]のリンクをクリックして、クラスタに接続するためのCA証明書をダウンロードしてください。
 
-<img src="img/d8fd687cd3cd1d45.png" alt="d8fd687cd3cd1d45.png"  width="624.00" />
+<img src="img/fce9c26fad5b2f0.png" alt="fce9c26fad5b2f0.png"  width="624.00" />
 
 > aside negative
 > 
