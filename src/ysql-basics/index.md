@@ -3,7 +3,7 @@ id: ysql-basics
 summary: このハンズオンでは、YugabyteDB Managed のデータベースを使用して、YSQLによるデータの更新や結合、組込関数や拡張機能の使用などの操作を行います。
 status: [draft]
 authors: Arisa Izuno
-categories: workshop,japanese,intermediate
+categories: ybm
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 1yUOr-Qnq4NiBYgB0nsCAEf5A_vq0aXXTuXkGnVcB1t8
@@ -396,7 +396,7 @@ select * from demo where i=42 and t='x' and d is not null and b;
 
 #### **コロケーション・データベースの作成**
 
-コロケーションとは、YugabyteDBのデフォルトである自動シャーディングと分散配置を無効化し、1つのタブレットにテーブル全体を配置する機能です。比較的小さくデータが増加しないテーブルが多数あるような場合、分散による同期的なコンセンサスがネットワークの負荷を大きくしたり、細分化されたタブレットがクエリ実行のパフォーマンスに影響したりすることがあります。
+コロケーションとは、YugabyteDBのデフォルトである自動シャーディングと分散配置を行わず、1つのタブレットにテーブル全体を配置する機能です。比較的小さくデータが増加しないテーブルが多数あるような場合、分散による同期的なコンセンサスがネットワークの負荷を大きくしたり、細分化されたタブレットがクエリ実行のパフォーマンスに影響したりすることがあります。
 
 1. コロケーションは、データベース作成時に設定する必要があります。Cloud Shellで`CREATE DATABASE col_db WITH colocation = true;` と入力してください。
 2. `\c col_db` と入力して、作成したcol-dbに接続します。

@@ -3,7 +3,7 @@ id: ybm-cluster-topology
 summary: このハンズオンでは、単一リージョン、複数リージョン、ジオ・パーティションのYugabyteDB Managedクラスターを作成し、それぞれのクラスターの特徴を確認します。
 status: [draft]
 authors: Arisa Izuno
-categories: workshop,japanese
+categories: ybm
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 1mQ4tnshR8qubpYDXyoIJJ24azIx6R6eJpdv62IDDce4
@@ -109,21 +109,25 @@ Duration: 10:00
 
 4. トライアル申し込みのウィンドウが表示されます。右側にプロモーション・コードを入力し、**[Start Free Trial]** ボタンをクリックしてください。
 
-<img src="img/841514db217b3cde.png" alt="841514db217b3cde.png"  width="555.50" />
+<img src="img/e76514901d4b925e.png" alt="e76514901d4b925e.png"  width="555.50" />
 
-5. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
+5. プロモーションコードが適用されると、画面上部に適用されたクレジットと有効期限が表示されます。クラスタ作成の画面に戻るので、右側のDedicatedにある **[Choosel]** ボタンをクリックしてください。
 
-<img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
+<img src="img/9ca0cf00a4acbf78.png" alt="9ca0cf00a4acbf78.png"  width="588.50" />
 
-6. Cluster setupページが表示されます。ページ上部にある **[Single-Region Deployment]** を選択します。1の耐障害性レベルには **[Availability Zone Level]** 、2のリージョンには **[Tokyo]** を選択してください。 クラスタの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。
+6. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
-<img src="img/ae79d5d157a7777a.png" alt="ae79d5d157a7777a.png"  width="578.58" />
+<img src="img/7c949f83aedb5dfa.png" alt="7c949f83aedb5dfa.png"  width="598.32" />
 
-7. Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、**[Select a VPC]** をオフにしたまま、**[Next]** をクリックしてください。
+7. Cluster setupページが表示されます。ページ上部にある **[Single-Region Deployment]** を選択します。1の耐障害性レベルには **[Availability Zone Level]** 、2のリージョンには **[Tokyo]** を選択してください。 クラスタの仕様は、vCPUを最小の **[2]** に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。
 
-<img src="img/238d65987f333bb3.png" alt="238d65987f333bb3.png"  width="624.00" />
+<img src="img/c8719149c77c33e7.png" alt="c8719149c77c33e7.png"  width="578.58" />
 
-8. Network Accessの設定ページが表示されます。**[Add Current IP Address]** をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
+8. Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、**[Select a VPC]** をオフにしたまま、**[Next]** をクリックしてください。
+
+<img src="img/7a9bec2e9c16953.png" alt="7a9bec2e9c16953.png"  width="624.00" />
+
+9. Network Accessの設定ページが表示されます。**[Add Current IP Address]** をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
 
 <img src="img/86d28a92e28714c.png" alt="86d28a92e28714c.png"  width="612.27" />
 
@@ -131,23 +135,23 @@ Duration: 10:00
 > 
 > **Note:** [Could not detect a valid IPv4 address] というエラーメッセージが表示される場合は、コマンドラインや外部サイトを使用して、ハンズオンで使用しているマシンのグローバルIPを確認し、**[Create New IP Allow List]** からIP許可リストに追加してください。
 
-9. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
+10. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
 
-<img src="img/947a01a68bbd5ce1.png" alt="947a01a68bbd5ce1.png"  width="624.00" />
+<img src="img/498043ed23bcf790.png" alt="498043ed23bcf790.png"  width="624.00" />
 
-10. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、 **[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
+11. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、 **[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
-<img src="img/3901a3bf141d05df.png" alt="3901a3bf141d05df.png"  width="624.00" />
+<img src="img/8e8726ac84acaddb.png" alt="8e8726ac84acaddb.png"  width="624.00" />
 
 > aside negative
 > 
 > **Note:** このアクセス情報は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。
 
-11. **[Create Cluster]** ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
+12. **[Create Cluster]** ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
 
-<img src="img/1767834b779ff2bd.png" alt="1767834b779ff2bd.png"  width="624.00" />
+<img src="img/3e457e4a8f9301f.png" alt="3e457e4a8f9301f.png"  width="624.00" />
 
-12. 起動が完了するとクラスターのダッシュボードが表示されます。
+13. 起動が完了するとクラスターのダッシュボードが表示されます。
 
 <img src="img/19b1e4407f407ae2.png" alt="19b1e4407f407ae2.png"  width="624.00" />
 
@@ -169,7 +173,7 @@ Duration: 05:00
 2. クラスタのダッシュボードの右上にある、**[Coneect]** ボタンをクリックしてください。
 3. クラスタに接続するための方法が複数表示されます。2番目にある[YugabyteDB Client Shell] の **[View Guide]** ボタンをクリックします。
 
-<img src="img/78ae466db7bbb3ce.png" alt="78ae466db7bbb3ce.png"  width="547.33" />
+<img src="img/1e4e5b493c7cdc2d.png" alt="1e4e5b493c7cdc2d.png"  width="547.33" />
 
 4. YSQLクライアント・シェルをダウンロードします。
 
@@ -188,7 +192,7 @@ docker run -d --name yugabyte-client yugabytedb/yugabyte-client
 
 5. SSL通信のための証明書をダウンロードします。**[Download CA  Cert]** のリンクをクリックして、証明書ファイル (root.crt) をダウンロードしてください。
 
-<img src="img/85b9bfb32bda74f3.png" alt="85b9bfb32bda74f3.png"  width="554.22" />
+<img src="img/81b0bcd78596e506.png" alt="81b0bcd78596e506.png"  width="554.22" />
 
 * Windowsの場合: 証明書ファイルをコンテナ内にコピーしてください。
 
@@ -227,133 +231,6 @@ YSQLコマンドの入力モードになったら、クライアント・シェ�
 8. `\l` および `\dt` と入力して、既存のデータベースやテーブルを確認してください。クラスタにはデフォルトでいくつかのデータベースが作成されていますが、接続先のyugabyteデータベースでは、テーブルやインデックス等のオブジェクトは何も作成されていないはずです。
 9. YSQLの入力モードを終了し、データベースとの接続を切断する場合は、`exit` または `\q`と入力してください。
 10. 再度、接続する場合は、手順6. のコマンドを入力します。
-
-以上で、このセクションは完了です。
-
-## サンプルデータベースの作成
-Duration: 10:00
-
-さきほど作成したクラスタにデータを投入しましょう。
-
-1. YSQLクライアント・シェルから、以下のコマンドを入力してデータベースを作成してください。
-
-```
-CREATE DATABASE yb_demo;
-```
-
-2. 作成したyb_demoに接続します。
-
-```
-\c yb_demo
-```
-
-3. 2つのテーブルを作成してください。
-
-```
-CREATE TABLE tbl1 (k int primary key, v int);
-CREATE TABLE tbl2 (k int primary key, v int);
-```
-
-4. 作成したテーブルにそれぞれデータを挿入します。
-
-```
-insert into tbl1 select i, i%100 from generate_series(1,100000) as i;
-insert into tbl2 select i, i%100 from generate_series(1,100000) as i;
-```
-
-5. tbl1にセカンダリ・インデックスを作成します。
-
-```
-create index on tbl1 (v);
-```
-
-6. クエリを実行する前に、YugabyteDB ManagedのダッシュボードでPerformance Advisorを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Performance Advisor]** を選択します。**[Scan]** ボタンをクリックすると、以下のようにパフォーマンス改善の提案が表示されるはずです。
-
-<img src="img/f866cd17685b72df.png" alt="f866cd17685b72df.png"  width="624.00" />
-
-> aside positive
-> 
-> 今回は、インデックスを作成した直後に意図的にスキャンしたため、「使用されていないインデックスがある」というアドバイスが表示されます。
-> 
-> テーブルが更新されると、そのテーブルに作成されたインデックスは同期的に全て更新されます。多数のインデックスがある場合、書き込みパフォーマンスの劣化が発生するため、あまり使われていないインデックスは削除または部分インデックス等に変更することが推奨されます。
-
-7. YSQLクライアント・シェルに戻ります。実行時間を計測するため、psqlコマンドで機能を有効化します。
-
-```
-\timing
-```
-
-8. 2つのテーブルそれぞれで、同じクエリがどのように実行されるのかを実行計画で確認します。
-
-```
-explain (analyze, costs off) select * from tbl1 where v=6;
-explain (analyze, costs off) select * from tbl2 where v=6;
-```
-
-![image](./img/291446195-d6b8a598-5f46-4574-9e61-b6d20961a82d.png)
-
-
-> aside positive
-> 
-> tbl1にはセカンダリ・インデックスを作成してあるため、Index Scanで効率的に実行されています。
-
-9. 同様に、更新 (INSERT) の場合の実行時間を確認します。
-
-```
-explain (analyze, costs off) insert into tbl1 values(100001,77);
-explain (analyze, costs off) insert into tbl2 values(100001,77);
-```
-
-![image](./img/291446820-fd867d8b-cec3-4e47-9d5c-e9765313a217.png)
-
-
-- `dist` オプションを利用して、YugabyteDBに特化した処理を確認します。
-    
-    ```
-    explain (analyze, dist) insert into tbl1 values(100002,77);
-    explain (analyze, dist) insert into tbl2 values(100002,77);
-    ```
-
-    ![image](./img/291446890-f5956eb6-2135-454d-84fe-d04178923dd0.png)
- 
-10. 続いて、テーブル結合(Join)した時のパフォーマンスを比較します。以下のように入力して、実行計画を確認してください。
-
-```
-explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tbl1.v=6;
-explain (analyze, costs off) select * from tbl1, tbl2 where tbl1.k=tbl2.k and tbl2.v=6;
-```
-
-![image](./img/291447081-1270e417-79e5-400b-a412-cc38f073223b.png)
-
-11. YugabyteDBでは、分散ストレージへの読み取りリクエストを減らしてクエリ実行を効率化する、Batched Nested LoopというPushdown機能を提供しています。現在のバージョン (2.18) ではデフォルトで有効化されていないので、以下のように入力してBatched Nested Loopを有効化してください。
-
-```
-set yb_bnl_batch_size=1024; 
-```
-
-12. 手順 8. と同様にexplainコマンドを入力して、再度実行計画を確認してください。
-
-![image](./img/291447440-4bc48b6d-32eb-4f21-9fa5-0c9fa90f07a3.png)
-
-> aside positive
-> 
-> 結合 (Join) を使用したクエリ実行が、Nested LoopからBatched Nested Loopに変わりました。実行時間が短くなっていることを確認してください。
-
-13. いくつかのクエリを実行したので、再度YugabyteDB Managedのダッシュボードからパフォーマンスを確認してみましょう。**[Performance]** タブを選択して、右側のメニューから **[Slow Queries]** を選択します。クエリの履歴を検索し、実行時間の長かったクエリが表示されます。
-
-<img src="img/56d56e9d2b81fe66.png" alt="56d56e9d2b81fe66.png"  width="624.00" />
-
-14. シングル・リージョンのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある **[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
-
-<img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
-
-> aside positive
-> 
-> このクラスタをもう使用しない場合は、[Terminate Cluster] を選択して、クラスタを削除しても構いません。
-
-15. 確認画面で、**[Confirm & Pause]** をクリックして、クラスタを一時停止してください。
-
-<img src="img/8b6f2d19835c4fdd.png" alt="8b6f2d19835c4fdd.png"  width="593.50" />
 
 以上で、このセクションは完了です。
 
@@ -486,6 +363,7 @@ set yb_bnl_batch_size=1024;
 ## マルチ・リージョンのストレッチ・クラスタ作成
 Duration: 20:00
 
+
 ここではAWS東京リージョン、大阪リージョン、シンガポールリージョンにノードを配置して、リージョン・レベルの耐障害性をもつ3ノードクラスタを構成します。
 
 1. YugabyteDB Managedのアカウントにログインします。
@@ -505,7 +383,7 @@ Duration: 20:00
 
 7. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
-<img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
+<img src="img/7c949f83aedb5dfa.png" alt="7c949f83aedb5dfa.png"  width="598.32" />
 
 8. Cluster setupページが表示されます。ページ上部にある **[Multi-Region Deployment]** を選択し、1の分散モードには **[Replicated across regions]** を設定します。
 
@@ -531,11 +409,11 @@ Duration: 20:00
 
 14. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
 
-<img src="img/947a01a68bbd5ce1.png" alt="947a01a68bbd5ce1.png"  width="624.00" />
+<img src="img/498043ed23bcf790.png" alt="498043ed23bcf790.png"  width="624.00" />
 
 15. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
-<img src="img/3901a3bf141d05df.png" alt="3901a3bf141d05df.png"  width="624.00" />
+<img src="img/8e8726ac84acaddb.png" alt="8e8726ac84acaddb.png"  width="624.00" />
 
 > aside negative
 > 
@@ -543,7 +421,7 @@ Duration: 20:00
 
 16. **[Create Cluster]** ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
 
-<img src="img/1767834b779ff2bd.png" alt="1767834b779ff2bd.png"  width="624.00" />
+<img src="img/3e457e4a8f9301f.png" alt="3e457e4a8f9301f.png"  width="624.00" />
 
 17. 起動が完了するとクラスターのダッシュボードが表示されます。**[Settings]** タブを表示してください。**[Connection Parameters]** のセクションには、各リージョンごとに接続アドレスが表示されます。(＋アイコンをクリックすると確認できます。)東京リージョンが、優先リージョン (PREFERRED) に設定されていることを確認してください。
 
@@ -555,7 +433,7 @@ Duration: 20:00
 > 
 > マルチ・リージョンのクラスタでは、複数リージョン間でロードバランシングするグローバル・ロードバランサは含まれていません。
 
-18. このクラスターに対して、「サンプルデータベースの作成」あるいは「コロケーション・データベースの作成」セクションと同様の手順を実施し、パフォーマンスの違いを確認してください。接続先のアドレスは、東京リージョンのPublicのHostアドレスを使用します。
+18. このクラスターに対して、「コロケーション・データベースの作成」セクションと同様の手順を実施し、パフォーマンスの違いを確認してください。接続先のアドレスは、東京リージョンのPublicのHostアドレスを使用します。
 
 以上で、このセクションは完了です。
 
@@ -577,7 +455,7 @@ Duration: 10:00
 
 4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
-<img src="img/23342ec4ef207648.png" alt="23342ec4ef207648.png"  width="598.32" />
+<img src="img/7c949f83aedb5dfa.png" alt="7c949f83aedb5dfa.png"  width="598.32" />
 
 5. Cluster setupページが表示されます。ページ上部にある **[Multi-Region Deployment]** を選択し、1の分散モードには **[Partition by region]**、耐障害性レベルには **[None]** を設定します。
 
@@ -603,11 +481,11 @@ Duration: 10:00
 
 10. **[Next]** をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで **[Next]** をクリックしてください。
 
-<img src="img/947a01a68bbd5ce1.png" alt="947a01a68bbd5ce1.png"  width="624.00" />
+<img src="img/498043ed23bcf790.png" alt="498043ed23bcf790.png"  width="624.00" />
 
 11. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、**[Add your own credentials]** をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ **[Download credentials]** ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
-<img src="img/3901a3bf141d05df.png" alt="3901a3bf141d05df.png"  width="624.00" />
+<img src="img/8e8726ac84acaddb.png" alt="8e8726ac84acaddb.png"  width="624.00" />
 
 > aside negative
 > 
@@ -778,7 +656,7 @@ SELECT tableoid::regclass, cust_id, name, email from customers where cust_id=500
 explain (analyze, costs off) select order_id, product_name, c.geo_partition, c.name from orders_ap join customers_ap c on orders_ap.cust_id=c.cust_id;
 ```
 
-<img src="img/2676bbeb03451752.png" alt="2676bbeb03451752.png"  width="624.00" />
+<img src="img/9a07242a45d9010a.png" alt="9a07242a45d9010a.png"  width="624.00" />
 
 14. 親テーブル同士を結合して、Where条件でリージョンを指定しても前の手順と同じクエリ結果が得られます。実行計画を確認して、実行方法の違いを確認しましょう。
 
@@ -786,9 +664,9 @@ explain (analyze, costs off) select order_id, product_name, c.geo_partition, c.n
 explain (analyze, costs off) select order_id, product_name, c.geo_partition, c.name from orders join customers c on orders.cust_id=c.cust_id where c.geo_partition='ASIA';
 ```
 
-<img src="img/80ecdf7050ff79f.png" alt="80ecdf7050ff79f.png"  width="624.00" />
+<img src="img/3a9c06b43ea42534.png" alt="3a9c06b43ea42534.png"  width="624.00" />
 
-16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある **[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
+16. ジオ・パーティションのクラスタを使用したハンズオンは以上です。ダッシュボードの右上にある**[Actions]** ボタンをクリックして、**[Pause Cluster]** を選択します。
 
 <img src="img/a0f8706cf5a89dbe.png" alt="a0f8706cf5a89dbe.png"  width="264.09" /> 
 

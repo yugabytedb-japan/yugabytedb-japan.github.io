@@ -3,7 +3,7 @@ id: ybm-cluster-resiliency
 summary: このハンズオンでは、ワークロード・シミュレーション・ツールを使用してYugabyteDB Managedのクラスターでノード停止をシミュレートし、クラスターが処理を継続できることを確認します。
 status: [draft]
 authors: Arisa Izuno
-categories: workshop,japanese
+categories: ybm
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 10PpyYJ3OUVuqqPBFpUOBWvrfn_GD1ueQLNJvTbYK8c4
@@ -37,7 +37,7 @@ Duration: 01:00
 * ワークロード・シミュレータを使用した、テーブルの作成、データの挿入
 * ワークロード・シミュレータを使用した、ノード停止やクラスタのスケール
 
-<img src="img/4850341bbd444342.png" alt="4850341bbd444342.png"  width="624.00" />
+<img src="img/6d4c704f9de3e8fe.png" alt="6d4c704f9de3e8fe.png"  width="624.00" />
 
 ### **ハンズオンで学習すること**
 
@@ -63,13 +63,13 @@ YugabyteDB ManagedはフルマネージドのDBaaS (データベース・アズ�
 
 <img src="img/5768cf0371033212.png" alt="5768cf0371033212.png"  width="624.00" />
 
-2. 入力したEメールアドレス宛に、確認のメールが届きます。[Verify Email] ボタンをクリックしてください。
+2. 入力したEメールアドレス宛に、確認のメールが届きます。**[Verify Email]** ボタンをクリックしてください。
 
 <img src="img/99ef95b51b691889.png" alt="99ef95b51b691889.png"  width="389.50" />
 
 3. ログイン画面にリダイレクトされます。設定したユーザーIDとパスワードでログインしてください。ログインが成功したら以下のような画面が表示されます。
 
-<img src="img/310bfd3620274448.png" alt="310bfd3620274448.png"  width="624.00" />
+<img src="img/89ae48e00d977444.png" alt="89ae48e00d977444.png"  width="624.00" />
 
 以上で、YugabyteDB Managedへのサインアップは完了です。
 
@@ -105,29 +105,33 @@ Duration: 15:00
 ここではGCP東京リージョンの各アベイラビリティ・ゾーンにノードを配置して、ゾーンレベルの耐障害性をもつ3ノードクラスタを構成します。
 
 1. YugabyteDB Managedのアカウントにログインします。
-2. 左側のメニューから[Clusters]を選択し、[Add Cluster]ボタンをクリックしてください。
-3. クラスタ作成のウィザードが開始します。右側のDedicatedの下にある [Choose]ボタンをクリックしてください。
+2. 左側のメニューから**[Clusters]**を選択し、**[Add Cluster]**ボタンをクリックしてください。
+3. クラスタ作成のウィザードが開始します。右側のDedicatedにある **[Request a Free Trial]**ボタンをクリックしてください。
 
-<img src="img/944159f66e92fd45.png" alt="944159f66e92fd45.png"  width="624.00" />
+<img src="img/d0b7b52b487b3608.png" alt="d0b7b52b487b3608.png"  width="624.00" />
 
-4. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。[GCP]を選択し、安定版 [Stable Release] が選択されていることを確認して [Next] をクリックしてください。
+4. トライアル申し込みのウィンドウが表示されます。Eメールアドレス、電話番号、希望する連絡先を選択して、**[Send Request]** ボタンをクリックしてください。
+
+<img src="img/51e3c9eb2941f5d8.png" alt="51e3c9eb2941f5d8.png"  width="449.50" />
+
+5. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。[GCP]を選択し、安定版 [Stable Release] が選択されていることを確認して [Next] をクリックしてください。
 
 <img src="img/5c332ecd267633c7.png" alt="5c332ecd267633c7.png"  width="624.00" />
 
-5. Cluster setupページが表示されます。ページ上部にある [Single-Region Deployment] を選択します。1の耐障害性レベルには [Availability Zone Level]、2のリージョンには [Tokyo] を選択してください。 クラスタの仕様は、vCPUを最小の [2] に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。
+6. Cluster setupページが表示されます。ページ上部にある [Single-Region Deployment] を選択します。1の耐障害性レベルには [Availability Zone Level]、2のリージョンには [Tokyo] を選択してください。 クラスタの仕様は、vCPUを最小の [2] に設定します。vCPUのサイズを変更すると、メモリのとディスクのサイズは自動的に変更されます。
 
 <img src="img/abd04254394a2518.png" alt="abd04254394a2518.png"  width="624.00" />
 
-6. Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、[Use VPC Peering] をオフにしたまま、[Next]をクリックしてください。
+7. Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、[Use VPC Peering] をオフにしたまま、[Next]をクリックしてください。
 
 <img src="img/33c14465437cc765.png" alt="33c14465437cc765.png"  width="624.00" />
 
-7. Network Accessの設定ページが表示されます。[Add Current IP Address]をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
+8. Network Accessの設定ページが表示されます。[Add Current IP Address]をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
 
 <img src="img/736eef68579e8061.png" alt="736eef68579e8061.png"  width="624.00" />
 
-8. [Next]をクリックします。
-9. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、[Add your own credentials]をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ [Download credentials]ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
+9. [Next]をクリックします。
+10. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、[Add your own credentials]をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ [Download credentials]ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。
 
 <img src="img/e4e6075adfd218ec.png" alt="e4e6075adfd218ec.png"  width="624.00" />
 
@@ -135,11 +139,11 @@ Duration: 15:00
 > 
 > **Note:** このアクセス情報は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。
 
-10. [Create Cluster]ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
+11. [Create Cluster]ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。
 
 <img src="img/2b9869e47b2b81ff.png" alt="2b9869e47b2b81ff.png"  width="624.00" />
 
-11. 起動が完了するとクラスターのダッシュボードが表示されます。
+12. 起動が完了するとクラスターのダッシュボードが表示されます。
 
 <img src="img/19b1e4407f407ae2.png" alt="19b1e4407f407ae2.png"  width="624.00" />
 
@@ -241,11 +245,11 @@ java -Dnode=<host name> \
 
 3. シミュレータが実行されると、以下のようなアスキーアートが表示されます。
 
-<img src="img/1f614bcc11fcb42d.png" alt="1f614bcc11fcb42d.png"  width="624.00" />
+<img src="img/3e7520515eb84f2a.png" alt="3e7520515eb84f2a.png"  width="624.00" />
 
 4. ブラウザを開いて、 [http://localhost:8080/](http://localhost:8080/) にアクセスしてください。シミュレータが表示されます。
 
-<img src="img/1566060954e09e1c.png" alt="1566060954e09e1c.png"  width="624.00" />
+<img src="img/ccda210ca3e2b94d.png" alt="ccda210ca3e2b94d.png"  width="624.00" />
 
 5. [Network Diagram and Aggregate Statistics]ウィンドウの右上にある、歯車アイコンをクリックし、[Yugabyte Options] を選択してください。
 
@@ -341,7 +345,7 @@ Duration: 10:00
 
 4. パフォーマンスを表示するグラフでは、数秒のレイテンシ増加とスループット停止が発生します。これはRaftコンセンサスを行うタブレット・ピアが新しいリーダーを選択し、処理を再開するまでのタイムラグです。また、ネットワーク図からは停止したノードが消えて2ノード構成になったことがわかります。
 
-<img src="img/41c45d47ab056e5b.png" alt="41c45d47ab056e5b.png"  width="624.00" />
+<img src="img/1aded9a771e285ee.png" alt="1aded9a771e285ee.png"  width="624.00" />
 
 5. YugabyteDB Managedのコンソールでの表示も確認しましょう。ダッシュボードの[Node] タブを表示すると、1つのノードが停止していることを示す赤い警告アイコンが表示されています。一方で、クラスタ自体はサービスを継続しているため、緑色のハートアイコン(Cluster Healthy and Fully Operational)が表示されています。
 
@@ -353,7 +357,7 @@ Duration: 10:00
 
 7. ノードの再起動とデータの同期には数分かかります。ノードの準備が整うと、タブレットの再配置とリーダー選挙が行われるため数秒のパフォーマンス低下が発生し、再起動したノードがネットワーク図に表示されます。
 
-<img src="img/42d5f43960d8a7ea.png" alt="42d5f43960d8a7ea.png"  width="624.00" />
+<img src="img/e69e8c2ecbeaa928.png" alt="e69e8c2ecbeaa928.png"  width="624.00" />
 
 以上で、ノード停止によるAZ障害のシミュレートは完了です。クラスタ構成が変更される時に数秒のパフォーマンス低下が発生しますが、1つのノードが失われてもクラスタとしてはサービスが継続できることが確認できました。
 
@@ -385,7 +389,7 @@ Duration: 15:00
 6. "Cluster scaling initiated successfully!"のメッセージが表示されたことを確認して、[Close]ボタンでウィンドウを閉じます。
 7. ノードの準備が整うと、新しく追加されたノードが、ネットワーク図に表示されます。タブレットが再配置されるタイミングでパフォーマンスの低下が発生しますが、クラスタ全体はサービスを継続していることを確認してください。
 
-<img src="img/5b4076b386f6346a.png" alt="5b4076b386f6346a.png"  width="624.00" />
+<img src="img/2df489ee49bd20fe.png" alt="2df489ee49bd20fe.png"  width="624.00" />
 
 8. クラスタのノード数変更は、YugabyteDB Managedのコンソールからも可能です。クラスターのスケールインをManagedの画面から行ってみましょう。クラスタのダッシュボードを開きます。
 9. 右上にある[Actions]ボタンをクリックして、[Edit Infrastructure]を選択します。(または[Settings]タブの[Regions]セクションの右にある、[Edit Infrastructure]からも可能です。)

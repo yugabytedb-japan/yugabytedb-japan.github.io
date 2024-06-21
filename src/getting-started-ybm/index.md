@@ -3,7 +3,7 @@ id: getting-started-ybm
 summary: このハンズオンでは、YugabyteDB Managed でデータベースを作成し、テーブルの作成やデータの挿入・読取・更新などの簡単な操作を行います。
 status: [draft]
 authors: Arisa Izuno
-categories: workshop,japanese,beginner
+categories: ybm
 tags: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: 14ZQPs77BXVbGtRZ3AzbroHwOvVrAKyu8B3mZCmmuPns
@@ -20,7 +20,7 @@ duration: 28
 Duration: 01:00
 
 
-**Last Updated:** 2023-03-23
+**Last Updated:** 2022-02-03
 
 ### **分散SQLデータベースとは？**
 
@@ -70,7 +70,7 @@ YugabyteDB ManagedはフルマネージドのDBaaS (データベース・アズ�
 
 3. ログイン画面にリダイレクトされます。設定したユーザーIDとパスワードでログインしてください。ログインが成功したら以下のような画面が表示されます。
 
-<img src="img/310bfd3620274448.png" alt="310bfd3620274448.png"  width="624.00" />
+<img src="img/89ae48e00d977444.png" alt="89ae48e00d977444.png"  width="624.00" />
 
 以上で、YugabyteDB Managedへのサインアップは完了です。
 
@@ -91,11 +91,11 @@ YugabyteDB Managedでは、アカウントにつき1つ、期間の限りなく�
 
 4. Cluster settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。お好きなクラウド・プロバイダとリージョンを選択して、[Next] をクリックしてください。
 
-<img src="img/a8a8216a18668b95.png" alt="a8a8216a18668b95.png"  width="624.00" />
+<img src="img/c41d0af122463cf9.png" alt="c41d0af122463cf9.png"  width="624.00" />
 
 5. Network Accessページが表示されます。[Add Current IP Address]をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。
 
-<img src="img/956d2dd7623dca44.png" alt="956d2dd7623dca44.png"  width="624.00" />
+<img src="img/ed6d060c32405952.png" alt="ed6d060c32405952.png"  width="624.00" />
 
 6. [Next]をクリックします。
 7. DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、[Add your own credentials]をクリックしてユーザー名やパスワードを自分で設定します。 [Download credentials]ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。

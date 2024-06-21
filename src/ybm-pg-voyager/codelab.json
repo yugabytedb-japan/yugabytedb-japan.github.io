@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2024-06-21T01:32:19Z",
+  "id": "ybm-pg-voyager",
+  "duration": 103,
+  "title": "YugabyteDB VoyagerによるPostgreSQLからYugabyteDBへの移行",
+  "authors": "Arisa Izuno",
+  "summary": "このハンズオンでは、YugabyteDB Voyagerを使用して既存のPostgreSQLデータベースからYugabyteDB Managedのクラスターへのスキーマおよびデータの移行を実施します。Voyagerでの移行ステップや、スキーマ変換のマッピング、非互換機能の対応等を確認します。",
+  "source": "1A8VLLq2S_BrpjoKCGurRoGlXFwHCGzBjvtTOgNgSQvY",
+  "theme": "ybm",
+  "status": [
+    "draft"
+  ],
+  "category": [
+    "ybm"
+  ],
+  "tags": [
+    "ybm"
+  ],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "ybm-pg-voyager"
+}
