@@ -47,10 +47,10 @@ YugabyteDBは、PostgresSQL互換の分散SQLデータベースです。自動�
 Duration: 05:00
 
 
-1. 以下のコマンドを入力して、最新のYugabyteDBのイメージをダウンロードします。(2024年7月時点)
+1. ターミナルから以下のコマンドを入力して、最新のYugabyteDBのイメージをダウンロードします。
 
 ```
-docker pull yugabytedb/yugabyte:2.21.1.0-b271
+docker pull yugabytedb/yugabyte
 ```
 
 2. Dockerコンテナがデータを保管するフォルダを作成します。
@@ -67,11 +67,24 @@ docker network create yb-network
 
 4. 最初のコンテナを起動します。
 
+&lt;Windowsの場合&gt;
+
+```
+docker run -d --name yugabyte-n1 --net yb-network `
+    -p 15433:15433 -p 7001:7000 -p 9101:9000 -p 5433:5433 `
+    -v ~/yb_data/node1:/home/yugabyte/yb_data --restart unless-stopped `
+    yugabytedb/yugabyte `
+    bin/yugabyted start `
+    --base_dir=/home/yugabyte/yb_data --background=false
+```
+
+&lt;Macの場合&gt;
+
 ```
 docker run -d --name yugabyte-n1 --net yb-network \
     -p 15433:15433 -p 7001:7000 -p 9001:9000 -p 5433:5433 \
     -v ~/yb_data/node1:/home/yugabyte/yb_data --restart unless-stopped \
-    yugabytedb/yugabyte:2.21.1.0-b271 \
+    yugabytedb/yugabyte \
     bin/yugabyted start \
     --base_dir=/home/yugabyte/yb_data --background=false
 ```
@@ -84,18 +97,38 @@ docker ps
 
 6. 2つ目、3つ目のコンテナを起動します。
 
+&lt;Windowsの場合&gt;
+
+```
+docker run -d --name yugabyte-n2 --net yb-network `
+    -p 15434:15433 -p 7002:7000 -p 9102:9000 -p 5434:5433 `
+    -v ~/yb_data/node2:/home/yugabyte/yb_data --restart unless-stopped `
+    yugabytedb/yugabyte `
+    bin/yugabyted start --join=yugabyte-n1 `
+    --base_dir=/home/yugabyte/yb_data --background=false
+
+docker run -d --name yugabyte-n3 --net yb-network `
+    -p 15435:15433 -p 7003:7000 -p 9103:9000 -p 5435:5433 `
+    -v ~/yb_data/node3:/home/yugabyte/yb_data --restart unless-stopped `
+    yugabytedb/yugabyte `
+    bin/yugabyted start --join=yugabyte-n1 `
+    --base_dir=/home/yugabyte/yb_data --background=false
+```
+
+&lt;Macの場合&gt;
+
 ```
 docker run -d --name yugabyte-n2 --net yb-network \
     -p 15434:15433 -p 7002:7000 -p 9002:9000 -p 5434:5433 \
     -v ~/yb_data/node2:/home/yugabyte/yb_data --restart unless-stopped \
-    yugabytedb/yugabyte:2.21.1.0-b271 \
+    yugabytedb/yugabyte \
     bin/yugabyted start --join=yugabyte-n1 \
     --base_dir=/home/yugabyte/yb_data --background=false
 
 docker run -d --name yugabyte-n3 --net yb-network \
     -p 15435:15433 -p 7003:7000 -p 9003:9000 -p 5435:5433 \
     -v ~/yb_data/node3:/home/yugabyte/yb_data --restart unless-stopped \
-    yugabytedb/yugabyte:2.21.1.0-b271 \
+    yugabytedb/yugabyte \
     bin/yugabyted start --join=yugabyte-n1 \
     --base_dir=/home/yugabyte/yb_data --background=false
 ```
@@ -210,11 +243,24 @@ Duration: 05:00
 
 2. 以下のコマンドを入力して、4つめのコンテナを開始します。
 
+&lt;Windowsの場合&gt;
+
+```
+docker run -d --name yugabyte-n4 --net yb-network `
+    -p 15436:15433 -p 7004:7000 -p 9104:9000 -p 5436:5433 `
+    -v ~/yb_data/node4:/home/yugabyte/yb_data --restart unless-stopped `
+    yugabytedb/yugabyte `
+    bin/yugabyted start --join=yugabyte-n1 `
+    --base_dir=/home/yugabyte/yb_data --background=false
+```
+
+&lt;Macの場合&gt;
+
 ```
 docker run -d --name yugabyte-n4 --net yb-network \
     -p 15436:15433 -p 7004:7000 -p 9004:9000 -p 5436:5433 \
     -v ~/yb_data/node4:/home/yugabyte/yb_data --restart unless-stopped \
-    yugabytedb/yugabyte:2.21.1.0-b271 \
+    yugabytedb/yugabyte \
     bin/yugabyted start --join=yugabyte-n1 \
     --base_dir=/home/yugabyte/yb_data --background=false
 ```
@@ -235,7 +281,7 @@ docker stop yugabyte-n4
 docker start yugabyte-n4
 ```
 
-6. ノードを削除するには、管理コマンドを実行して、タブレットを移動してから安全に構成を変更する必要があります。yugabytedのCluster &gt; Settingsのタブから、4つ目のコンテナのserver_broadcast_addressesと、tserver_master_addrsを確認して以下のコマンドを入力してください。
+6. ノードを削除するには、管理コマンドを実行して、タブレットを移動してから安全に構成を変更する必要があります。yugabytedのCluster &gt; Settingsのタブから、4つ目のコンテナのTserverのserver_broadcast_addresses (ポート番号9100)と、tserver_master_addrsを確認して以下のコマンドを入力してください。
 
 ```
 docker exec -it yugabyte-n1 bash -c '/home/yugabyte/bin/yb-admin -master_addresses <tserver_master_addrs> change_blacklist ADD <server_broadcast_addresses>'
@@ -244,6 +290,10 @@ docker exec -it yugabyte-n1 bash -c '/home/yugabyte/bin/yb-admin -master_address
 7. yugabytedのCluster &gt; Nodes タブを確認すると、4つ目のコンテナがブラックリストされて全てのタブレットが移動していることが確認できます。
 
 <img src="img/8091a5803f30c7d6.png" alt="8091a5803f30c7d6.png"  width="624.00" />
+
+> aside negative
+> 
+> Dockerベースのyugabytedコマンドは [Early Accessでの提供](https://docs.yugabyte.com/preview/reference/configuration/yugabyted/#create-a-multi-region-cluster-in-docker)のため、2024年7月現在、ノードの削除までをコマンドで完結することはできません。
 
 
 ## まとめ

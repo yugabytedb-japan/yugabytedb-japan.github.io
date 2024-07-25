@@ -1,5 +1,6 @@
 .tmp
 .content
+.DS_Store
 gulp-cache
 node_modules/
 app/bower_components/*/.*
