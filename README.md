@@ -1,7 +1,7 @@
 # yugabytedb-japan.github.io
 
 This repository contains:
-* Codelabs code
+* Codelabs codes
 * GitHub action workflow to build and deploy to GitHub Pages
 
 
