@@ -1,7 +1,7 @@
 ---
 id: ybm-handson-trial
 summary: はじめてのYugabyteDB Aeon
-status: [draft]
+status: [[draft]]
 categories: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: index.md
@@ -55,7 +55,7 @@ YugabyteDBはクラウドネイティブなアプリケーションに最適な�
 
 YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・サービス）です。サインアップしてアカウントを作成することで、すぐにデータベースを使い始めることができます。初めてYugabyteDB Aeonを使用する方は、以下の手順に従ってアカウントを作成してください。
 
-* ブラウザで [こちら](https://cloud.yugabyte.com/signup)にアクセスし、アカウントを作成してください。
+* ブラウザで  [こちら](https://cloud.yugabyte.com/signup)にアクセスし、アカウントを作成してください。
 
 > aside negative
 > 
@@ -69,7 +69,7 @@ YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・�
 
 <img src="img/9d1b9efa3328f933.png" alt="finishsignup.png"  width="624.00" />
 
-4. アカウント作成が完了後、 [ログイン画面](https://cloud.yugabyte.com/login)に遷移します。上記で設定したユーザーIDとパスワードでログインしてください。
+4. アカウント作成が完了後、  [ログイン画面](https://cloud.yugabyte.com/login)に遷移します。上記で設定したユーザーIDとパスワードでログインしてください。
 
 <img src="img/aa8afe05a71c7a0e.png" alt="loginscreen.png"  width="624.00" />
 
@@ -118,7 +118,7 @@ YugabyteDB Aeonでは、UIの項目選択によってクラスタ構成やノー
 
 <img src="img/25dec4d7e8c7f5e5.png" alt="choosecluster.png"  width="624.00" />
 
-3. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。今回は **[test-cluster]** と名前を入力します。また、クラウド・プロバイダーには **[AWS]** 、データベース・バージョンはより新しいバージョンである **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
+3. General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。今回は **[test-cluster]** と名前を入力します。また、クラウド・プロバイダーには **[AWS]** 、データベース・バージョンは **[Innovation Track]** を選択して、 **[Next]** をクリックしてください。
 
 <img src="img/ff1dca45c32e0196.png" alt="generalsettigs.png"  width="598.32" />
 
@@ -258,14 +258,14 @@ YugabyteDB Aeonでは、初めて使用する開発者向けのチュートリ�
 
 16. 他にも再帰クエリなど、先ほど作成したテーブルを使用して、様々なSQL機能を試すことができます。このハンズオンでは実施しませんが、お時間のある時に是非試してみてください。
 
-<img src="img/dfa7f4575bcb445e.png" alt="tutorial1.png"  width="190.71" /> <img src="img/81f59d0356e1fd7e.png" alt="tutorial2.png"  width="176.50" /> <img src="img/e293d9f1fe50576d.png" alt="tutorial3.png"  width="181.42" />
+<img src="img/dfa7f4575bcb445e.png" alt="tutorial1.png"  width="190.71" />  <img src="img/81f59d0356e1fd7e.png" alt="tutorial2.png"  width="176.50" />  <img src="img/e293d9f1fe50576d.png" alt="tutorial3.png"  width="181.42" />
 
 
 ## タブレットの確認
 
 
 
-YugabyteDBは、テーブルデータを「タブレット（tablet）」または「シャード（shard）」と呼ばれる小さな単位に分割します。また、シャーディング（Sharding）とは、大規模なテーブルを「シャード」と呼ばれる小さな断片に分割し、それらを複数のサーバーに分散させるプロセスを指します。主にレンジシャーディング（range sharding）とハッシュシャーディング（hash sharding）をサポートしています。
+YugabyteDBは、テーブル内のデータを「タブレット（tablet）」または「シャード（shard）」と呼ばれる小さな単位に分割します。また、シャーディング（Sharding）とは、大規模なテーブルを「シャード」と呼ばれる小さな断片に分割し、それらを複数のサーバーに分散させるプロセスを指します。主にレンジシャーディング（range sharding）とハッシュシャーディング（hash sharding）をサポートしています。
 
 <img src="img/3d37a669e761a25a.png" alt="sharding.png"  width="624.00" />
 
@@ -312,7 +312,6 @@ yugabyte=> SELECT * FROM yb_table_properties('emp'::regclass);
 * 作成したクラスタのID
 * YugabyteDB AeonのアカウントID、プロジェクトID
 * YugabyteDB Aeon REST APIを使用するためのAPI Key
-
 * クラスタのダッシュボードを開きます。
 * クラスタのダッシュボードの右上にある、[Coneect]ボタンをクリックしてください。
 * クラスタに接続するための方法が複数表示されます。一番下にある[Connect to your Application]の右向き矢印をクリックします。
@@ -352,7 +351,7 @@ yugabyte=> SELECT * FROM yb_table_properties('emp'::regclass);
 
 
 
-YB Workload Simulatorは、アプリケーションから見たレイテンシやスループットをシミュレートするJavaアプリケーションで、YugabyteDBのコードサンプルとして  [GitHub](https://github.com/YugabyteDB-Samples/yb-workload-simulator)で公開されています。
+YB Workload Simulatorは、アプリケーションから見たレイテンシやスループットをシミュレートするJavaアプリケーションで、YugabyteDBのコードサンプルとして   [GitHub](https://github.com/YugabyteDB-Samples/yb-workload-simulator)で公開されています。
 
 シミュレータを使用することで、以下のことを実施できます。
 
@@ -366,7 +365,7 @@ YB Workload Simulatorは、アプリケーションから見たレイテンシ�
 > 
 > **Note:** シミュレータの実行にはJava 19以上のバージョンが必要です。コマンドツール(Terminal等) でjava -versionと入力し、Javaのインストール・バージョンを確認してください。
 
-*  [リリース](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases)ページにアクセスして、シミュレータのjarファイルをダウンロードしてください。今回は、 [yb-workload-sim-0.0.7.jar](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases/download/v0.0.7/yb-workload-sim-0.0.7.jar)を使用します。
+*  [リリース](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases)ページにアクセスして、シミュレータのjarファイルをダウンロードしてください。今回は、  [yb-workload-sim-0.0.7.jar](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases/download/v0.0.7/yb-workload-sim-0.0.7.jar)を使用します。
 * 前のステップでダウンロードしたクラスタのアクセス情報、証明書、アカウントIDやプロジェクトID、API Keyを確認して、以下のコマンドを入力します。
 
 ```
@@ -399,7 +398,7 @@ java -Dnode=<host name> \
 
 <img src="img/45fef054723a15fe.png" alt="simulator1.png"  width="624.00" />
 
-4. ブラウザを開いて、  [http://localhost:8080/](http://localhost:8080/) にアクセスしてください。シミュレータが表示されます。
+4. ブラウザを開いて、   [http://localhost:8080/](http://localhost:8080/) にアクセスしてください。シミュレータが表示されます。
 
 <img src="img/c55a27e870b9d6ef.png" alt="simulator2.png"  width="624.00" />
 
@@ -458,7 +457,7 @@ java -Dnode=<host name> \
 
 <img src="img/b71066a1a95b4dff.png" alt="selectorder.png"  width="624.00" />
 
-11. 続いて、データの一部を参照するため、`SELECT * from orders limit 10;`と入力してください。ロードされたデータの内容を確認したら、`exit;`と入力してシェルを終了し、タブを閉じます。  <img src="img/1d4c537342f5330e.png" alt="selectorder2.png"  width="624.00" />
+11. 続いて、データの一部を参照するため、`SELECT * from orders limit 10;`と入力してください。ロードされたデータの内容を確認したら、`exit;`と入力してシェルを終了し、タブを閉じます。   <img src="img/1d4c537342f5330e.png" alt="selectorder2.png"  width="624.00" />
 
 
 ## ワークロードの実行
@@ -518,7 +517,7 @@ java -Dnode=<host name> \
 
 
 
-前のステップでは、ノード停止をシミュレートしました。ここでは、ワークロードが増加した時にクラスタをスケールアウトしたり、スケールインするオペレーションを行います。
+前のステップでは、ノード停止をシミュレートしました。ここでは、ワークロードが増加した時にクラスタをスケールアウトするオペレーションを行います。
 
 * 前のステップで実行したワークロードのシミュレーションが継続していることを確認してください。
 * クラスタへのリクエストが増加したことをシミュレートするため、追加のワークロードを実行します。左上にあるハンバーガーアイコンから、[Workload Management for Quickship]ウィンドウを開き、[Include placing of new orders]のオプションをオフにしてから[Run Simulation Workload]ボタンをクリックしてください。
