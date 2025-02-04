@@ -58,7 +58,7 @@
 
       </google-codelab-step>
     
-      <google-codelab-step label="YugabyteDB Managedへのサインアップとログイン" duration="0">
+      <google-codelab-step label="YugabyteDB Aeonへのサインアップとログイン" duration="0">
         <p>YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・サービス）です。サインアップしてアカウントを作成することで、すぐにデータベースを使い始めることができます。初めてYugabyteDB Aeonを使用する方は、以下の手順に従ってアカウントを作成してください。</p>
 <ol type="1">
 <li>ブラウザで<a href="https://cloud.yugabyte.com/signup" target="_blank">こちら</a>にアクセスし、アカウントを作成してください。</li>
@@ -81,7 +81,7 @@
 <li>ログインが成功したら以下のような画面が表示されます。</li>
 </ol>
 <p class="image-container"><img alt="loginscreen2.png" style="width: 624.00px" src="img/fc184f3f5ed7a8dd.png"></p>
-<p>以上で、YugabyteDB Managedへのログインは完了です。</p>
+<p>以上で、YugabyteDB Aeonへのログインは完了です。</p>
 
 
       </google-codelab-step>
@@ -191,7 +191,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="PostgreSQLとの互換性の確認" duration="0">
-        <p>YugabyteDB Managedでは、初めて使用する開発者向けのチュートリアルが提供されています。ここでは、チュートリアルのガイドにそって、前のステップで接続したyugabyteデータベースにテーブルを作成します。</p>
+        <p>YugabyteDB Aeonでは、初めて使用する開発者向けのチュートリアルが提供されています。ここでは、チュートリアルのガイドにそって、前のステップで接続したyugabyteデータベースにテーブルを作成します。</p>
 <ol type="1">
 <li>前のステップでyugabyteデータベースに接続した、Cloud Shellのブラウザ・タブが開いていることを確認してください。</li>
 <li>左側に表示された[YugabyteDB Quick Start Guide]から、[Step 1. Create a Table]をクリックしてください。チュートリアルの手順がCloud Shellの下側に表示されます。</li>
@@ -282,8 +282,8 @@
 <ul>
 <li>データベースのユーザー名とパスワード</li>
 <li>作成したクラスタのID</li>
-<li>YugabyteDB ManagedのアカウントID、プロジェクトID</li>
-<li>YugabyteDB Managed REST APIを使用するためのAPI Key</li>
+<li>YugabyteDB AeonのアカウントID、プロジェクトID</li>
+<li>YugabyteDB Aeon REST APIを使用するためのAPI Key</li>
 </ul>
 <ol type="1">
 <li>クラスタのダッシュボードを開きます。</li>
@@ -328,7 +328,7 @@
 <li>ワークロード実行のためのデータをロード</li>
 <li>TPSやJavaのスレッド数を調整してワークロードを実行</li>
 <li>クラスタのトポロジーを可視化</li>
-<li>YugabyteDB Managedのオペレーション（ノード停止/再開、クラスタのスケール）</li>
+<li>YugabyteDB Aeonのオペレーション（ノード停止/再開、クラスタのスケール）</li>
 </ul>
 <aside class="warning"><p><strong>Note:</strong> シミュレータの実行にはJava 19以上のバージョンが必要です。コマンドツール(Terminal等) でjava -versionと入力し、Javaのインストール・バージョンを確認してください。</p>
 </aside>
@@ -419,13 +419,13 @@
 <p class="image-container"><img alt="createtable.png" style="width: 624.00px" src="img/f15333eb1dd3fc06.png"></p>
 <ol type="1" start="3">
 <li>[Create Tables]セクションを開き、 [Run Create Tables Workload]ボタンをクリックしてください。&#34;Workload CREATE_TABLES successfully submitted&#34;のメッセージがウィンドウ下部に表示されます。</li>
-<li>YugabyteDB Managedのコンソールで、クラスタのダッシュボードの[Tables]タブを表示し、ProductsとOrdersの2つのテーブルが作成されていることを確認します。</li>
+<li>YugabyteDB Aeonのコンソールで、クラスタのダッシュボードの[Tables]タブを表示し、ProductsとOrdersの2つのテーブルが作成されていることを確認します。</li>
 </ol>
 <p class="image-container"><img alt="tableinfo.png" style="width: 624.00px" src="img/48202c778f26ee91.png"></p>
 <ol type="1" start="5">
 <li>シミュレータ画面に戻り、[Workload Management for Quickship]ウィンドウを開きます。</li>
 <li>[Seed Data]セクションを開き、[Run Seed Data Workload]ボタンをクリックしてください。&#34;Workload SEED_DATA successfully submitted.&#34;のメッセージがウィンドウ下部に表示されます。</li>
-<li>YugabyteDB Managedのコンソールで、実際にデータがロードされたことを確認してみましょう。クラスタのダッシュボード右上にある[Connect]ボタンをクリックし、表示されるウィンドウで[Launch Cloud Shell]をクリックします。</li>
+<li>YugabyteDB Aeonのコンソールで、実際にデータがロードされたことを確認してみましょう。クラスタのダッシュボード右上にある[Connect]ボタンをクリックし、表示されるウィンドウで[Launch Cloud Shell]をクリックします。</li>
 </ol>
 <p class="image-container"><img alt="731b0fefd345f245.png" style="width: 624.00px" src="img/731b0fefd345f245.png"></p>
 <ol type="1" start="8">
@@ -448,7 +448,7 @@
       </google-codelab-step>
     
       <google-codelab-step label="ワークロードの実行" duration="0">
-        <p>シミュレータで作成したテーブルとデータを使用して、YugabyteDB Managedのクラスタに読み取り/書き込みのワークロードを実行します。</p>
+        <p>シミュレータで作成したテーブルとデータを使用して、YugabyteDB Aeonのクラスタに読み取り/書き込みのワークロードを実行します。</p>
 <ol type="1">
 <li>ワークロード・シミュレータのブラウザ・タブを開き、左上のハンバーガーアイコンから[Workload Management for Quickship]ウィンドウを表示してください。</li>
 <li>[Simulation]セクションで、スループットとスレッドの設定を確認します。読み取りだけでなく、書き込みのワークロードも生成するため、[Include placing of new orders]のボタンをオンにして、[Run Simulation Workload]ボタンをクリックしてください。</li>
@@ -548,7 +548,7 @@
 <li>[Close]ボタンをクリックしてウィンドウを閉じます。</li>
 <li>ワークロードが停止され、パフォーマンスのグラフが表示されなくなったことを確認してください。シミュレータを実行していたブラウザタブを閉じます。</li>
 <li>シミュレータを起動したコマンドツール(Terminal等) に戻り、ctl+Cを入力して、アプリケーションの実行を停止してください。</li>
-<li>YugabyteDB Managedのコンソール画面を開きます。クラスタのダッシュボードで右上にある[Action]ボタンをクリックし、 [Terminate Cluster]を選択してください。</li>
+<li>YugabyteDB Aeonのコンソール画面を開きます。クラスタのダッシュボードで右上にある[Action]ボタンをクリックし、 [Terminate Cluster]を選択してください。</li>
 </ol>
 <p class="image-container"><img alt="terminatecluster1.png" style="width: 624.00px" src="img/d1949647388e1066.png"></p>
 <aside class="warning"><p><strong>Note:</strong> [Terminate Cluster]はクラスタの全てのノードを停止し、削除します。継続してREST APIのテスト等を実施したい場合は、[Pause Cluster]でクラスタを停止し、クラスタIDやデータを維持しても構いません。</p>

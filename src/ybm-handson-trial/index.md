@@ -49,7 +49,7 @@ YugabyteDBはクラウドネイティブなアプリケーションに最適な�
 * Java (バージョンがJava 19以上)
 
 
-## YugabyteDB Managedへのサインアップとログイン
+## YugabyteDB Aeonへのサインアップとログイン
 
 
 
@@ -77,7 +77,7 @@ YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・�
 
 <img src="img/fc184f3f5ed7a8dd.png" alt="loginscreen2.png"  width="624.00" />
 
-以上で、YugabyteDB Managedへのログインは完了です。
+以上で、YugabyteDB Aeonへのログインは完了です。
 
 
 ## クラスタの作成 (トポロジーの選択)
@@ -200,7 +200,7 @@ YugabyteDB Aeonのクラスタにアクセスするには、いくつかの方�
 
 
 
-YugabyteDB Managedでは、初めて使用する開発者向けのチュートリアルが提供されています。ここでは、チュートリアルのガイドにそって、前のステップで接続したyugabyteデータベースにテーブルを作成します。
+YugabyteDB Aeonでは、初めて使用する開発者向けのチュートリアルが提供されています。ここでは、チュートリアルのガイドにそって、前のステップで接続したyugabyteデータベースにテーブルを作成します。
 
 * 前のステップでyugabyteデータベースに接続した、Cloud Shellのブラウザ・タブが開いていることを確認してください。
 * 左側に表示された[YugabyteDB Quick Start Guide]から、[Step 1. Create a Table]をクリックしてください。チュートリアルの手順がCloud Shellの下側に表示されます。
@@ -310,8 +310,8 @@ yugabyte=> SELECT * FROM yb_table_properties('emp'::regclass);
 
 * データベースのユーザー名とパスワード
 * 作成したクラスタのID
-* YugabyteDB ManagedのアカウントID、プロジェクトID
-* YugabyteDB Managed REST APIを使用するためのAPI Key
+* YugabyteDB AeonのアカウントID、プロジェクトID
+* YugabyteDB Aeon REST APIを使用するためのAPI Key
 
 * クラスタのダッシュボードを開きます。
 * クラスタのダッシュボードの右上にある、[Coneect]ボタンをクリックしてください。
@@ -360,7 +360,7 @@ YB Workload Simulatorは、アプリケーションから見たレイテンシ�
 * ワークロード実行のためのデータをロード
 * TPSやJavaのスレッド数を調整してワークロードを実行
 * クラスタのトポロジーを可視化
-* YugabyteDB Managedのオペレーション（ノード停止/再開、クラスタのスケール）
+* YugabyteDB Aeonのオペレーション（ノード停止/再開、クラスタのスケール）
 
 > aside negative
 > 
@@ -436,15 +436,15 @@ java -Dnode=<host name> \
 <img src="img/f15333eb1dd3fc06.png" alt="createtable.png"  width="624.00" />
 
 3. [Create Tables]セクションを開き、 [Run Create Tables Workload]ボタンをクリックしてください。"Workload CREATE_TABLES successfully submitted"のメッセージがウィンドウ下部に表示されます。
-4. YugabyteDB Managedのコンソールで、クラスタのダッシュボードの[Tables]タブを表示し、ProductsとOrdersの2つのテーブルが作成されていることを確認します。
+4. YugabyteDB Aeonのコンソールで、クラスタのダッシュボードの[Tables]タブを表示し、ProductsとOrdersの2つのテーブルが作成されていることを確認します。
 
 <img src="img/48202c778f26ee91.png" alt="tableinfo.png"  width="624.00" />
 
 5. シミュレータ画面に戻り、[Workload Management for Quickship]ウィンドウを開きます。
 6. [Seed Data]セクションを開き、[Run Seed Data Workload]ボタンをクリックしてください。"Workload SEED_DATA successfully submitted."のメッセージがウィンドウ下部に表示されます。
-7. YugabyteDB Managedのコンソールで、実際にデータがロードされたことを確認してみましょう。クラスタのダッシュボード右上にある[Connect]ボタンをクリックし、表示されるウィンドウで[Launch Cloud Shell]をクリックします。
+7. YugabyteDB Aeonのコンソールで、実際にデータがロードされたことを確認してみましょう。クラスタのダッシュボード右上にある[Connect]ボタンをクリックし、表示されるウィンドウで[Launch Cloud Shell]をクリックします。
 
-<img src="img/731b0fefd345f245.png" alt="731b0fefd345f245.png"  width="624.00" />
+<img src="img/0.png" alt="731b0fefd345f245.png"  width="624.00" />
 
 8. データベース名やユーザー名を確認し、[Confirm]ボタンをクリックしてください。
 
@@ -465,7 +465,7 @@ java -Dnode=<host name> \
 
 
 
-シミュレータで作成したテーブルとデータを使用して、YugabyteDB Managedのクラスタに読み取り/書き込みのワークロードを実行します。
+シミュレータで作成したテーブルとデータを使用して、YugabyteDB Aeonのクラスタに読み取り/書き込みのワークロードを実行します。
 
 * ワークロード・シミュレータのブラウザ・タブを開き、左上のハンバーガーアイコンから[Workload Management for Quickship]ウィンドウを表示してください。
 * [Simulation]セクションで、スループットとスレッドの設定を確認します。読み取りだけでなく、書き込みのワークロードも生成するため、[Include placing of new orders]のボタンをオンにして、[Run Simulation Workload]ボタンをクリックしてください。
@@ -571,7 +571,7 @@ java -Dnode=<host name> \
 3. [Close]ボタンをクリックしてウィンドウを閉じます。
 4. ワークロードが停止され、パフォーマンスのグラフが表示されなくなったことを確認してください。シミュレータを実行していたブラウザタブを閉じます。
 5. シミュレータを起動したコマンドツール(Terminal等) に戻り、ctl+Cを入力して、アプリケーションの実行を停止してください。
-6. YugabyteDB Managedのコンソール画面を開きます。クラスタのダッシュボードで右上にある[Action]ボタンをクリックし、 [Terminate Cluster]を選択してください。
+6. YugabyteDB Aeonのコンソール画面を開きます。クラスタのダッシュボードで右上にある[Action]ボタンをクリックし、 [Terminate Cluster]を選択してください。
 
 <img src="img/d1949647388e1066.png" alt="terminatecluster1.png"  width="624.00" />
 
