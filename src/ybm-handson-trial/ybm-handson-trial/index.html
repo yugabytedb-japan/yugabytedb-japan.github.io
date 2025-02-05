@@ -1,0 +1,589 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>はじめてのYugabyteDB Aeon</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14" ga4id=""></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  codelab-ga4id=""
+                  id="ybm-handson-trial"
+                  title="はじめてのYugabyteDB Aeon"
+                  environment="web"
+                  feedback-link="https://yugabytedb-japan.github.io/">
+    
+      <google-codelab-step label="はじめに" duration="0">
+        <p><strong>Last Updated:</strong> 2025-01-28</p>
+<h2 is-upgraded><strong>YugabyteDB Aeonとは？</strong></h2>
+<p>YugabyteDBはクラウドネイティブなアプリケーションに最適な、100%オープンソースの分散SQLデータベースです。分散SQLとは、従来のデータベースが単一ディスクへの書き込みを前提としたモノリシックなアーキテクチャだったのに対し、分散アーキテクチャ、つまり複数ノードへの書き込みや読み取りを前提とした様々な仕組みを提供しています。</p>
+<p>このハンズオンで使用するYugabyteDB Aeonは、YugabyteDBをコアコンポーネントのデータベースとして使用している、フルマネージドのサービスです。サーバーやクラウドのアカウントを事前に準備しなくても、すぐにYugabyteDBをサービスとして使用することができます。</p>
+<h2 is-upgraded><strong>ハンズオンで学習すること</strong></h2>
+<ul>
+<li>YugabyteDB Aeonのコンソール操作</li>
+<li>YugabyteDB Aeonでのクラスタ作成</li>
+<li>YugabyteDB AeonのWebコンソールを使用したデータベースの操作とタブレットの確認</li>
+<li>YugabyteDB Aeonクラスタの耐障害性とスケーラビリティ</li>
+</ul>
+<h2 is-upgraded><strong>ハンズオンで実施すること</strong></h2>
+<p>このハンズオンでは、YugabyteDB Aeonの環境を使用して以下の内容を実施します。</p>
+<ul>
+<li>YugabyteDB Aeon クラスタの作成 (シングルリージョン + 複数のAZの構成)</li>
+<li>PostgreSQLとの互換性の確認 (例: テーブル作成、データ挿入、クエリ実行)</li>
+<li>タブレットの確認</li>
+<li>ワークロード・シミュレータを使用した、ノード停止やクラスタのスケールアウト</li>
+</ul>
+<h2 is-upgraded><strong>ハンズオン実施に必要なもの</strong></h2>
+<ul>
+<li>YugabyteDB Aeonアカウント</li>
+<li>ハンズオン実施端末のグローバルIPアドレス  (クラスタへのホワイトリスト登録のため)</li>
+<li>Java (バージョンがJava 19以上)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="YugabyteDB Managedへのサインアップとログイン" duration="0">
+        <p>YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・サービス）です。サインアップしてアカウントを作成することで、すぐにデータベースを使い始めることができます。初めてYugabyteDB Aeonを使用する方は、以下の手順に従ってアカウントを作成してください。</p>
+<ul>
+<li>ブラウザで <a href="https://cloud.yugabyte.com/signup" target="_blank">こちら</a>にアクセスし、アカウントを作成してください。</li>
+</ul>
+<aside class="warning"><p><strong>Note:</strong> 企業のファイアウォール・ルールにより、yugabyte.com や hcaptcha.com がブロックされる場合があります。サインアップページにアクセスできない、[私は人間です] という画像確認のメニューが表示されない場合は、ホワイトリスト登録について貴社セキュリティ担当者にご確認ください。</p>
+</aside>
+<ol type="1" start="2">
+<li>入力したEメールアドレス宛に、確認のメールが届きます。<strong>[Finish Signup]</strong> ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="verifyemail.png" style="width: 624.00px" src="img/14e49cfca864e065.png"></p>
+<ol type="1" start="3">
+<li>必要事項を入力し、アカウントの作成を完了してください。</li>
+</ol>
+<p class="image-container"><img alt="finishsignup.png" style="width: 624.00px" src="img/9d1b9efa3328f933.png"></p>
+<ol type="1" start="4">
+<li>アカウント作成が完了後、 <a href="https://cloud.yugabyte.com/login" target="_blank">ログイン画面</a>に遷移します。上記で設定したユーザーIDとパスワードでログインしてください。</li>
+</ol>
+<p class="image-container"><img alt="loginscreen.png" style="width: 624.00px" src="img/aa8afe05a71c7a0e.png"></p>
+<ol type="1" start="5">
+<li>ログインが成功したら以下のような画面が表示されます。</li>
+</ol>
+<p class="image-container"><img alt="loginscreen2.png" style="width: 624.00px" src="img/fc184f3f5ed7a8dd.png"></p>
+<p>以上で、YugabyteDB Managedへのログインは完了です。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラスタの作成 (トポロジーの選択)" duration="0">
+        <p>YugabyteDB Aeonでは、UIの項目選択によってクラスタ構成やノード仕様を設定することができます。</p>
+<p>以下のような項目を設定します：</p>
+<ul>
+<li>クラウド・プロバイダー（AWS, Azure, GCP）</li>
+<li>データベースのバージョン（Production Track/Innovation Track）</li>
+<li>シングル・リージョンかマルチリージョンか</li>
+<li>耐障害性のレベル</li>
+<li>なし</li>
+<li>ノードレベル</li>
+<li>AZレベル</li>
+<li>データの分散方法（マルチリージョン・クラスタのみ）</li>
+<li>マルチリージョン・クラスタ</li>
+<li>ジオ・パーティショニング</li>
+</ul>
+<p class="image-container"><img alt="topology.png" style="width: 624.00px" src="img/528e21d80ef87331.png"></p>
+<p>このハンズオンでは、シングル・リージョンにAZレベルの耐障害性をもつクラスタを作成します。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラスタの作成 (シングル・リージョン &#43; AZレベル障害耐性)" duration="0">
+        <p>ここではAWS東京リージョンの各アベイラビリティ・ゾーンにノードを配置して、ゾーンレベルの耐障害性をもつ3ノードクラスタを構成します。</p>
+<ul>
+<li>左側のメニューから <strong>[Clusters]</strong> を選択し、 <strong>[Create Cluster]</strong> ボタンをクリックしてください。</li>
+</ul>
+<p class="image-container"><img alt="createcluster.png" style="width: 624.00px" src="img/d487e95339e60ea4.png"></p>
+<ol type="1" start="2">
+<li>クラスタ作成のウィザードが開始します。右側のDedicatedにある <strong>[Choose]</strong> ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="choosecluster.png" style="width: 624.00px" src="img/25dec4d7e8c7f5e5.png"></p>
+<ol type="1" start="3">
+<li>General settingsページが表示されます。クラスタの名前には適当な名前が自動生成されます。今回は <strong>[test-cluster]</strong> と名前を入力します。また、クラウド・プロバイダーには <strong>[AWS]</strong> 、データベース・バージョンはより新しいバージョンである <strong>[Innovation Track]</strong> を選択して、 <strong>[Next]</strong> をクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="generalsettigs.png" style="width: 598.32px" src="img/ff1dca45c32e0196.png"></p>
+<ol type="1" start="4">
+<li>Cluster Setupページが表示されます。ページ上部にある <strong>[Single-Region Deployment]</strong> を選択します。1の耐障害性レベルには <strong>[Availability Zone Level]</strong> 、2のリージョンには <strong>[Tokyo]</strong> を選択してください。 クラスタの仕様は、vCPUを最小の <strong>[2]</strong> に設定します。</li>
+</ol>
+<p class="image-container"><img alt="clustersetup.png" style="width: 578.58px" src="img/50ada1688da1068c.png"></p>
+<ol type="1" start="5">
+<li>Cluster setupページの下部には、VPCの設定を行う箇所があります。このハンズオンでは使用しませんので、<strong>[Select a VPC]</strong> をオフにしたまま、<strong>[Next]</strong> をクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="vpc.png" style="width: 624.00px" src="img/e5d9d1671b1d1c02.png"></p>
+<ol type="1" start="6">
+<li>Network Accessの設定ページが表示されます。<strong>[Add Current IP Address]</strong> をクリックして、自分の端末のIPアドレスをアクセス許可リストに追加してください。</li>
+</ol>
+<p class="image-container"><img alt="addip.png" style="width: 612.27px" src="img/7d6dab0a9fdf308f.png"></p>
+<aside class="warning"><p><strong>Note:</strong> [Could not detect a valid IPv4 address] というエラーメッセージが表示される場合は、コマンドラインや外部サイトを使用して、ハンズオンで使用しているマシンのグローバルIPを確認し、<strong>[Create New IP Allow List]</strong> からIP許可リストに追加してください。</p>
+</aside>
+<ol type="1" start="7">
+<li><strong>[Next]</strong> をクリックします。保管データの暗号化の設定を行うページが表示されます。今回は使用しないため、そのままで <strong>[Next]</strong> をクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="encryptcluster.png" style="width: 624.00px" src="img/69c6f32f4eda436e.png"></p>
+<ol type="1" start="8">
+<li>DB Credentialsページが表示されます。ユーザー名とパスワードは自動設定されます。設定をカスタマイズしたい場合は、 <strong>[Add your own credentials]</strong> をクリックしてユーザー名をパスワードを自分で設定します。このままで問題なければ <strong>[Download credentials]</strong> ボタンをクリックして、アクセス情報のファイルをローカルに保存してください。</li>
+</ol>
+<p class="image-container"><img alt="dbcred.png" style="width: 624.00px" src="img/45831c74cff50aaf.png"></p>
+<aside class="warning"><p><strong>Note:</strong> このアクセス情報は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。</p>
+</aside>
+<ol type="1" start="9">
+<li><strong>[Create Cluster]</strong> ボタンをクリックします。プロビジョニングが開始され、DBクラスタが開始するまでに数分かかります。</li>
+</ol>
+<p class="image-container"><img alt="provision.png" style="width: 624.00px" src="img/683eb3674905a9b5.png"></p>
+<ol type="1" start="10">
+<li>起動が完了するとクラスターのダッシュボードが表示されます。</li>
+</ol>
+<p class="image-container"><img alt="clustersetupdone.png" style="width: 624.00px" src="img/957da16a54967f69.png"></p>
+<p>以上で、クラスタの作成は完了です。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Cloud Shell を使用したクラスタへのアクセス" duration="0">
+        <p>YugabyteDB Aeonのクラスタにアクセスするには、いくつかの方法があります。</p>
+<ul>
+<li>Cloud Shell （ブラウザベースのCLI）</li>
+<li>YugabyteDB Client Shell (MacやLinuxのターミナル、またはDockerを使用するCLI）</li>
+<li>その他のデータベース・クライアントアプリケーション (pgAdmin, DBeaverなど）</li>
+</ul>
+<p>このハンズオンでは、Cloud Shellを使用したアクセスを行います。</p>
+<ul>
+<li>前のステップで作成したクラスタのダッシュボードを開きます。</li>
+<li>クラスタのダッシュボードの右上にある、[Coneect]ボタンをクリックしてください。</li>
+<li>クラスタに接続するための方法が複数表示されます。一番上にある[Launch Cloud Shell]ボタンをクリックしてください。</li>
+</ul>
+<p class="image-container"><img alt="731b0fefd345f245.png" style="width: 624.00px" src="img/731b0fefd345f245.png"></p>
+<ol type="1" start="4">
+<li>データベース名やユーザー名を確認し、[Confirm]ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="c51e511aac00fb57.png" style="width: 600.00px" src="img/c51e511aac00fb57.png"></p>
+<ol type="1" start="5">
+<li>新しいブラウザ・タブが開き、クラスタにアクセスするためのシェルが表示されます。クラスタ作成時にダウンロードしたcredentialファイルに記載された、パスワードを入力してください。</li>
+</ol>
+<p class="image-container"><img alt="cff23d35348c2544.png" style="width: 624.00px" src="img/cff23d35348c2544.png"></p>
+<aside class="warning"><p><strong>Note:</strong> Windowsではブラウザの種類によって、ctl+vによるCloud Shellへの貼り付けができない場合があります。右クリックをしてメニューから[貼り付け]を選択してください。</p>
+</aside>
+<ol type="1" start="6">
+<li>パスワードが認証されると、あらかじめ作成されたyugabyteデータベースに接続し、YSQLの入力モード (yugabyte=&gt;) になります。</li>
+</ol>
+<p>これで Cloud Shell からクラスタにアクセスすることができました。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="PostgreSQLとの互換性の確認" duration="0">
+        <p>YugabyteDB Managedでは、初めて使用する開発者向けのチュートリアルが提供されています。ここでは、チュートリアルのガイドにそって、前のステップで接続したyugabyteデータベースにテーブルを作成します。</p>
+<ul>
+<li>前のステップでyugabyteデータベースに接続した、Cloud Shellのブラウザ・タブが開いていることを確認してください。</li>
+<li>左側に表示された[YugabyteDB Quick Start Guide]から、[Step 1. Create a Table]をクリックしてください。チュートリアルの手順がCloud Shellの下側に表示されます。</li>
+</ul>
+<p class="image-container"><img alt="3c3ce4326fa5e8be.png" style="width: 624.00px" src="img/3c3ce4326fa5e8be.png"></p>
+<ol type="1" start="3">
+<li>Step1では、部門(dept)テーブルを作成します。テーブルを作成するSQLをCloud Shellに直接入力するか、SQLのボックス右上にある[Copy]ボタンをクリックして貼り付ける、もしくは、[Run]ボタンをクリックして、SQLを実行してください。[CREATE TABLE]のメッセージが表示されたことを確認します。</li>
+</ol>
+<p class="image-container"><img alt="3a6d432f2731fb40.png" style="width: 624.00px" src="img/3a6d432f2731fb40.png"></p>
+<ol type="1" start="4">
+<li>同様に、Step2では従業員(emp)テーブルを作成します。[CREATE TABLE]のメッセージを確認してください。</li>
+</ol>
+<p class="image-container"><img alt="dea12a6bbb2d6723.png" style="width: 624.00px" src="img/dea12a6bbb2d6723.png"></p>
+<ol type="1" start="5">
+<li>チュートリアル手順の上部にある[Next Step &gt;]ボタンをクリックするか、左側のガイドから[Step 2. Insert Data]をクリックして、データを挿入する手順を表示します。</li>
+</ol>
+<p class="image-container"><img alt="3d7721a5aa45a0d5.png" style="width: 624.00px" src="img/3d7721a5aa45a0d5.png"></p>
+<ol type="1" start="6">
+<li>部門(dept)テーブルにデータを挿入します。[Step1]に表示されたSQLを実行してください。4行のデータが挿入され、[INSERT 0 4]のメッセージが表示されます。</li>
+</ol>
+<p class="image-container"><img alt="57c6ae71f99214e8.png" style="width: 624.00px" src="img/57c6ae71f99214e8.png"></p>
+<ol type="1" start="7">
+<li>同様に、従業員(emp)テーブルにデータを挿入します。[Step2]に表示されたSQLを実行してください。14行のデータが挿入され、[INSERT 0 14]のメッセージが表示されるはずです。</li>
+</ol>
+<p class="image-container"><img alt="17f0e2c2c966e6db.png" style="width: 624.00px" src="img/17f0e2c2c966e6db.png"></p>
+<ol type="1" start="8">
+<li>改めて、部門(dept)テーブルと従業員(emp)テーブルにデータが挿入されたことを確認します。これでテーブル作成とデータ挿入のステップは完了です。</li>
+</ol>
+<p class="image-container"><img alt="57c6ae71f99214e8.png" style="width: 624.00px" src="img/f58fe0996a6d579.png"></p>
+<ol type="1" start="9">
+<li>データの挿入が完了すると、右側のウィンドウにチュートリアルへのリンクが表示されます。[Let&#39;s get started with the tutorials -&gt;]をクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="d9dd157ff1c40707.png" style="width: 243.50px" src="img/d9dd157ff1c40707.png"></p>
+<ol type="1" start="10">
+<li>左側ウィンドウにYSQLのチュートリアルが表示されます。先ほど作成したテーブルを使用して、Join(テーブル結合)やプリペアドステートメントなどの機能を試してみましょう。</li>
+<li>[Scenario 1. SQL Updates]をクリックします。こちらでは、JobがManagerではない従業員に対して現在の給与(sal)に100を加算し、給与額の値を更新します。</li>
+</ol>
+<p class="image-container"><img alt="update_salary.png" style="width: 624.00px" src="img/456678368d077050.png"></p>
+<ol type="1" start="12">
+<li>[Scenario 2. Join]をクリックします。こちらでは、empテーブルを自己結合し、Managerより給与が高い社員を抽出するクエリを実行します。</li>
+</ol>
+<p class="image-container"><img alt="selfjoin.png" style="width: 624.00px" src="img/4aad49f8adbb0110.png"></p>
+<ol type="1" start="13">
+<li>[Scenario 3. Prepared Statements]をクリックします。こちらでは、社員番号をパラメータとして受け取り、従業員(emp)テーブルから名前(ename)と給与(sal)を返すプリペアドステートメントを作成します。</li>
+</ol>
+<p class="image-container"><img alt="ps1.png" style="width: 624.00px" src="img/e792ad7a6bee3a89.png"></p>
+<ol type="1" start="14">
+<li>PREPAREという応答が返ったことが確認できたら、<code>execute emp_territories(7900);</code> のようにパラメータに従業員番号(例: 7900)を入れて実行してみてください。下記の様に、従業員番号7900の社員の名前と給与が返ってきたことが確認できます。</li>
+</ol>
+<p class="image-container"><img alt="ps2.png" style="width: 624.00px" src="img/348fa78b4b4cfdcc.png"></p>
+<ol type="1" start="15">
+<li>プリペアドステートメントは、セッション内に限り有効で、他のユーザーと共有することはできません。使用しなくなったプリペアドステートメントは無効化することでメモリを解放することができます。<code>deallocate emp_territories;</code> と入力して作成したステートメントを削除してください。</li>
+</ol>
+<p class="image-container"><img alt="ps3.png" style="width: 624.00px" src="img/850a169fa8c643c9.png"></p>
+<ol type="1" start="16">
+<li>他にも再帰クエリなど、先ほど作成したテーブルを使用して、様々なSQL機能を試すことができます。このハンズオンでは実施しませんが、お時間のある時に是非試してみてください。</li>
+</ol>
+<p class="image-container"><img alt="tutorial1.png" style="width: 190.71px" src="img/dfa7f4575bcb445e.png"> <img alt="tutorial2.png" style="width: 176.50px" src="img/81f59d0356e1fd7e.png"> <img alt="tutorial3.png" style="width: 181.42px" src="img/e293d9f1fe50576d.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="タブレットの確認" duration="0">
+        <p>YugabyteDBは、テーブルデータを「タブレット（tablet）」または「シャード（shard）」と呼ばれる小さな単位に分割します。また、シャーディング（Sharding）とは、大規模なテーブルを「シャード」と呼ばれる小さな断片に分割し、それらを複数のサーバーに分散させるプロセスを指します。主にレンジシャーディング（range sharding）とハッシュシャーディング（hash sharding）をサポートしています。</p>
+<p class="image-container"><img alt="sharding.png" style="width: 624.00px" src="img/3d37a669e761a25a.png"></p>
+<p>まず、下記のSQLを実行し、empテーブルの情報を確認します。</p>
+<pre><code>yugabyte=&gt; \d+ emp;   
+</code></pre>
+<p>出力結果を確認すると、下記のとおりempnoがプライマリキーとして設定されています。また、empno列の値に基づいてハッシュ関数が計算され、その結果によってデータが異なるシャードに分散されるハッシュシャーディングが使用されています。</p>
+<p class="image-container"><img alt="pksharding.png" style="width: 624.00px" src="img/498a2fa3ac237b20.png"></p>
+<p>ここで、下記のSQLを実行します。num_hash_key_columnsは上記のとおり、ハッシュキーとして設定されているプライマリキーの数を示しており、ハッシュシャーディングによって、empテーブルのデータが3つのタブレット(num_tablets)に分散されていることが確認できます。ハッシュシャーディングを使用することで、データが均等に分散され、特定のタブレットにデータが集中することを防ぎ、パフォーマンスの向上とスケーラビリティの確保が図られます。</p>
+<pre><code>yugabyte=&gt; SELECT * FROM yb_table_properties(&#39;emp&#39;::regclass);   
+</code></pre>
+<p class="image-container"><img alt="tabletnumber.png" style="width: 624.00px" src="img/62c691e21a928b11.png"></p>
+<p>また、YugabyteDB AeonではReplication Factor（レプリケーションファクター）が3に設定されています。今回3つのノードを作成したため、各タブレットは3つのノードにコピーされます。1つがリーダー（Leader）で、残りの2つがフォロワー（Follower）です。</p>
+<p class="image-container"><img alt="tabletimage.png" style="width: 624.00px" src="img/d113ea3875d0b9a3.png"></p>
+<p>これで、テーブルのタブレットに関する状況を確認できました。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="YugabyteDB Aeonの耐障害性と拡張性" duration="0">
+        <h2 is-upgraded><strong>分散SQLデータベースの高可用性と耐障害性</strong></h2>
+<p>分散SQLデータベースであるYugabyteDBは、拡張性（水平スケール）や高可用性を前提とした設計となっており、デフォルトで高い耐障害性を備えています。スケール時にもサービス停止は発生せず、ローリング・アップグレードといったゼロダウンタイムでのオペレーションが可能です。</p>
+<p>このハンズオンでは、YugabyteDB Aeonを使用して、ノード障害やクラスタのスケール時にもダウンタイムが発生せず、クラスタが処理を継続できることを確認します。</p>
+<h2 is-upgraded><strong>クラスタのアクセス情報の確認</strong></h2>
+<p>このハンズオンでは、ワークロード・シミュレータを使用したノード停止やクラスタのスケールアウトを実施します。こちらの実施にあたり、いくつかの情報やファイルが必要となります。このセクションでは、以下の情報を確認します。</p>
+<ul>
+<li>データベースのユーザー名とパスワード</li>
+<li>作成したクラスタのID</li>
+<li>YugabyteDB ManagedのアカウントID、プロジェクトID</li>
+<li>YugabyteDB Managed REST APIを使用するためのAPI Key</li>
+<li>クラスタのダッシュボードを開きます。</li>
+<li>クラスタのダッシュボードの右上にある、[Coneect]ボタンをクリックしてください。</li>
+<li>クラスタに接続するための方法が複数表示されます。一番下にある[Connect to your Application]の右向き矢印をクリックします。</li>
+</ul>
+<p class="image-container"><img alt="33908e1aa021ef64.png" style="width: 573.80px" src="img/33908e1aa021ef64.png"></p>
+<ol type="1" start="4">
+<li>SSL通信のための証明書をダウンロードします。[Download CA  Cert]のリンクをクリックして、証明書ファイル (root.crt) をダウンロードしてください。</li>
+</ol>
+<p class="image-container"><img alt="28a00b2ab527e454.png" style="width: 577.04px" src="img/28a00b2ab527e454.png"></p>
+<aside class="warning"><p><strong>Note:</strong> この証明書は、ハンズオンの後のステップで使用します。ファイルを保存した場所を忘れないようにしてください。</p>
+</aside>
+<ol type="1" start="5">
+<li>[2)Use the following parameters to connect to your cluster]セクションの下で、YSQLの[Parameters]タブを選択します。[Host] の横にあるコピーボタンをクリックしてメモしてください。ホスト名は、&lt;Region&gt;.&lt;ClusterID&gt;.&lt;Cloud&gt;.ybdb.io で設定されています。最初の.(ドット) の後の文字列(上の例では、4e095914-fb49-4b71-8e3a-3dee1073f221)が、クラスターIDです。</li>
+</ol>
+<p class="image-container"><img alt="217baee793e08093.png" style="width: 624.00px" src="img/217baee793e08093.png"></p>
+<ol type="1" start="6">
+<li>右上にあるXをクリックして、[Connect to Cluster]のウィンドウを閉じます。</li>
+<li>左側のメニューから、[Security]を選択します。[API Keys]タブを選択して、[Create API Key] ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="apikey.png" style="width: 624.00px" src="img/5b53a266991a0bd7.png"></p>
+<ol type="1" start="8">
+<li>API Keyの名前に任意の名前を入力します。Roleは[Admin]を選択し、[Generate Key]ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="69ac166c8d48dfb2.png" style="width: 624.00px" src="img/69ac166c8d48dfb2.png"></p>
+<ol type="1" start="9">
+<li>APIキーが表示されます。キーはこの画面でしか表示されないので、必ずキーをコピーしてメモしてください。</li>
+<li>[View Details] セクションを開くと、アカウントIDとプロジェクトIDが表示されます。この2つもコピーして、メモしておいてください。</li>
+</ol>
+<p class="image-container"><img alt="e896dc9083e67328.png" style="width: 624.00px" src="img/e896dc9083e67328.png"></p>
+<p>これで、クラスタへのアクセスに必要な情報が確認できました。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="シミュレータのセットアップ" duration="0">
+        <p>YB Workload Simulatorは、アプリケーションから見たレイテンシやスループットをシミュレートするJavaアプリケーションで、YugabyteDBのコードサンプルとして  <a href="https://github.com/YugabyteDB-Samples/yb-workload-simulator" target="_blank">GitHub</a>で公開されています。</p>
+<p>シミュレータを使用することで、以下のことを実施できます。</p>
+<ul>
+<li>ワークロード実行のためのテーブルを作成/ドロップ</li>
+<li>ワークロード実行のためのデータをロード</li>
+<li>TPSやJavaのスレッド数を調整してワークロードを実行</li>
+<li>クラスタのトポロジーを可視化</li>
+<li>YugabyteDB Managedのオペレーション（ノード停止/再開、クラスタのスケール）</li>
+</ul>
+<aside class="warning"><p><strong>Note:</strong> シミュレータの実行にはJava 19以上のバージョンが必要です。コマンドツール(Terminal等) でjava -versionと入力し、Javaのインストール・バージョンを確認してください。</p>
+</aside>
+<ul>
+<li><a href="https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases" target="_blank">リリース</a>ページにアクセスして、シミュレータのjarファイルをダウンロードしてください。今回は、 <a href="https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases/download/v0.0.7/yb-workload-sim-0.0.7.jar" target="_blank">yb-workload-sim-0.0.7.jar</a>を使用します。</li>
+<li>前のステップでダウンロードしたクラスタのアクセス情報、証明書、アカウントIDやプロジェクトID、API Keyを確認して、以下のコマンドを入力します。</li>
+</ul>
+<pre><code>java -Dnode=&lt;host name&gt; \
+     -Ddbname=&lt;dbname&gt; \
+     -Ddbuser=&lt;dbuser&gt; \
+     -Ddbpassword=&lt;dbpassword&gt; \
+     -Dssl=true \
+     -Dsslmode=verify-full \
+     -Dsslrootcert=&lt;path-to-cluster-certificate&gt; \
+     -Dybm-api-key=&lt;ybm-api-key&gt;
+     -Dybm-account-id=&lt;ybm-account-id&gt; \
+     -Dybm-project-id=&lt;ybm-project-id&gt; \
+     -Dybm-cluster-id=&lt;ybm-cluster-id&gt; \
+     -jar ./yb-workload-sim-0.0.7.jar
+</code></pre>
+<table>
+<tr><td colspan="1" rowspan="1"><p>&lt;host name&gt;</p>
+</td><td colspan="1" rowspan="1"><p>クラスタの接続情報で確認したホストのアドレス(例)asia-northeast1.4e095914-fb49-4b71-8e3a-3dee1073f221.gcp.ybdb.io</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;dbname&gt;</p>
+</td><td colspan="1" rowspan="1"><p>yugabyte</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;dbuser&gt;</p>
+</td><td colspan="1" rowspan="1"><p>クラスタのアクセス情報(&lt;cluster_name&gt;.txt)ファイルに記載(例) admin</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;dbpassword&gt;</p>
+</td><td colspan="1" rowspan="1"><p>クラスタのアクセス情報(&lt;cluster_name&gt;.txt)ファイルに記載</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;path-to-cluster-certificate&gt;</p>
+</td><td colspan="1" rowspan="1"><p>クラスタの接続情報でダウンロードしたroot.crtファイルへのパス</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;ybm-api-key&gt;</p>
+</td><td colspan="1" rowspan="1"><p>Adminメニューで生成したAPI Key</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;ybm-account-id&gt;</p>
+</td><td colspan="1" rowspan="1"><p>API Key生成時に確認したアカウントID。管理コンソール右上のユーザーアイコンからも確認可能</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;ybm_project-id&gt;</p>
+</td><td colspan="1" rowspan="1"><p>API Key生成時に確認したプロジェクトID。管理コンソール右上のユーザーアイコンからも確認可能</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>&lt;ybm-cluster-id&gt;</p>
+</td><td colspan="1" rowspan="1"><p>ホスト名のリージョンの後にある、クラスタのUUID(例) 4e095914-fb49-4b71-8e3a-3dee1073f221</p>
+</td></tr>
+</table>
+<ol type="1" start="3">
+<li>シミュレータが実行されると、以下のようなアスキーアートが表示されます。</li>
+</ol>
+<p class="image-container"><img alt="simulator1.png" style="width: 624.00px" src="img/45fef054723a15fe.png"></p>
+<ol type="1" start="4">
+<li>ブラウザを開いて、  <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a> にアクセスしてください。シミュレータが表示されます。</li>
+</ol>
+<p class="image-container"><img alt="simulator2.png" style="width: 624.00px" src="img/c55a27e870b9d6ef.png"></p>
+<ol type="1" start="5">
+<li>[Network Diagram and Aggregate Statistics]ウィンドウの右上にある、歯車アイコンをクリックし、[Yugabyte Options] を選択してください。</li>
+</ol>
+<p class="image-container"><img alt="4ba23d70bf9cf771.png" style="width: 260.00px" src="img/4ba23d70bf9cf771.png"></p>
+<ol type="1" start="6">
+<li>パスワードの設定を要求する画面が表示されます。任意のパスワードを設定し、メモしておいてください。[OK]ボタンをクリックして、一度ウィンドウを閉じます。</li>
+<li>再度、歯車アイコンをクリックして[Yugabyte Options]を選択し、[Database in Use]に[Yugabyte Managed]を選択します。パスワードの入力を求められたら、先ほどのパスワードを入力し[Validate Password]をクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="4d724c5bc4b15374.png" style="width: 624.00px" src="img/4d724c5bc4b15374.png"></p>
+<ol type="1" start="8">
+<li>API Access KeyやアカウントIDを入力する画面が表示されます。メモしておいた内容を入力し、[OK] ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="configscreen.png" style="width: 624.00px" src="img/fe90354f3621bf3c.png"></p>
+<ol type="1" start="9">
+<li>設定が保存されると、ネットワーク図の下にクラスタを操作するボタンが表示されます。</li>
+</ol>
+<p class="image-container"><img alt="simulatornetwork.png" style="width: 624.00px" src="img/4020bd74e6efefd5.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="テーブル作成とデータのロード" duration="0">
+        <p>ワークロード・シミュレータでは、シミュレーションを実行するためのテーブルやデータを生成する機能を提供しています。</p>
+<ul>
+<li>シミュレータの左上にある、ハンバーガーアイコンをクリックしてください。</li>
+</ul>
+<p class="image-container"><img alt="menu.png" style="width: 274.00px" src="img/9834cfa79f3c27b9.png"></p>
+<ol type="1" start="2">
+<li>[Workload Management for Quickship]ウィンドウが開きます。[Usable Operations]タブを表示してください。</li>
+</ol>
+<p class="image-container"><img alt="createtable.png" style="width: 624.00px" src="img/f15333eb1dd3fc06.png"></p>
+<ol type="1" start="3">
+<li>[Create Tables]セクションを開き、 [Run Create Tables Workload]ボタンをクリックしてください。&#34;Workload CREATE_TABLES successfully submitted&#34;のメッセージがウィンドウ下部に表示されます。</li>
+<li>YugabyteDB Managedのコンソールで、クラスタのダッシュボードの[Tables]タブを表示し、ProductsとOrdersの2つのテーブルが作成されていることを確認します。</li>
+</ol>
+<p class="image-container"><img alt="tableinfo.png" style="width: 624.00px" src="img/48202c778f26ee91.png"></p>
+<ol type="1" start="5">
+<li>シミュレータ画面に戻り、[Workload Management for Quickship]ウィンドウを開きます。</li>
+<li>[Seed Data]セクションを開き、[Run Seed Data Workload]ボタンをクリックしてください。&#34;Workload SEED_DATA successfully submitted.&#34;のメッセージがウィンドウ下部に表示されます。</li>
+<li>YugabyteDB Managedのコンソールで、実際にデータがロードされたことを確認してみましょう。クラスタのダッシュボード右上にある[Connect]ボタンをクリックし、表示されるウィンドウで[Launch Cloud Shell]をクリックします。</li>
+</ol>
+<p class="image-container"><img alt="731b0fefd345f245.png" style="width: 624.00px" src="img/731b0fefd345f245.png"></p>
+<ol type="1" start="8">
+<li>データベース名やユーザー名を確認し、[Confirm]ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="c51e511aac00fb57.png" style="width: 600.00px" src="img/c51e511aac00fb57.png"></p>
+<ol type="1" start="9">
+<li>新しいブラウザ・タブが開き、クラスタにアクセスするためのシェルが表示されます。クラスタアクセス情報のファイルに記載された、パスワードを入力してください。</li>
+</ol>
+<p class="image-container"><img alt="cff23d35348c2544.png" style="width: 624.00px" src="img/cff23d35348c2544.png"></p>
+<ol type="1" start="10">
+<li>パスワードが認証されると、YSQLの入力モードになります。<code>SELECT count(*) from orders;</code>と入力し、エンターキーを押してください。10000行のデータがロードされていることがわかります。</li>
+</ol>
+<p class="image-container"><img alt="selectorder.png" style="width: 624.00px" src="img/b71066a1a95b4dff.png"></p>
+<ol type="1" start="11">
+<li>続いて、データの一部を参照するため、<code>SELECT * from orders limit 10;</code>と入力してください。ロードされたデータの内容を確認したら、<code>exit;</code>と入力してシェルを終了し、タブを閉じます。  <img alt="selectorder2.png" style="width: 624.00px" src="img/1d4c537342f5330e.png"></li>
+</ol>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="ワークロードの実行" duration="0">
+        <p>シミュレータで作成したテーブルとデータを使用して、YugabyteDB Managedのクラスタに読み取り/書き込みのワークロードを実行します。</p>
+<ul>
+<li>ワークロード・シミュレータのブラウザ・タブを開き、左上のハンバーガーアイコンから[Workload Management for Quickship]ウィンドウを表示してください。</li>
+<li>[Simulation]セクションで、スループットとスレッドの設定を確認します。読み取りだけでなく、書き込みのワークロードも生成するため、[Include placing of new orders]のボタンをオンにして、[Run Simulation Workload]ボタンをクリックしてください。</li>
+</ul>
+<p class="image-container"><img alt="simulationworkload.png" style="width: 624.00px" src="img/9dd4ac959d814263.png"></p>
+<ol type="1" start="3">
+<li>&#34;Workload RUN_SIMULATION successfully submitted.&#34;のメッセージがウィンドウ下部に表示されることを確認し、[Close]ボタンをクリックしてウィンドウを閉じてください。</li>
+<li>レイテンシーとスループットのグラフを確認してください。ワークロードが継続的に生成され、データベースがサービスを継続していることがわかります。</li>
+</ol>
+<p class="image-container"><img alt="workload1.png" style="width: 624.00px" src="img/fc1d1d310fb3f51c.png"></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="AZ障害のシミュレート" duration="0">
+        <p>このハンズオンの前のステップで、複数のアベイラビリティゾーン(AZ)にノードを配置したクラスタを構成しました。そのため、AZレベルの障害であれば、クラスタは影響を受けずにサービスを継続することができる耐障害性を備えています。</p>
+<p>このセクションでは、クラスタを構成する一つのノードを停止することでAZレベル障害を想定したシミュレーションを行います。</p>
+<ul>
+<li>前のステップで実行したワークロードのシミュレーションが継続していることを確認してください。</li>
+<li>シミュレータのネットワーク図で、任意のノードを選択します。（選択されたノードがは赤色になります。）ネットワーク図の下にある[Stop Selected Nodes]ボタンをクリックしてください。</li>
+</ul>
+<p class="image-container"><img alt="nodeselect.png" style="width: 624.00px" src="img/d0e90af3a7828b52.png"></p>
+<ol type="1" start="3">
+<li>確認ウィンドウが表示されたら、[Yes]をクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="stopnode.png" style="width: 624.00px" src="img/692cb888ed70f437.png"></p>
+<ol type="1" start="4">
+<li>パフォーマンスを表示するグラフでは、数秒のレイテンシ増加とスループット停止が発生します。これはRaftコンセンサスを行うタブレット・ピアが新しいリーダーを選択し、処理を再開するまでのタイムラグです。また、ネットワーク図からは停止したノードが消えて2ノード構成になったことがわかります。</li>
+</ol>
+<p class="image-container"><img alt="diagram.png" style="width: 624.00px" src="img/6e740f51f7b2d047.png"></p>
+<ol type="1" start="5">
+<li>YugabyteDB Aeonのコンソールでの表示も確認しましょう。ダッシュボードの[Node] タブを表示すると、1つのノードが停止していることを示す赤い警告アイコンが表示されています。一方で、クラスタ自体はサービスを継続しているため、緑色のハートアイコン(Cluster Healthy and Fully Operational)が表示されています。</li>
+</ol>
+<p class="image-container"><img alt="clusterui.png" style="width: 624.00px" src="img/73410b8f09358cc.png"></p>
+<ol type="1" start="6">
+<li>シミュレータに戻り、ネットワーク図の下にある[Restart Missing Nodes]ボタンをクリックしてください。確認ウィンドウが表示されたら、[Yes]をクリックします。</li>
+</ol>
+<p class="image-container"><img alt="restartconfirmation.png" style="width: 624.00px" src="img/1fae0a39897ae1b0.png"></p>
+<ol type="1" start="7">
+<li>ノードの再起動とデータの同期には数分かかります。ノードの準備が整うと、タブレットの再配置とリーダー選挙が行われ、再起動したノードがネットワーク図に表示されます。</li>
+</ol>
+<p class="image-container"><img alt="restart2.png" style="width: 624.00px" src="img/75369a79660276e9.png"></p>
+<p>以上で、ノード停止によるAZ障害のシミュレートは完了です。クラスタ構成が変更される時に数秒のパフォーマンス低下が発生しますが、1つのノードが失われてもクラスタとしてはサービスが継続できることが確認できました。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラスターのスケールアウト" duration="0">
+        <p>前のステップでは、ノード停止をシミュレートしました。ここでは、ワークロードが増加した時にクラスタをスケールアウトしたり、スケールインするオペレーションを行います。</p>
+<ul>
+<li>前のステップで実行したワークロードのシミュレーションが継続していることを確認してください。</li>
+<li>クラスタへのリクエストが増加したことをシミュレートするため、追加のワークロードを実行します。左上にあるハンバーガーアイコンから、[Workload Management for Quickship]ウィンドウを開き、[Include placing of new orders]のオプションをオフにしてから[Run Simulation Workload]ボタンをクリックしてください。</li>
+</ul>
+<p class="image-container"><img alt="workloadagain.png" style="width: 624.00px" src="img/df388481d207e97d.png"></p>
+<ol type="1" start="3">
+<li>[Active Workloads]タブを表示すると、２種類のワークロードが実行中であることがわかります。[Close]ボタンをクリックしてウィンドウを閉じてください。</li>
+</ol>
+<p class="image-container"><img alt="twoworkloads.png" style="width: 624.00px" src="img/d4f208e923d90ef5.png"></p>
+<ol type="1" start="4">
+<li>クラスタのノード数変更を、YugabyteDB Aeonのコンソールから実施します。クラスターのスケールアウトをYugabyteDB Aeonの画面から行ってみましょう。クラスタのダッシュボードを開きます。</li>
+<li>右上にある[Actions]ボタンをクリックして、[Edit Infrastructure]を選択します。(または[Settings]タブの[Regions]セクションの右にある、[Edit Infrastructure]からも可能です。)</li>
+</ol>
+<p class="image-container"><img alt="editinfra.png" style="width: 624.00px" src="img/94ac1df70ab4d9ff.png"></p>
+<ol type="1" start="6">
+<li>[Nodes]のボックスに表示される上向き矢印をクリックして、ノードの数を6に変更します。</li>
+</ol>
+<p class="image-container"><img alt="numbernodes.png" style="width: 624.00px" src="img/a385495a1a40737a.png"></p>
+<ol type="1" start="7">
+<li>[Confirm and Save Changes]ボタンをクリックしてください。クラスタの構成変更中であるメッセージが画面上部に表示されます。</li>
+</ol>
+<p class="image-container"><img alt="clusterediting.png" style="width: 624.00px" src="img/7d60c7c7c89599e8.png"></p>
+<ol type="1" start="8">
+<li>[View Details]ボタンをクリックして、タスクの進行状況を確認してください。</li>
+</ol>
+<p class="image-container"><img alt="clusteractivityinfo.png" style="width: 534.33px" src="img/9ec91447be2ea8b2.png"></p>
+<ol type="1" start="9">
+<li>ワークロードシミュレータでも、ノード削除時のパフォーマンス低下やネットワーク図の変化が観察できることを確認してください。</li>
+</ol>
+<p class="image-container"><img alt="nodeaction1.png" style="width: 624.00px" src="img/fd53eeac213a8ede.png"></p>
+<ol type="1" start="10">
+<li>ノード数の変更が完了後、YugabyteDB Aeonのコンソールで、クラスタのダッシュボードの[Nodes]タブを表示し、ノードの数が6になっていることを確認してください。</li>
+</ol>
+<p class="image-container"><img alt="nodeaction3.png" style="width: 624.00px" src="img/7a25f30848f90068.png"></p>
+<p>以上で、ワークロード実行中のスケールアウトおよびスケールインのテストは完了です。構成変更時に数秒のパフォーマンス低下が発生しますが、クラスタ全体としてはサービスが継続できることを確認しました。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="ワークロードの停止と環境のクリーンアップ" duration="0">
+        <p>ここまで実行したワークロードの停止と、クラスタの停止または削除を行います。</p>
+<ul>
+<li>ワークロードシミュレータ画面で、左上にあるハンバーガーアイコンをクリックします。</li>
+<li>[Active Workloads]タブを表示すると、実行中のワークロードのリストが表示されます。ゴミ箱アイコンをクリックして、全てのワークロードを停止してください。</li>
+</ul>
+<p class="image-container"><img alt="stopworkload.png" style="width: 624.00px" src="img/1dac45cfca4769f5.png"></p>
+<ol type="1" start="3">
+<li>[Close]ボタンをクリックしてウィンドウを閉じます。</li>
+<li>ワークロードが停止され、パフォーマンスのグラフが表示されなくなったことを確認してください。シミュレータを実行していたブラウザタブを閉じます。</li>
+<li>シミュレータを起動したコマンドツール(Terminal等) に戻り、ctl+Cを入力して、アプリケーションの実行を停止してください。</li>
+<li>YugabyteDB Managedのコンソール画面を開きます。クラスタのダッシュボードで右上にある[Action]ボタンをクリックし、 [Terminate Cluster]を選択してください。</li>
+</ol>
+<p class="image-container"><img alt="terminatecluster1.png" style="width: 624.00px" src="img/d1949647388e1066.png"></p>
+<aside class="warning"><p><strong>Note:</strong> [Terminate Cluster]はクラスタの全てのノードを停止し、削除します。継続してREST APIのテスト等を実施したい場合は、[Pause Cluster]でクラスタを停止し、クラスタIDやデータを維持しても構いません。</p>
+</aside>
+<ol type="1" start="7">
+<li>クラスタ削除の確認画面が表示されます。クラスタの名前を入力して、[Delete]ボタンをクリックしてください。</li>
+</ol>
+<p class="image-container"><img alt="terminatecluster2.png" style="width: 600.00px" src="img/5049de1a325dce4.png"></p>
+<p>以上で、環境のクリーンアップは完了です。</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="まとめ" duration="0">
+        <p>このハンズオンでは、YugabyteDB Aeonを使用して、下記の内容を確認しました。</p>
+<ul>
+<li>YugabyteDB Aeonのコンソール操作</li>
+<li>YugabyteDB Aeonでのクラスタ作成</li>
+<li>YugabyteDB AeonのWebコンソールを使用したデータベースの操作とタブレットの確認</li>
+<li>YugabyteDB Aeonクラスタの耐障害性とスケーラビリティ</li>
+</ul>
+<p>さらにYugabyte Aeonについて学びたい場合は、下記のリンクをご参照ください。</p>
+<ul>
+<li><a href="https://docs.yugabyte.com/preview/yugabyte-cloud/" target="_blank">YugabyteDB Aeon公式ドキュメント</a></li>
+<li><a href="https://university.yugabyte.com/courses/yugabytedb-managed-basics" target="_blank">YugabyteDB Managed Basics</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>
