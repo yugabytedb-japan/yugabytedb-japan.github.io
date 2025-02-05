@@ -7,7 +7,7 @@
   "id": "ybm-handson-trial",
   "duration": 60,
   "title": "はじめてのYugabyteDB Aeon",
-  "summary": "このハンズオンでは、YugabyteDB Aeonの環境を使用してクラスタを作成し、PostgreSQLとの互換性、タブレット、耐障害性及びスケールアウト時のサービス状況を確認します",
+  "summary": "はじめてのYugabyteDB Aeon",
   "source": "index.md",
   "theme": "ybm",
   "status": [
