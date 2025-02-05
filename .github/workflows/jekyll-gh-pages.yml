@@ -49,10 +49,19 @@ jobs:
           # Build adding landing pages
           gulp dist --codelabs-dir=../exported/ \
             --base-url="https://yugabytedb-japan.github.io/"
+
+      - name: List output files
+        run: |
+          echo "Checking site/dist directory contents:"
+          ls -la site/dist/
+
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: site/dist/
+          if-no-files-found: error
 
   # Deployment job
   deploy:
