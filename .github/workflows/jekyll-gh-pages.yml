@@ -55,13 +55,11 @@ jobs:
           echo "Checking site/dist directory contents:"
           ls -la site/dist/
 
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
           path: site/dist/
-          if-no-files-found: error
 
   # Deployment job
   deploy:
@@ -73,4 +71,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
