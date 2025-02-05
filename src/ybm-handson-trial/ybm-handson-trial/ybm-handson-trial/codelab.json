@@ -1,0 +1,22 @@
+{
+  "environment": "web",
+  "format": "md",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2025-02-04T14:27:38+09:00",
+  "id": "ybm-handson-trial",
+  "duration": 0,
+  "title": "はじめてのYugabyteDB Aeon",
+  "summary": "はじめてのYugabyteDB Aeon",
+  "source": "index.md",
+  "theme": "",
+  "status": [
+    "[draft]"
+  ],
+  "category": [
+    "ybm"
+  ],
+  "tags": [],
+  "feedback": "https://yugabytedb-japan.github.io/",
+  "url": "ybm-handson-trial"
+}
