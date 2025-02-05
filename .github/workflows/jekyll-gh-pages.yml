@@ -50,7 +50,7 @@ jobs:
           gulp dist --codelabs-dir=../exported/ \
             --base-url="https://yugabytedb-japan.github.io/"
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site/dist/
 
