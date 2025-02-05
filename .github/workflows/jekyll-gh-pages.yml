@@ -55,12 +55,30 @@ jobs:
           echo "Checking site/dist directory contents:"
           ls -la site/dist/
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
+      - name: Debug directory structure
+        run: |
+          echo "=== Directory structure of site/dist ==="
+          tree site/dist/
+          echo "=== Size of site/dist ==="
+          du -sh site/dist/
+          echo "=== Checking for symlinks ==="
+          find site/dist/ -type l
+          echo "=== File permissions ==="
+          ls -laR site/dist/
+
+      - name: Clean and prepare dist directory
+        run: |
+          cd site/dist/
+          # シンボリックリンクを実ファイルに変換
+          find . -type l -exec bash -c 'cp --remove-destination "$(readlink -f "$0")" "$0"' {} \;
+          # パーミッションを修正
+          find . -type f -exec chmod 644 {} \;
+          find . -type d -exec chmod 755 {} \;
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: github-pages
           path: site/dist/
-          if-no-files-found: error
 
   # Deployment job
   deploy:
