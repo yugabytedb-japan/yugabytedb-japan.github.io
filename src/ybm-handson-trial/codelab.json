@@ -3,22 +3,20 @@
   "format": "md",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2025-02-04T17:10:57+09:00",
+  "updated": "2025-02-10T19:22:45+09:00",
   "id": "ybm-handson-trial",
-  "duration": 60,
+  "duration": 0,
   "title": "はじめてのYugabyteDB Aeon",
-  "summary": "このハンズオンでは、YugabyteDB Aeonの環境を使用してクラスタを作成し、PostgreSQLとの互換性、タブレット、耐障害性及びスケールアウト時のサービス状況を確認します",
+  "summary": "はじめてのYugabyteDB Aeon",
   "source": "index.md",
-  "theme": "ybm",
+  "theme": "",
   "status": [
-    "draft"
+    "[[draft]]"
   ],
   "category": [
-    "yba"
+    "ybm"
   ],
-  "tags": [
-    "yba"
-  ],
+  "tags": [],
   "feedback": "https://yugabytedb-japan.github.io/",
   "url": "ybm-handson-trial"
 }
