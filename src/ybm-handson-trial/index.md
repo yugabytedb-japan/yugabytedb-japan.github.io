@@ -1,7 +1,7 @@
 ---
 id: ybm-handson-trial
 summary: はじめてのYugabyteDB Aeon
-status: [[draft]]
+status: [[[draft]]]
 categories: ybm
 feedback_link: https://yugabytedb-japan.github.io/
 source: index.md
@@ -55,7 +55,7 @@ YugabyteDBはクラウドネイティブなアプリケーションに最適な�
 
 YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・サービス）です。サインアップしてアカウントを作成することで、すぐにデータベースを使い始めることができます。初めてYugabyteDB Aeonを使用する方は、以下の手順に従ってアカウントを作成してください。
 
-* ブラウザで  [こちら](https://cloud.yugabyte.com/signup)にアクセスし、アカウントを作成してください。
+* ブラウザで   [こちら](https://cloud.yugabyte.com/signup)にアクセスし、アカウントを作成してください。
 
 > aside negative
 > 
@@ -69,7 +69,7 @@ YugabyteDB AeonはフルマネージドのDBaaS (データベース・アズ・�
 
 <img src="img/9d1b9efa3328f933.png" alt="finishsignup.png"  width="624.00" />
 
-4. アカウント作成が完了後、  [ログイン画面](https://cloud.yugabyte.com/login)に遷移します。上記で設定したユーザーIDとパスワードでログインしてください。
+4. アカウント作成が完了後、   [ログイン画面](https://cloud.yugabyte.com/login)に遷移します。上記で設定したユーザーIDとパスワードでログインしてください。
 
 <img src="img/aa8afe05a71c7a0e.png" alt="loginscreen.png"  width="624.00" />
 
@@ -258,7 +258,7 @@ YugabyteDB Aeonでは、初めて使用する開発者向けのチュートリ�
 
 16. 他にも再帰クエリなど、先ほど作成したテーブルを使用して、様々なSQL機能を試すことができます。このハンズオンでは実施しませんが、お時間のある時に是非試してみてください。
 
-<img src="img/dfa7f4575bcb445e.png" alt="tutorial1.png"  width="190.71" />  <img src="img/81f59d0356e1fd7e.png" alt="tutorial2.png"  width="176.50" />  <img src="img/e293d9f1fe50576d.png" alt="tutorial3.png"  width="181.42" />
+<img src="img/dfa7f4575bcb445e.png" alt="tutorial1.png"  width="190.71" />   <img src="img/81f59d0356e1fd7e.png" alt="tutorial2.png"  width="176.50" />   <img src="img/e293d9f1fe50576d.png" alt="tutorial3.png"  width="181.42" />
 
 
 ## タブレットの確認
@@ -351,7 +351,7 @@ yugabyte=> SELECT * FROM yb_table_properties('emp'::regclass);
 
 
 
-YB Workload Simulatorは、アプリケーションから見たレイテンシやスループットをシミュレートするJavaアプリケーションで、YugabyteDBのコードサンプルとして   [GitHub](https://github.com/YugabyteDB-Samples/yb-workload-simulator)で公開されています。
+YB Workload Simulatorは、アプリケーションから見たレイテンシやスループットをシミュレートするJavaアプリケーションで、YugabyteDBのコードサンプルとして    [GitHub](https://github.com/YugabyteDB-Samples/yb-workload-simulator)で公開されています。
 
 シミュレータを使用することで、以下のことを実施できます。
 
@@ -365,7 +365,7 @@ YB Workload Simulatorは、アプリケーションから見たレイテンシ�
 > 
 > **Note:** シミュレータの実行にはJava 19以上のバージョンが必要です。コマンドツール(Terminal等) でjava -versionと入力し、Javaのインストール・バージョンを確認してください。
 
-*  [リリース](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases)ページにアクセスして、シミュレータのjarファイルをダウンロードしてください。今回は、  [yb-workload-sim-0.0.7.jar](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases/download/v0.0.7/yb-workload-sim-0.0.7.jar)を使用します。
+*  [リリース](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases)ページにアクセスして、シミュレータのjarファイルをダウンロードしてください。今回は、   [yb-workload-sim-0.0.7.jar](https://github.com/YugabyteDB-Samples/yb-workload-simulator/releases/download/v0.0.7/yb-workload-sim-0.0.7.jar)を使用します。
 * 前のステップでダウンロードしたクラスタのアクセス情報、証明書、アカウントIDやプロジェクトID、API Keyを確認して、以下のコマンドを入力します。
 
 ```
@@ -398,7 +398,7 @@ java -Dnode=<host name> \
 
 <img src="img/45fef054723a15fe.png" alt="simulator1.png"  width="624.00" />
 
-4. ブラウザを開いて、   [http://localhost:8080/](http://localhost:8080/) にアクセスしてください。シミュレータが表示されます。
+4. ブラウザを開いて、    [http://localhost:8080/](http://localhost:8080/) にアクセスしてください。シミュレータが表示されます。
 
 <img src="img/c55a27e870b9d6ef.png" alt="simulator2.png"  width="624.00" />
 
@@ -406,16 +406,15 @@ java -Dnode=<host name> \
 
 <img src="img/4ba23d70bf9cf771.png" alt="4ba23d70bf9cf771.png"  width="260.00" />
 
-6. パスワードの設定を要求する画面が表示されます。任意のパスワードを設定し、メモしておいてください。[OK]ボタンをクリックして、一度ウィンドウを閉じます。
-7. 再度、歯車アイコンをクリックして[Yugabyte Options]を選択し、[Database in Use]に[Yugabyte Managed]を選択します。パスワードの入力を求められたら、先ほどのパスワードを入力し[Validate Password]をクリックしてください。
+6. パスワードの設定を要求する画面が表示されます。任意のパスワードを設定し、[Save Password]ボタンをクリックします。
 
-<img src="img/4d724c5bc4b15374.png" alt="4d724c5bc4b15374.png"  width="624.00" />
+<img src="img/59d656e89f083e7a.png" alt="workloadpassword.png"  width="624.00" />
 
-8. API Access KeyやアカウントIDを入力する画面が表示されます。メモしておいた内容を入力し、[OK] ボタンをクリックしてください。
+7. API Access KeyやアカウントIDを入力する画面が表示されます。メモしておいた内容を入力し、[OK] ボタンをクリックしてください。
 
 <img src="img/fe90354f3621bf3c.png" alt="configscreen.png"  width="624.00" />
 
-9. 設定が保存されると、ネットワーク図の下にクラスタを操作するボタンが表示されます。
+8. 設定が保存されると、ネットワーク図の下にクラスタを操作するボタンが表示されます。
 
 <img src="img/4020bd74e6efefd5.png" alt="simulatornetwork.png"  width="624.00" />
 
@@ -457,7 +456,7 @@ java -Dnode=<host name> \
 
 <img src="img/b71066a1a95b4dff.png" alt="selectorder.png"  width="624.00" />
 
-11. 続いて、データの一部を参照するため、`SELECT * from orders limit 10;`と入力してください。ロードされたデータの内容を確認したら、`exit;`と入力してシェルを終了し、タブを閉じます。   <img src="img/1d4c537342f5330e.png" alt="selectorder2.png"  width="624.00" />
+11. 続いて、データの一部を参照するため、`SELECT * from orders limit 10;`と入力してください。ロードされたデータの内容を確認したら、`exit;`と入力してシェルを終了し、タブを閉じます。    <img src="img/1d4c537342f5330e.png" alt="selectorder2.png"  width="624.00" />
 
 
 ## ワークロードの実行
