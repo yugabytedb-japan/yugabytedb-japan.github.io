@@ -69,9 +69,7 @@ jobs:
       - name: Clean and prepare dist directory
         run: |
           cd site/dist/
-          # シンボリックリンクを実ファイルに変換
           find . -type l -exec bash -c 'cp --remove-destination "$(readlink -f "$0")" "$0"' {} \;
-          # パーミッションを修正
           find . -type f -exec chmod 644 {} \;
           find . -type d -exec chmod 755 {} \;
 
