@@ -443,7 +443,7 @@ java -Dnode=<host name> \
 6. [Seed Data]セクションを開き、[Run Seed Data Workload]ボタンをクリックしてください。"Workload SEED_DATA successfully submitted."のメッセージがウィンドウ下部に表示されます。
 7. YugabyteDB Aeonのコンソールで、実際にデータがロードされたことを確認してみましょう。クラスタのダッシュボード右上にある[Connect]ボタンをクリックし、表示されるウィンドウで[Launch Cloud Shell]をクリックします。
 
-<img src="img/0.png" alt="731b0fefd345f245.png"  width="624.00" />
+<img src="img/731b0fefd345f245.png" alt="731b0fefd345f245.png"  width="624.00" />
 
 8. データベース名やユーザー名を確認し、[Confirm]ボタンをクリックしてください。
 
